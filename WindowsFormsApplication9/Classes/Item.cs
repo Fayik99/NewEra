@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication9.Classes
 {
-    class Item
+   public class Item
     {
 
         public int ItemCode { get; set; }
@@ -63,10 +64,17 @@ namespace WindowsFormsApplication9.Classes
 
         }
 
-        public void checkInventory()
+        public DataTable checkInventory(Item ab)
         {
+            SqlCommand cmd = new SqlCommand("select * from Item where itemCode='" + ab.ItemCode + "'", con);
+            con.Open();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            return dt;
+            
 
-
+            
         }
 
         public void itemMenu()

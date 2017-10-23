@@ -43,7 +43,18 @@ namespace WindowsFormsApplication9
             rdr.Read();
             string itemName = (rdr[0].ToString());
             rdr.Close();
+            con.Close();
 
+             cmd = new SqlCommand("select top 1 QuotationNumber from QuotationHeaderFile order by QuotationNumber desc", con);
+            con.Open();
+            rdr = cmd.ExecuteReader();
+            
+
+            rdr.Read();
+            int quotnum = Convert.ToInt32(rdr[0].ToString());
+            lbl_qn.Text = "Quotation Number: " + ++quotnum;
+            rdr.Close();
+            con.Close();
 
             cmd = new SqlCommand("select  itemName from Item", con);
             SqlDataAdapter ad = new SqlDataAdapter(cmd);
@@ -66,6 +77,10 @@ namespace WindowsFormsApplication9
            
         }
 
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
+    }
     }
 

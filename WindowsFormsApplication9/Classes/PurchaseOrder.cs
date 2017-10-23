@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +16,7 @@ namespace WindowsFormsApplication9.Classes
         public double grosstotal { get; set; }
         public Suppliers supplier { get; set; }
         public string conString = "";
+        SqlConnection con;
 
         public void sOrderMenu()
 
@@ -24,8 +27,7 @@ namespace WindowsFormsApplication9.Classes
 
         public void sAddOrder()
         {
-
-
+           
         }
 
     }

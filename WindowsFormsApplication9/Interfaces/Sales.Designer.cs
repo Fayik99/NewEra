@@ -193,6 +193,7 @@
             this.btn_add.TabIndex = 14;
             this.btn_add.Text = "Add";
             this.btn_add.UseVisualStyleBackColor = true;
+            this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
             // txt_item
             // 

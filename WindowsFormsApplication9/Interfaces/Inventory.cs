@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApplication9.Classes;
 
 namespace WindowsFormsApplication9
 {
@@ -22,6 +23,25 @@ namespace WindowsFormsApplication9
             MainMenu m5 = new MainMenu();
             m5.Show();
             Hide();
+        }
+
+        private void btn_search_Click(object sender, EventArgs e)
+        {
+            Item ab = new Item()
+            {
+               
+                ItemCode=Convert.ToInt32(txt_ic.Text)
+               
+
+
+            };
+            var dt=ab.checkInventory(ab);
+            dataGridView1.DataSource = dt;
+        }
+
+        private void Inventory_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

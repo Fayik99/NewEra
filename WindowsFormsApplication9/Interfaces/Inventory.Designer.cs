@@ -73,6 +73,7 @@
             this.btn_search.TabIndex = 3;
             this.btn_search.Text = "Search";
             this.btn_search.UseVisualStyleBackColor = true;
+            this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
             // 
             // dataGridView1
             // 
@@ -106,6 +107,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Inventory";
             this.Text = "Search Inventory";
+            this.Load += new System.EventHandler(this.Inventory_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

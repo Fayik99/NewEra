@@ -32,7 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lbl_currentDate = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lbl_qn = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.cmb_in = new System.Windows.Forms.ComboBox();
             this.btn_add = new System.Windows.Forms.Button();
@@ -74,15 +74,15 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "quotation expiry date";
             // 
-            // label4
+            // lbl_qn
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(154, 193);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(127, 16);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "quotation number";
+            this.lbl_qn.AutoSize = true;
+            this.lbl_qn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_qn.Location = new System.Drawing.Point(154, 193);
+            this.lbl_qn.Name = "lbl_qn";
+            this.lbl_qn.Size = new System.Drawing.Size(127, 16);
+            this.lbl_qn.TabIndex = 3;
+            this.lbl_qn.Text = "quotation number";
             // 
             // label5
             // 
@@ -127,6 +127,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(344, 120);
             this.dataGridView1.TabIndex = 8;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // btn_gen
             // 
@@ -161,7 +162,7 @@
             this.Controls.Add(this.btn_add);
             this.Controls.Add(this.cmb_in);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lbl_qn);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lbl_currentDate);
             this.Controls.Add(this.label1);
@@ -179,7 +180,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lbl_currentDate;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lbl_qn;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cmb_in;
         private System.Windows.Forms.Button btn_add;
