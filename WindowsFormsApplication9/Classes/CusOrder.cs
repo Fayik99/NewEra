@@ -31,14 +31,14 @@ namespace WindowsFormsApplication9.Classes
             con = new SqlConnection(conString);
         }
 
-        public void oderMenu(CusOrder a,string customerid, DateTime expirydate,DataGridView datagridview1,string ordernumber)
+        public void oderMenu(CusOrder a,string customerid,DataGridView datagridview1,string ordernumber)
         {
-            SqlCommand cmd = new SqlCommand("insert into Customer values('" + a.cusName + "','" + a.cusTel + "','" + a.cusAdd1 + "','" + a.cusAdd2 + "','" + a.cusAdd3 + "')", con);
+            //    SqlCommand cmd = new SqlCommand("insert into Customer values('" + a.cusName + "','" + a.cusTel + "','" + a.cusAdd1 + "','" + a.cusAdd2 + "','" + a.cusAdd3 + "')", con);
+            //    con.Open();
+            //    cmd.ExecuteNonQuery();
+
             con.Open();
-            cmd.ExecuteNonQuery();
-
-
-            cmd =new SqlCommand( "insert into CusOrderHeader values('"+DateTime.Now.Date+"','"+ expirydate.Date + "','"+Convert.ToInt32(customerid)+"')",con);
+           SqlCommand cmd =new SqlCommand( "insert into CusOrderHeader values('"+DateTime.Now.Date+"','"+ a.orderExpireDate + "','"+Convert.ToInt32(customerid)+"')",con);
             cmd.ExecuteNonQuery();
             con.Close();
 
