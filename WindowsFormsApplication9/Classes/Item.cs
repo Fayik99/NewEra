@@ -30,30 +30,50 @@ namespace WindowsFormsApplication9.Classes
             con = new SqlConnection(conString);
         }
 
-        public void addItm(Item a)
+        public void addItm(Item a,int sid)
         {
-            SqlCommand cmd = new SqlCommand("insert into Item values('" +a.ItemName  + "','" +a.ItemPrice  + "','" +a.ItemQuantity  + "','"+a.supId+"')", con);
+            SqlCommand cmd = new SqlCommand("insert into Item values('" +a.ItemName  + "','" +a.ItemPrice  + "','" +a.ItemQuantity  + "')", con);
             con.Open();
             cmd.ExecuteNonQuery();
+            con.Close();
+
+
+            SqlCommand fr = new SqlCommand("insert into itemSupply values('" + sid + "','" + a.ItemCode + "','" +string.Empty+ "','" + DateTime.Now.ToString("dd/MM/yyyy") + "','" + a.ItemQuantity + "')", con);
+            con.Open();
+            fr.ExecuteNonQuery();
             con.Close();
 
         }
 
         public void deleteItem(Item d)
         {
-            SqlCommand cmd = new SqlCommand("delete from Item where itemCode='" + d.ItemCode + "'", con);
+            SqlCommand cmd = new SqlCommand("delete from Item where itemName='" + d.ItemName + "'", con);
             con.Open();
             cmd.ExecuteNonQuery();
             con.Close();
 
         }
 
-        public void updateItem (Item b)
+        public void updateItem (Item b,int a)
         {
             try {
-                SqlCommand cmd = new SqlCommand("update Item set itemName='" + b.ItemName + "',itemPrice='" + b.ItemPrice + "',itemQty='" + b.ItemQuantity + "',supID='" + b.supId + "' where itemCode='" + b.ItemCode + "'", con);
+                con.Open();
+                SqlCommand bv = new SqlCommand("select itemQty from Item where itemCode='"+b.ItemCode+"'",con);
+                SqlDataReader dr = bv.ExecuteReader();
+                dr.Read();
+                int totalQty = Convert.ToInt32(dr[0]) + b.ItemQuantity;
+                dr.Close();
+                con.Close();
+
+
+                SqlCommand cmd = new SqlCommand("update Item set itemName='" + b.ItemName + "',itemPrice='" + b.ItemPrice + "',itemQty='" + totalQty + "' where itemCode='" + b.ItemCode + "'", con);
                 con.Open();
                 cmd.ExecuteNonQuery();
+                con.Close();
+                DateTime datte = Convert.ToDateTime(DateTime.Now.Date.ToString());
+                SqlCommand fr = new SqlCommand("insert into itemSupply values('"+b.supId+ "','" + b.ItemCode + "','"+a+"',CONVERT(DATETIME,'" + datte.ToShortDateString() + "',103), '" + b.ItemQuantity + "')",con);
+                con.Open();
+                fr.ExecuteNonQuery();
                 con.Close();
             }
             catch (SqlException ex)

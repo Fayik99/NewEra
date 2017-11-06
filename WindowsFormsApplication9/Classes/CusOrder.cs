@@ -61,9 +61,9 @@ namespace WindowsFormsApplication9.Classes
 
         }
 
-        public DataTable viewOrder(CusOrder b)
+        public DataTable viewOrder()
         {
-            SqlCommand cmd = new SqlCommand("select * from CusOrderDetail where OrderNumber='" + b.orderNumber + "'", con);
+            SqlCommand cmd = new SqlCommand("select * from CusOrderDetail ", con);
             con.Open();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();

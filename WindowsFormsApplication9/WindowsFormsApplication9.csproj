@@ -151,11 +151,36 @@
     <Compile Include="Classes\Interfaces\SalesReport.Designer.cs">
       <DependentUpon>SalesReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="ItemSupplyNew1DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ItemSupplyNew1DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="itemSupplyNewDataSet.cs">
+      <DependentUpon>itemSupplyNewDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="itemSupplyNewDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>itemSupplyNewDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="itemSupplyReport.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="itemSupplyReport.Designer.cs">
       <DependentUpon>itemSupplyReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="itemSupplyReportNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="itemSupplyReportNew.Designer.cs">
+      <DependentUpon>itemSupplyReportNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ItemView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ItemView.Designer.cs">
+      <DependentUpon>ItemView.cs</DependentUpon>
     </Compile>
     <Compile Include="NewEraDBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -173,8 +198,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>NewEraDBDataSet3.xsd</DependentUpon>
     </Compile>
+    <Compile Include="NewEraDBDataSetItemSupply.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NewEraDBDataSetItemSupply.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProprietorReg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProprietorReg.Designer.cs">
+      <DependentUpon>ProprietorReg.cs</DependentUpon>
+    </Compile>
     <Compile Include="ReportDS.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -239,6 +275,12 @@
     <EmbeddedResource Include="itemSupplyReport.resx">
       <DependentUpon>itemSupplyReport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="itemSupplyReportNew.resx">
+      <DependentUpon>itemSupplyReportNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemView.resx">
+      <DependentUpon>ItemView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -249,9 +291,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ProprietorReg.resx">
+      <DependentUpon>ProprietorReg.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Report1.rdlc" />
     <EmbeddedResource Include="Report3.rdlc" />
     <EmbeddedResource Include="Report4.rdlc" />
+    <EmbeddedResource Include="Report5.rdlc" />
+    <EmbeddedResource Include="Report6.rdlc" />
+    <EmbeddedResource Include="Report7.rdlc" />
     <EmbeddedResource Include="stockStatusReport.resx">
       <DependentUpon>stockStatusReport.cs</DependentUpon>
     </EmbeddedResource>
@@ -265,6 +313,28 @@
     </None>
     <None Include="Classes\NewEraDBDataSet3.xss">
       <DependentUpon>NewEraDBDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="ItemSupplyNew1DataSet.xsc">
+      <DependentUpon>ItemSupplyNew1DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ItemSupplyNew1DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ItemSupplyNew1DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ItemSupplyNew1DataSet.xss">
+      <DependentUpon>ItemSupplyNew1DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="itemSupplyNewDataSet.xsc">
+      <DependentUpon>itemSupplyNewDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="itemSupplyNewDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>itemSupplyNewDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="itemSupplyNewDataSet.xss">
+      <DependentUpon>itemSupplyNewDataSet.xsd</DependentUpon>
     </None>
     <None Include="NewEraDBDataSet.xsc">
       <DependentUpon>NewEraDBDataSet.xsd</DependentUpon>
@@ -298,6 +368,17 @@
     </None>
     <None Include="NewEraDBDataSet3.xss">
       <DependentUpon>NewEraDBDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="NewEraDBDataSetItemSupply.xsc">
+      <DependentUpon>NewEraDBDataSetItemSupply.xsd</DependentUpon>
+    </None>
+    <None Include="NewEraDBDataSetItemSupply.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>NewEraDBDataSetItemSupply.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="NewEraDBDataSetItemSupply.xss">
+      <DependentUpon>NewEraDBDataSetItemSupply.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

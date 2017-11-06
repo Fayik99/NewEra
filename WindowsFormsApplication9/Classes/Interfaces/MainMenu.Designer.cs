@@ -45,6 +45,9 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.btn_logout = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.btn_reg = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -61,9 +64,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(58, 181);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 24);
+            this.label1.Size = new System.Drawing.Size(77, 24);
             this.label1.TabIndex = 10;
-            this.label1.Text = "Sales";
+            this.label1.Text = "Invoice";
             // 
             // label2
             // 
@@ -217,13 +220,44 @@
             // btn_logout
             // 
             this.btn_logout.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_logout.Location = new System.Drawing.Point(811, 591);
+            this.btn_logout.Location = new System.Drawing.Point(778, 601);
             this.btn_logout.Name = "btn_logout";
-            this.btn_logout.Size = new System.Drawing.Size(102, 29);
+            this.btn_logout.Size = new System.Drawing.Size(113, 35);
             this.btn_logout.TabIndex = 19;
             this.btn_logout.Text = "Logout";
             this.btn_logout.UseVisualStyleBackColor = true;
             this.btn_logout.Click += new System.EventHandler(this.btn_logout_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(1147, 253);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(51, 16);
+            this.label8.TabIndex = 20;
+            this.label8.Text = "label8";
+            // 
+            // btn_reg
+            // 
+            this.btn_reg.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_reg.BackgroundImage")));
+            this.btn_reg.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_reg.Location = new System.Drawing.Point(1222, 393);
+            this.btn_reg.Name = "btn_reg";
+            this.btn_reg.Size = new System.Drawing.Size(75, 67);
+            this.btn_reg.TabIndex = 21;
+            this.btn_reg.UseVisualStyleBackColor = true;
+            this.btn_reg.Click += new System.EventHandler(this.btn_reg_Click);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.Color.Red;
+            this.label9.Location = new System.Drawing.Point(1231, 472);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(55, 13);
+            this.label9.TabIndex = 22;
+            this.label9.Text = "Register !!";
             // 
             // MainMenu
             // 
@@ -231,6 +265,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1334, 684);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.btn_reg);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.btn_logout);
             this.Controls.Add(this.pictureBox8);
             this.Controls.Add(this.label7);
@@ -281,5 +318,8 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.Button btn_logout;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Button btn_reg;
+        private System.Windows.Forms.Label label9;
     }
 }

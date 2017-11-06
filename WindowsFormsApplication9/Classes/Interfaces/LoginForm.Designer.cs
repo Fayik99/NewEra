@@ -62,9 +62,9 @@
             // btn_login
             // 
             this.btn_login.Font = new System.Drawing.Font("Segoe Marker", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_login.Location = new System.Drawing.Point(526, 460);
+            this.btn_login.Location = new System.Drawing.Point(429, 451);
             this.btn_login.Name = "btn_login";
-            this.btn_login.Size = new System.Drawing.Size(86, 39);
+            this.btn_login.Size = new System.Drawing.Size(108, 46);
             this.btn_login.TabIndex = 2;
             this.btn_login.Text = "Login";
             this.btn_login.UseVisualStyleBackColor = true;
@@ -74,7 +74,7 @@
             // 
             this.txt_user.Location = new System.Drawing.Point(429, 324);
             this.txt_user.Name = "txt_user";
-            this.txt_user.Size = new System.Drawing.Size(100, 20);
+            this.txt_user.Size = new System.Drawing.Size(108, 20);
             this.txt_user.TabIndex = 3;
             // 
             // txt_pwd
@@ -82,7 +82,7 @@
             this.txt_pwd.Location = new System.Drawing.Point(429, 392);
             this.txt_pwd.Name = "txt_pwd";
             this.txt_pwd.PasswordChar = '*';
-            this.txt_pwd.Size = new System.Drawing.Size(100, 20);
+            this.txt_pwd.Size = new System.Drawing.Size(108, 20);
             this.txt_pwd.TabIndex = 4;
             this.txt_pwd.UseSystemPasswordChar = true;
             // 

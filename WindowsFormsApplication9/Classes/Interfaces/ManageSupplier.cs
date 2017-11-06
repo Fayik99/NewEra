@@ -66,23 +66,25 @@ namespace WindowsFormsApplication9
                 MessageBox.Show("One or more fields are empty, please fill", "Add Error");
                 return;
             }
-            Suppliers suppliers = new Suppliers()
+            else
             {
+                Suppliers suppliers = new Suppliers()
+                {
 
-                supName = txt_name1.Text,
-                supAddress1 = txt_add11.Text,
-                supAddress2 = txt_add21.Text,
-                supAddress3 = txt_add31.Text,
-                supMobile = txt_mob1.Text
-            };
+                    supName = txt_name1.Text,
+                    supAddress1 = txt_add11.Text,
+                    supAddress2 = txt_add21.Text,
+                    supAddress3 = txt_add31.Text,
+                    supMobile = txt_mob1.Text
+                };
 
-            suppliers.addSup(suppliers);
+                suppliers.addSup(suppliers);
 
-            ManageSupplier refresh = new ManageSupplier();
-            Hide();
-            refresh.Show();
-            MessageBox.Show("Successful", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                ManageSupplier refresh = new ManageSupplier();
+                Hide();
+                refresh.Show();
+                MessageBox.Show("Successful", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -105,39 +107,55 @@ namespace WindowsFormsApplication9
 
         private void btn_up_Click(object sender, EventArgs e)
         {
-            Suppliers s = new Suppliers()
+            if (string.IsNullOrEmpty(txt_name2.Text) || string.IsNullOrEmpty(txt_mob2.Text) || string.IsNullOrEmpty(txt_add12.Text) || string.IsNullOrEmpty(txt_add22.Text) || string.IsNullOrEmpty(txt_add32.Text))
             {
-                supId = index,
-                supName = txt_name2.Text,
-                supMobile = txt_mob2.Text,
-                supAddress1 = txt_add12.Text,
-                supAddress2=txt_add22.Text,
-                supAddress3=txt_add32.Text
+                MessageBox.Show("One or more fields are empty, please fill", "Add Error");
+                return;
+            }
+            else
+            {
+                Suppliers s = new Suppliers()
+                {
+                    supId = index,
+                    supName = txt_name2.Text,
+                    supMobile = txt_mob2.Text,
+                    supAddress1 = txt_add12.Text,
+                    supAddress2 = txt_add22.Text,
+                    supAddress3 = txt_add32.Text
 
 
-            };
-            s.updateSup(s);
+                };
+                s.updateSup(s);
 
-            ManageSupplier refresh = new ManageSupplier();
-            Hide();
-            refresh.Show();
-            MessageBox.Show("Successfully Updated", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ManageSupplier refresh = new ManageSupplier();
+                Hide();
+                refresh.Show();
+                MessageBox.Show("Successfully Updated", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void btn_del_Click(object sender, EventArgs e)
         {
-            Suppliers si = new Suppliers()
+            if (comboBox1.SelectedIndex < 0)
             {
-                supId = index
-               
+                MessageBox.Show("select a supplier Id");
 
-            };
-            si.deleteSup(si);
+            }
+            else
+            {
+                Suppliers si = new Suppliers()
+                {
+                    supId = index
 
-            ManageSupplier refresh = new ManageSupplier();
-            Hide();
-            refresh.Show();
-            MessageBox.Show("Successfully deleted", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                };
+                si.deleteSup(si);
+
+                ManageSupplier refresh = new ManageSupplier();
+                Hide();
+                refresh.Show();
+                MessageBox.Show("Successfully deleted", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

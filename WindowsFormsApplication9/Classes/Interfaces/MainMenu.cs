@@ -31,7 +31,8 @@ namespace WindowsFormsApplication9
 
         private void Form2_Load(object sender, EventArgs e)
         {
-
+            string ab=LoginForm.LoginInfo.logged.ToString();
+            label8.Text = "Logged in as " + ab;
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -93,6 +94,13 @@ namespace WindowsFormsApplication9
         {
             LoginForm lf = new LoginForm();
             lf.Show();
+            Hide();
+        }
+
+        private void btn_reg_Click(object sender, EventArgs e)
+        {
+            ProprietorReg tr = new ProprietorReg();
+            tr.Show();
             Hide();
         }
     }

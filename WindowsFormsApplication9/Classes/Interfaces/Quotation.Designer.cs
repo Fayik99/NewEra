@@ -47,6 +47,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.btn_sub = new System.Windows.Forms.Button();
             this.btn_serch = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cmb_ci1 = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cmb_cName = new System.Windows.Forms.ComboBox();
+            this.lbl_cusid = new System.Windows.Forms.Label();
+            this.lbl_cus = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -95,7 +101,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(261, 257);
+            this.label5.Location = new System.Drawing.Point(351, 258);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(86, 18);
             this.label5.TabIndex = 4;
@@ -104,7 +110,7 @@
             // cmb_in
             // 
             this.cmb_in.FormattingEnabled = true;
-            this.cmb_in.Location = new System.Drawing.Point(398, 257);
+            this.cmb_in.Location = new System.Drawing.Point(459, 257);
             this.cmb_in.Name = "cmb_in";
             this.cmb_in.Size = new System.Drawing.Size(121, 21);
             this.cmb_in.TabIndex = 5;
@@ -112,7 +118,7 @@
             // btn_add
             // 
             this.btn_add.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_add.Location = new System.Drawing.Point(594, 254);
+            this.btn_add.Location = new System.Drawing.Point(612, 253);
             this.btn_add.Name = "btn_add";
             this.btn_add.Size = new System.Drawing.Size(75, 24);
             this.btn_add.TabIndex = 6;
@@ -130,16 +136,16 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(325, 369);
+            this.dataGridView1.Location = new System.Drawing.Point(168, 331);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(362, 120);
+            this.dataGridView1.Size = new System.Drawing.Size(428, 120);
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // btn_gen
             // 
             this.btn_gen.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_gen.Location = new System.Drawing.Point(776, 395);
+            this.btn_gen.Location = new System.Drawing.Point(623, 346);
             this.btn_gen.Name = "btn_gen";
             this.btn_gen.Size = new System.Drawing.Size(91, 27);
             this.btn_gen.TabIndex = 9;
@@ -160,7 +166,7 @@
             // btn_cancel
             // 
             this.btn_cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cancel.Location = new System.Drawing.Point(812, 293);
+            this.btn_cancel.Location = new System.Drawing.Point(826, 344);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(83, 29);
             this.btn_cancel.TabIndex = 11;
@@ -170,7 +176,7 @@
             // 
             // txt_can
             // 
-            this.txt_can.Location = new System.Drawing.Point(867, 254);
+            this.txt_can.Location = new System.Drawing.Point(920, 276);
             this.txt_can.Name = "txt_can";
             this.txt_can.Size = new System.Drawing.Size(100, 20);
             this.txt_can.TabIndex = 12;
@@ -179,11 +185,12 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(738, 255);
+            this.label2.Location = new System.Drawing.Point(790, 276);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(103, 16);
             this.label2.TabIndex = 13;
             this.label2.Text = "Qutotaion no :";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label4
             // 
@@ -207,10 +214,10 @@
             // 
             // btn_sub
             // 
-            this.btn_sub.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_sub.Location = new System.Drawing.Point(776, 444);
+            this.btn_sub.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_sub.Location = new System.Drawing.Point(623, 398);
             this.btn_sub.Name = "btn_sub";
-            this.btn_sub.Size = new System.Drawing.Size(91, 23);
+            this.btn_sub.Size = new System.Drawing.Size(91, 29);
             this.btn_sub.TabIndex = 16;
             this.btn_sub.Text = "Submit";
             this.btn_sub.UseVisualStyleBackColor = true;
@@ -220,7 +227,7 @@
             // 
             this.btn_serch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_serch.ForeColor = System.Drawing.SystemColors.Desktop;
-            this.btn_serch.Location = new System.Drawing.Point(915, 293);
+            this.btn_serch.Location = new System.Drawing.Point(915, 344);
             this.btn_serch.Name = "btn_serch";
             this.btn_serch.Size = new System.Drawing.Size(75, 29);
             this.btn_serch.TabIndex = 17;
@@ -228,11 +235,71 @@
             this.btn_serch.UseVisualStyleBackColor = true;
             this.btn_serch.Click += new System.EventHandler(this.btn_serch_Click);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(94, 260);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(88, 16);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "CustomerID\r\n";
+            // 
+            // cmb_ci1
+            // 
+            this.cmb_ci1.FormattingEnabled = true;
+            this.cmb_ci1.Location = new System.Drawing.Point(189, 257);
+            this.cmb_ci1.Name = "cmb_ci1";
+            this.cmb_ci1.Size = new System.Drawing.Size(121, 21);
+            this.cmb_ci1.TabIndex = 19;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(779, 221);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(114, 16);
+            this.label9.TabIndex = 22;
+            this.label9.Text = "CustomerName";
+            // 
+            // cmb_cName
+            // 
+            this.cmb_cName.FormattingEnabled = true;
+            this.cmb_cName.Location = new System.Drawing.Point(920, 215);
+            this.cmb_cName.Name = "cmb_cName";
+            this.cmb_cName.Size = new System.Drawing.Size(121, 21);
+            this.cmb_cName.TabIndex = 23;
+            this.cmb_cName.SelectedIndexChanged += new System.EventHandler(this.cmb_cName_SelectedIndexChanged);
+            // 
+            // lbl_cusid
+            // 
+            this.lbl_cusid.Location = new System.Drawing.Point(0, 0);
+            this.lbl_cusid.Name = "lbl_cusid";
+            this.lbl_cusid.Size = new System.Drawing.Size(100, 23);
+            this.lbl_cusid.TabIndex = 0;
+            // 
+            // lbl_cus
+            // 
+            this.lbl_cus.AutoSize = true;
+            this.lbl_cus.Location = new System.Drawing.Point(930, 243);
+            this.lbl_cus.Name = "lbl_cus";
+            this.lbl_cus.Size = new System.Drawing.Size(35, 13);
+            this.lbl_cus.TabIndex = 24;
+            this.lbl_cus.Text = "label8";
+            this.lbl_cus.Visible = false;
+            // 
             // Quotation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1194, 670);
+            this.Controls.Add(this.lbl_cus);
+            this.Controls.Add(this.lbl_cusid);
+            this.Controls.Add(this.cmb_cName);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.cmb_ci1);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.btn_serch);
             this.Controls.Add(this.btn_sub);
             this.Controls.Add(this.label6);
@@ -280,5 +347,11 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btn_sub;
         private System.Windows.Forms.Button btn_serch;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox cmb_ci1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox cmb_cName;
+        private System.Windows.Forms.Label lbl_cusid;
+        private System.Windows.Forms.Label lbl_cus;
     }
 }

@@ -54,6 +54,13 @@
             this.txt_price1 = new System.Windows.Forms.TextBox();
             this.txt_q1 = new System.Windows.Forms.TextBox();
             this.cmb_sup1 = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.cmb_order = new System.Windows.Forms.ComboBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.cmb_Name = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.btn_view = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -138,7 +145,7 @@
             // btn_del
             // 
             this.btn_del.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_del.Location = new System.Drawing.Point(890, 108);
+            this.btn_del.Location = new System.Drawing.Point(1054, 149);
             this.btn_del.Margin = new System.Windows.Forms.Padding(4);
             this.btn_del.Name = "btn_del";
             this.btn_del.Size = new System.Drawing.Size(112, 28);
@@ -208,10 +215,11 @@
             // cmb_ic
             // 
             this.cmb_ic.FormattingEnabled = true;
-            this.cmb_ic.Location = new System.Drawing.Point(698, 114);
+            this.cmb_ic.Location = new System.Drawing.Point(698, 182);
             this.cmb_ic.Name = "cmb_ic";
             this.cmb_ic.Size = new System.Drawing.Size(121, 24);
             this.cmb_ic.TabIndex = 17;
+            this.cmb_ic.SelectedIndexChanged += new System.EventHandler(this.cmb_ic_SelectedIndexChanged);
             // 
             // lbl_itemCode
             // 
@@ -226,7 +234,7 @@
             // itemCode
             // 
             this.itemCode.AutoSize = true;
-            this.itemCode.Location = new System.Drawing.Point(582, 122);
+            this.itemCode.Location = new System.Drawing.Point(582, 185);
             this.itemCode.Name = "itemCode";
             this.itemCode.Size = new System.Drawing.Size(78, 16);
             this.itemCode.TabIndex = 19;
@@ -235,7 +243,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(578, 172);
+            this.label6.Location = new System.Drawing.Point(582, 228);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(82, 16);
             this.label6.TabIndex = 20;
@@ -244,7 +252,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(578, 222);
+            this.label8.Location = new System.Drawing.Point(590, 270);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(77, 16);
             this.label8.TabIndex = 21;
@@ -253,7 +261,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(578, 276);
+            this.label9.Location = new System.Drawing.Point(570, 321);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(97, 16);
             this.label9.TabIndex = 22;
@@ -262,7 +270,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(570, 321);
+            this.label10.Location = new System.Drawing.Point(582, 114);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(85, 16);
             this.label10.TabIndex = 23;
@@ -270,21 +278,21 @@
             // 
             // txt_name1
             // 
-            this.txt_name1.Location = new System.Drawing.Point(698, 173);
+            this.txt_name1.Location = new System.Drawing.Point(698, 222);
             this.txt_name1.Name = "txt_name1";
             this.txt_name1.Size = new System.Drawing.Size(100, 22);
             this.txt_name1.TabIndex = 24;
             // 
             // txt_price1
             // 
-            this.txt_price1.Location = new System.Drawing.Point(698, 216);
+            this.txt_price1.Location = new System.Drawing.Point(698, 270);
             this.txt_price1.Name = "txt_price1";
             this.txt_price1.Size = new System.Drawing.Size(100, 22);
             this.txt_price1.TabIndex = 25;
             // 
             // txt_q1
             // 
-            this.txt_q1.Location = new System.Drawing.Point(698, 270);
+            this.txt_q1.Location = new System.Drawing.Point(698, 315);
             this.txt_q1.Name = "txt_q1";
             this.txt_q1.Size = new System.Drawing.Size(100, 22);
             this.txt_q1.TabIndex = 26;
@@ -292,16 +300,77 @@
             // cmb_sup1
             // 
             this.cmb_sup1.FormattingEnabled = true;
-            this.cmb_sup1.Location = new System.Drawing.Point(698, 321);
+            this.cmb_sup1.Location = new System.Drawing.Point(698, 112);
             this.cmb_sup1.Name = "cmb_sup1";
             this.cmb_sup1.Size = new System.Drawing.Size(121, 24);
             this.cmb_sup1.TabIndex = 27;
+            this.cmb_sup1.SelectedIndexChanged += new System.EventHandler(this.cmb_sup1_SelectedIndexChanged);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(590, 149);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(64, 16);
+            this.label11.TabIndex = 28;
+            this.label11.Text = "Order Id";
+            // 
+            // cmb_order
+            // 
+            this.cmb_order.FormattingEnabled = true;
+            this.cmb_order.Location = new System.Drawing.Point(698, 146);
+            this.cmb_order.Name = "cmb_order";
+            this.cmb_order.Size = new System.Drawing.Size(121, 24);
+            this.cmb_order.TabIndex = 29;
+            this.cmb_order.SelectedIndexChanged += new System.EventHandler(this.cmb_order_SelectedIndexChanged);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(420, 461);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(633, 186);
+            this.dataGridView1.TabIndex = 30;
+            // 
+            // cmb_Name
+            // 
+            this.cmb_Name.FormattingEnabled = true;
+            this.cmb_Name.Location = new System.Drawing.Point(1054, 105);
+            this.cmb_Name.Name = "cmb_Name";
+            this.cmb_Name.Size = new System.Drawing.Size(121, 24);
+            this.cmb_Name.TabIndex = 31;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(960, 113);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(82, 16);
+            this.label12.TabIndex = 32;
+            this.label12.Text = "Item Name";
+            // 
+            // btn_view
+            // 
+            this.btn_view.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_view.Location = new System.Drawing.Point(963, 285);
+            this.btn_view.Name = "btn_view";
+            this.btn_view.Size = new System.Drawing.Size(133, 52);
+            this.btn_view.TabIndex = 33;
+            this.btn_view.Text = "View Items";
+            this.btn_view.UseVisualStyleBackColor = true;
+            this.btn_view.Click += new System.EventHandler(this.btn_view_Click);
             // 
             // item
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1353, 720);
+            this.Controls.Add(this.btn_view);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.cmb_Name);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.cmb_order);
+            this.Controls.Add(this.label11);
             this.Controls.Add(this.cmb_sup1);
             this.Controls.Add(this.txt_q1);
             this.Controls.Add(this.txt_price1);
@@ -332,6 +401,7 @@
             this.Name = "item";
             this.Text = "Item Manager";
             this.Load += new System.EventHandler(this.item_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -364,5 +434,11 @@
         private System.Windows.Forms.TextBox txt_price1;
         private System.Windows.Forms.TextBox txt_q1;
         private System.Windows.Forms.ComboBox cmb_sup1;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox cmb_order;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ComboBox cmb_Name;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Button btn_view;
     }
 }

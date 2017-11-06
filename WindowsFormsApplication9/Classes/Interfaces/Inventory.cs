@@ -41,7 +41,7 @@ namespace WindowsFormsApplication9
                 dataGridView1.DataSource = dt;
             }
             else
-                MessageBox.Show("field cannot be blank");
+                MessageBox.Show("field cannot be blank", "Error", MessageBoxButtons.OK,MessageBoxIcon.Error);
         }
 
         private void Inventory_Load(object sender, EventArgs e)

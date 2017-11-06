@@ -11,10 +11,16 @@ using WindowsFormsApplication9.Classes;
 
 namespace WindowsFormsApplication9
 {
+    
    
     public partial class LoginForm : Form
     {
-        
+        public static class LoginInfo
+        {
+            public static string logged;
+        }
+       
+
         public LoginForm()
         {
             InitializeComponent();
@@ -28,7 +34,7 @@ namespace WindowsFormsApplication9
                 ProprietorPassword=txt_pwd.Text
             };
             var result=proprietor.PLogin(proprietor);
-
+           LoginInfo.logged= txt_user.Text;
 
             if (result == true)
             {
@@ -38,13 +44,18 @@ namespace WindowsFormsApplication9
                 Hide();
             }
             else
-                MessageBox.Show("Invalid Username or password");
+                MessageBox.Show("Invalid Username or password","Login Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
 
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_prop_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

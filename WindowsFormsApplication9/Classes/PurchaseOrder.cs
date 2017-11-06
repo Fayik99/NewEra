@@ -35,34 +35,36 @@ namespace WindowsFormsApplication9.Classes
 
         }
 
-        public void sAddOrder(DataGridView dataGridView1, DataGridView dataOrg,PurchaseOrder ad)
+        public void sAddOrder(DataGridView dataGridView1, DataGridView dataOrg,PurchaseOrder ad,int a)
         {
-            int qty;
-            int ic;
-            con.Open();
-            for (int i = 0; i < dataGridView1.RowCount - 1; i++)
-            {
-                ic = Convert.ToInt32(dataGridView1.Rows[i].Cells[0].Value);
-                qty = Convert.ToInt32(dataGridView1.Rows[i].Cells[3].Value) + Convert.ToInt32(dataOrg.Rows[ic - 1].Cells[3].Value);
-                SqlCommand sa = new SqlCommand("update Item set itemQty = '" + qty + "' where itemCode = '" + ic + "'", con);
-                sa.ExecuteNonQuery();
-            }
-            con.Close();
+            //int qty;
+            //int ic;
+            //con.Open();
+            //for (int i = 0; i < dataGridView1.RowCount - 1; i++)
+            //{
+            //    ic = Convert.ToInt32(dataGridView1.Rows[i].Cells[0].Value);
+            //    qty = Convert.ToInt32(dataGridView1.Rows[i].Cells[3].Value) + Convert.ToInt32(dataOrg.Rows[ic - 1].Cells[3].Value);
+            //    SqlCommand sa = new SqlCommand("update Item set itemQty = '" + qty + "' where itemCode = '" + ic + "'", con);
+            //    sa.ExecuteNonQuery();
+            //}
+            //con.Close();
             getQua(dataOrg);
 
             for (int i = 0; i < dataGridView1.RowCount - 1; i++)
             {
-                string name = dataGridView1.Rows[i].Cells[1].Value.ToString();
-                int qty1 = Convert.ToInt32(dataGridView1.Rows[i].Cells[3].Value);
                 
+                int qty1 = Convert.ToInt32(dataGridView1.Rows[i].Cells[3].Value);
+                int itemCode = Convert.ToInt32(dataGridView1.Rows[i].Cells[0].Value);
+                int subTot = Convert.ToInt32(dataGridView1.Rows[i].Cells[4].Value);
                
                 con.Open();
-                SqlCommand cmd = new SqlCommand("insert into PurchaseOrderDetailFile values('" +  ad.orderId+ "','" + name + "','" + qty1 + "')", con);
+                SqlCommand cmd = new SqlCommand("insert into PurchaseOrderDetailFile values('" +  ad.orderId+ "','"+itemCode+"','" + qty1 + "','"+ subTot + "')", con);
                 cmd.ExecuteNonQuery();
                 con.Close();
             }
             con.Open();
-            SqlCommand cms = new SqlCommand("insert into PurchaseOrderHeaderFile values('" + ad.supplier.supId + "', '" + ad.orderId + "', '"+ DateTime.Now.Date + "')", con);
+            DateTime datte = Convert.ToDateTime(DateTime.Now.Date.ToString());
+            SqlCommand cms = new SqlCommand("insert into PurchaseOrderHeaderFile values('" + ad.supplier.supId + "', '" + ad.orderId + "',CONVERT(DATETIME,'" + datte.ToShortDateString() + "',103),'" + ad.grosstotal+"','"+a+"')", con);
             cms.ExecuteNonQuery();
             con.Close();
             //dataGridView1.Rows.Clear();

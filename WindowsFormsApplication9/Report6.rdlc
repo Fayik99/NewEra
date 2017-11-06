@@ -17,6 +17,9 @@
             <TablixColumn>
               <Width>2.5cm</Width>
             </TablixColumn>
+            <TablixColumn>
+              <Width>2.5cm</Width>
+            </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
@@ -31,7 +34,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>item Code</Value>
+                              <Value>sup Id</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>11pt</FontSize>
@@ -62,6 +65,44 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
+                    <Textbox Name="Textbox3">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>item Code</Value>
+                              <Style>
+                                <FontFamily>Tahoma</FontFamily>
+                                <FontSize>11pt</FontSize>
+                                <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox3</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>#7292cc</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>#4c68a2</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
                     <Textbox Name="Textbox5">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -69,7 +110,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>item Name</Value>
+                              <Value>Purchase Order Id</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>11pt</FontSize>
@@ -107,7 +148,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>item Qty</Value>
+                              <Value>sup Date</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>11pt</FontSize>
@@ -145,7 +186,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>item Price</Value>
+                              <Value>sup Qty</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <FontSize>11pt</FontSize>
@@ -179,6 +220,41 @@
             <TablixRow>
               <Height>0.6cm</Height>
               <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="supId">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Sum(Fields!supId.Value)</Value>
+                              <Style>
+                                <FontFamily>Tahoma</FontFamily>
+                                <Color>#4d4d4d</Color>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>supId</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>#e5e5e5</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
                 <TablixCell>
                   <CellContents>
                     <Textbox Name="itemCode">
@@ -216,14 +292,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="itemName">
+                    <Textbox Name="PurchaseOrderId">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!itemName.Value</Value>
+                              <Value>=Sum(Fields!PurchaseOrderId.Value)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <Color>#4d4d4d</Color>
@@ -235,7 +311,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>itemName</rd:DefaultName>
+                      <rd:DefaultName>PurchaseOrderId</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>#e5e5e5</Color>
@@ -251,14 +327,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="itemQty">
+                    <Textbox Name="supDate">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Sum(Fields!itemQty.Value)</Value>
+                              <Value>=Fields!supDate.Value</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <Color>#4d4d4d</Color>
@@ -270,7 +346,7 @@
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>itemQty</rd:DefaultName>
+                      <rd:DefaultName>supDate</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>#e5e5e5</Color>
@@ -286,14 +362,14 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
-                    <Textbox Name="itemPrice">
+                    <Textbox Name="supQty">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
                       <Paragraphs>
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!itemPrice.Value</Value>
+                              <Value>=Sum(Fields!supQty.Value)</Value>
                               <Style>
                                 <FontFamily>Tahoma</FontFamily>
                                 <Color>#4d4d4d</Color>
@@ -301,11 +377,11 @@
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Right</TextAlign>
+                            <TextAlign>Center</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
-                      <rd:DefaultName>itemPrice</rd:DefaultName>
+                      <rd:DefaultName>supQty</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>#e5e5e5</Color>
@@ -329,6 +405,7 @@
             <TablixMember />
             <TablixMember />
             <TablixMember />
+            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
@@ -341,11 +418,11 @@
             </TablixMember>
           </TablixMembers>
         </TablixRowHierarchy>
-        <DataSetName>stockdataset</DataSetName>
-        <Top>0.47625cm</Top>
-        <Left>3.86833cm</Left>
+        <DataSetName>DataSet1</DataSetName>
+        <Top>0.39688cm</Top>
+        <Left>1.74625cm</Left>
         <Height>1.2cm</Height>
-        <Width>10cm</Width>
+        <Width>12.5cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -356,10 +433,10 @@
         <Source>Embedded</Source>
         <Value>logo</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>3.93912cm</Top>
-        <Left>1.16417cm</Left>
+        <Top>3.22474cm</Top>
+        <Left>0.92287cm</Left>
         <Height>1.5cm</Height>
-        <Width>3.48437cm</Width>
+        <Width>2.92875cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -367,25 +444,25 @@
           </Border>
         </Style>
       </Image>
-      <Textbox Name="Textbox1">
+      <Textbox Name="Textbox11">
         <CanGrow>true</CanGrow>
         <KeepTogether>true</KeepTogether>
         <Paragraphs>
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>="Quantity Available " &amp; Sum(Fields!itemQty.Value)</Value>
+                <Value>="Total Qty Supplied " &amp; Sum(Fields!supQty.Value)</Value>
                 <Style />
               </TextRun>
             </TextRuns>
             <Style />
           </Paragraph>
         </Paragraphs>
-        <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>4.38891cm</Top>
-        <Left>11.69141cm</Left>
+        <rd:DefaultName>Textbox11</rd:DefaultName>
+        <Top>3.22474cm</Top>
+        <Left>10.31558cm</Left>
         <Height>0.6cm</Height>
-        <Width>2.5cm</Width>
+        <Width>3.61125cm</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -398,10 +475,10 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>2.90625in</Height>
+    <Height>2.04763in</Height>
     <Style />
   </Body>
-  <Width>7.21875in</Width>
+  <Width>6.5in</Width>
   <Page>
     <PageHeader>
       <Height>2.54cm</Height>
@@ -424,45 +501,49 @@
   </Page>
   <AutoRefresh>0</AutoRefresh>
   <DataSources>
-    <DataSource Name="stockDataSet">
+    <DataSource Name="ItemSupplyNew1DataSet">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
         <ConnectString>/* Local Connection */</ConnectString>
       </ConnectionProperties>
-      <rd:DataSourceID>0404dac4-73c1-480d-ba62-05f8255e98dc</rd:DataSourceID>
+      <rd:DataSourceID>263aaa10-795c-46e2-b8b2-7627c07a8974</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="stockdataset">
+    <DataSet Name="DataSet1">
       <Query>
-        <DataSourceName>stockDataSet</DataSourceName>
+        <DataSourceName>ItemSupplyNew1DataSet</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <Fields>
+        <Field Name="supId">
+          <DataField>supId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
         <Field Name="itemCode">
           <DataField>itemCode</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="itemName">
-          <DataField>itemName</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+        <Field Name="PurchaseOrderId">
+          <DataField>PurchaseOrderId</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="itemPrice">
-          <DataField>itemPrice</DataField>
-          <rd:TypeName>System.String</rd:TypeName>
+        <Field Name="supDate">
+          <DataField>supDate</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
         </Field>
-        <Field Name="itemQty">
-          <DataField>itemQty</DataField>
+        <Field Name="supQty">
+          <DataField>supQty</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>stockDataSet</rd:DataSetName>
-        <rd:SchemaPath>C:\Users\FAYIK\documents\visual studio 2015\Projects\WindowsFormsApplication9\WindowsFormsApplication9\stockDataSet.xsd</rd:SchemaPath>
-        <rd:TableName>Item</rd:TableName>
+        <rd:DataSetName>ItemSupplyNew1DataSet</rd:DataSetName>
+        <rd:SchemaPath>C:\Users\FAYIK\documents\visual studio 2015\Projects\WindowsFormsApplication9\WindowsFormsApplication9\ItemSupplyNew1DataSet.xsd</rd:SchemaPath>
+        <rd:TableName>itemSupply</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>ItemTableAdapter</rd:TableAdapterName>
+        <rd:TableAdapterName>itemSupplyTableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
@@ -494,5 +575,5 @@ pGoAjao2qRqjagCNqbTmptADKSlpKAGUUUUAJRRRQAU4NTaKAJg1SBqrU/NAFoNTw9VM04GgC8JKlEtZ
     </EmbeddedImage>
   </EmbeddedImages>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
-  <rd:ReportID>aaefe424-cb55-441e-bac6-413cbe4b77bc</rd:ReportID>
+  <rd:ReportID>ea895a50-d98f-40f6-a64c-6a80c981615f</rd:ReportID>
 </Report>

@@ -74,14 +74,14 @@ namespace WindowsFormsApplication9
             lbl_order.Text = (++orderid).ToString();
             rdr.Close();
 
-            cmd = new SqlCommand("select  itemCode from Item", con);
+            cmd = new SqlCommand("select  itemName from Item", con);
 
             SqlDataAdapter rd = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             rd.Fill(dt);
             foreach (DataRow row in dt.Rows)
             {
-                cmb_ic.Items.Add(row.Field<int>(0));
+                cmb_ic.Items.Add(row.Field<string>(0));
             }
 
             cmd = new SqlCommand("select CusId  from Customer", con);
@@ -99,36 +99,44 @@ namespace WindowsFormsApplication9
 
         private void btn_add_Click(object sender, EventArgs e)
         {
-
-            con.Open();
-            SqlCommand sa = new SqlCommand("select * from Item where itemCode='" + cmb_ic.SelectedItem + "' and itemQty>='" + Convert.ToInt32(txt_q.Text) + "'", con);
-            SqlDataReader dr = sa.ExecuteReader();
-
-            if (!dr.Read())
+            if (cmb_ic.SelectedIndex < 0 || string.IsNullOrEmpty(txt_q.Text))
             {
-                MessageBox.Show("Qty not available");
-                con.Close();
 
-                return;
+                MessageBox.Show("Field cannot be empty","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
 
-            CusOrderList customerorderlist = new CusOrderList()
+            else
             {
-                Item = new Item()
+                con.Open();
+                SqlCommand sa = new SqlCommand("select * from Item where itemName='" + cmb_ic.SelectedItem + "' and itemQty>='" + Convert.ToInt32(txt_q.Text) + "'", con);
+                SqlDataReader dr = sa.ExecuteReader();
+
+                if (!dr.Read())
                 {
-                    ItemCode = Convert.ToInt16(dr[0].ToString()),
-                    ItemName = dr[1].ToString(),
-                    ItemPrice = Convert.ToInt16(dr[2].ToString())
+                    MessageBox.Show("Qty not available");
+                    con.Close();
 
-                },
-                Orderqty = Convert.ToInt16(txt_q.Text),
-                subtotal = Convert.ToInt16(txt_q.Text) * Convert.ToInt16(dr[2].ToString())
+                    return;
+                }
 
-            };
-            con.Close();
-            dt.Rows.Add(customerorderlist.Item.ItemCode, customerorderlist.Item.ItemName, customerorderlist.Item.ItemPrice, customerorderlist.Orderqty, customerorderlist.subtotal);
-            dataGridView1.DataSource = dt;
+                CusOrderList customerorderlist = new CusOrderList()
+                {
+                    Item = new Item()
+                    {
+                        ItemCode = Convert.ToInt16(dr[0].ToString()),
+                        ItemName = dr[1].ToString(),
+                        ItemPrice = Convert.ToInt16(dr[2].ToString())
 
+                    },
+                    Orderqty = Convert.ToInt16(txt_q.Text),
+                    subtotal = Convert.ToInt16(txt_q.Text) * Convert.ToInt16(dr[2].ToString())
+
+                };
+                con.Close();
+                dt.Rows.Add(customerorderlist.Item.ItemCode, customerorderlist.Item.ItemName, customerorderlist.Item.ItemPrice, customerorderlist.Orderqty, customerorderlist.subtotal);
+                dataGridView1.DataSource = dt;
+
+            }
         }
 
 
@@ -157,61 +165,80 @@ namespace WindowsFormsApplication9
 
         private void btn_po_Click(object sender, EventArgs e)
         {
-            if ( string.IsNullOrEmpty(txt_q.Text) || dataGridView1.Rows.Count == 0 || cmb_ic.SelectedIndex < 0)
+            if (string.IsNullOrEmpty(txt_q.Text) || dataGridView1.Rows.Count == 0 || cmb_ic.SelectedIndex < 0)
             {
-                MessageBox.Show("fields cannot be blank");
+                MessageBox.Show("fields cannot be blank","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 return;
             }
-
-            CusOrder a = new CusOrder()
+            else
             {
-                //cusName = txt_name.Text,
-                //cusTel = txt_tele.Text,
-                //cusAdd1 = txt_a1.Text,
-                //cusAdd2 = txt_A2.Text,
-                //cusAdd3 = txt_A3.Text,
-                orderExpireDate = dateTimePicker1.Value
-            };
+                CusOrder a = new CusOrder()
+                {
+                    //cusName = txt_name.Text,
+                    //cusTel = txt_tele.Text,
+                    //cusAdd1 = txt_a1.Text,
+                    //cusAdd2 = txt_A2.Text,
+                    //cusAdd3 = txt_A3.Text,
+                    orderExpireDate = dateTimePicker1.Value
+                };
 
-            a.oderMenu(a,cmb_ci.SelectedItem.ToString(), dataGridView1, lbl_order.Text);
+                a.oderMenu(a, cmb_ci.SelectedItem.ToString(), dataGridView1, lbl_order.Text);
 
-            MessageBox.Show("Successfull", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //Dispose();
-            CustomerOrder c = new CustomerOrder();
-            c.Show();
-            Dispose();
-            Refresh();
-
+                MessageBox.Show("Successfull", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //Dispose();
+                CustomerOrder c = new CustomerOrder();
+                c.Show();
+                Dispose();
+                Refresh();
+            }
         }
 
         private void btn_vo_Click(object sender, EventArgs e)
         {
-            CusOrder b = new CusOrder()
+            //if (string.IsNullOrEmpty(txt_eon.Text))
+            //{
+            //    MessageBox.Show("Enter Order number");
+
+
+            //}
+            //else
             {
-                orderNumber = Convert.ToInt32(txt_eon.Text)
 
-            };
-            var dt = b.viewOrder(b);
-            dataGridView1.DataSource = dt;
+                CusOrder b = new CusOrder();
+                
+                  //  orderNumber = Convert.ToInt32(txt_eon.Text)
+
+                
+                var dt = b.viewOrder();
+                dataGridView1.DataSource = dt;
+            }
         }
-
         private void btn_co_Click(object sender, EventArgs e)
         {
-            CusOrderList c = new CusOrderList()
+            if (string.IsNullOrEmpty(txt_on.Text))
             {
-                cusOrder = new CusOrder
+                MessageBox.Show("Enter Order number");
+
+
+            }
+            else
+            {
+
+                CusOrderList c = new CusOrderList()
                 {
+                    cusOrder = new CusOrder
+                    {
+                        orderNumber = Convert.ToInt32(txt_on.Text)
+                    },
+
+
                     orderNumber = Convert.ToInt32(txt_on.Text)
-                },
 
+                };
 
-                orderNumber = Convert.ToInt32(txt_on.Text)
-
-            };
-
-            c.cancelOrder(c.cusOrder.orderNumber);
-            MessageBox.Show("Successfully deleted");
-
+                c.cancelOrder(c.cusOrder.orderNumber);
+                MessageBox.Show("Successfully deleted");
+            }
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -221,19 +248,22 @@ namespace WindowsFormsApplication9
 
         private void btn_Reg_Click(object sender, EventArgs e)
         {
-            if(string.IsNullOrEmpty(txt_name.Text)|| string.IsNullOrEmpty(txt_tele.Text) || string.IsNullOrEmpty(txt_a1.Text) || string.IsNullOrEmpty(txt_A2.Text) || string.IsNullOrEmpty(txt_A3.Text))
+            if (string.IsNullOrEmpty(txt_name.Text) || txt_tele.TextLength!=10 || string.IsNullOrEmpty(txt_a1.Text) || string.IsNullOrEmpty(txt_A2.Text) || string.IsNullOrEmpty(txt_A3.Text))
             {
                 MessageBox.Show("Field cannot be blank");
 
             }
-            con.Open();
-            SqlCommand cmd = new SqlCommand("insert into Customer values('" + txt_name.Text + "','" + txt_tele.Text + "','" + txt_a1.Text + "','" + txt_A2.Text + "','" + txt_A3.Text + "')", con);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            dataGridView1.DataSource = dt;
-            MessageBox.Show("Registered Successfully");
-            con.Close();
+            else
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("insert into Customer values('" + txt_name.Text + "','" + txt_tele.Text + "','" + txt_a1.Text + "','" + txt_A2.Text + "','" + txt_A3.Text + "')", con);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dataGridView1.DataSource = dt;
+                MessageBox.Show("Registered Successfully");
+                con.Close();
+            }
         }
     }
 }

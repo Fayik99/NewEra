@@ -33,10 +33,10 @@ namespace WindowsFormsApplication9
 
         private void Quotation_Load(object sender, EventArgs e)
         {
-            
+
             lbl_currentDate.Text = DateTime.Now.ToString();
 
-            
+
 
 
             SqlCommand cmd = new SqlCommand("select top 2 itemName from Item order by itemName desc", con);
@@ -68,6 +68,26 @@ namespace WindowsFormsApplication9
                 cmb_in.Items.Add(row.Field<string>(0));
             }
 
+            cmd = new SqlCommand("select  CusId from Customer", con);
+            ad = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            ad.Fill(dt);
+            foreach (DataRow row in dt.Rows)
+            {
+                cmb_ci1.Items.Add(row.Field<int>(0));
+
+
+            }
+
+            cmd = new SqlCommand("select  CusName from Customer", con);
+            ad = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            ad.Fill(dt);
+            foreach (DataRow row in dt.Rows)
+            {
+                cmb_cName.Items.Add(row.Field<string>(0));
+
+            }
         }
 
         private void btn_add_Click(object sender, EventArgs e)
@@ -106,7 +126,15 @@ namespace WindowsFormsApplication9
 
         private void btn_sub_Click(object sender, EventArgs e)
         {
+            if(cmb_in.SelectedIndex<0 || cmb_ci1.SelectedIndex<0)
+            {
 
+                MessageBox.Show("field cannot be empty");
+
+            }
+
+            else
+            { 
             Quotations abcd = new Quotations()
             {
 
@@ -115,11 +143,11 @@ namespace WindowsFormsApplication9
 
 
             };
-            abcd.quotMenu(abcd);      
+            abcd.quotMenu(abcd,Convert.ToInt32(cmb_ci1.SelectedItem.ToString()));      
         
             MessageBox.Show("Successful", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             con.Open();
-            SqlCommand cd = new SqlCommand("select itemCode from Item", con);
+            SqlCommand cd = new SqlCommand("select itemCode from Item where itemName='"+cmb_in.SelectedItem+"'", con);
             SqlDataReader dr = cd.ExecuteReader();
             dr.Read();
             
@@ -143,7 +171,7 @@ namespace WindowsFormsApplication9
             Quotation sd = new Quotation();
             sd.Show();
            }
-
+            }
         private void btn_serch_Click(object sender, EventArgs e)
         {
             try
@@ -192,6 +220,53 @@ namespace WindowsFormsApplication9
                 MessageBox.Show("deleted ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmb_ci2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            //SqlCommand nm = new SqlCommand("select * from QuotationHeaderFile where CusId='" + cmb_ci2.SelectedItem+"'",con);
+            //SqlDataAdapter da = new SqlDataAdapter(nm);
+            //con.Close();
+            //DataTable dt = new DataTable();
+            //da.Fill(dt);
+
+            //txt_can.Text = dt.Rows[0][0].ToString();
+            
+
+        }
+
+        private void cmb_cName_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            con.Open();
+            SqlCommand rt = new SqlCommand("select CusId from Customer where CusName='"+cmb_cName.SelectedItem+"'",con);
+            SqlDataReader dr = rt.ExecuteReader();
+            
+            while(dr.Read())
+            {
+                lbl_cusid.Text =dr.GetInt32(0).ToString();
+            }
+           
+            dr.Close();
+
+             rt = new SqlCommand("select * from QuotationHeaderFile where CustomerId='"+lbl_cusid.Text+"'",con);
+            SqlDataAdapter de = new SqlDataAdapter(rt);
+            DataTable du = new DataTable();
+            de.Fill(du);
+
+            txt_can.Text = du.Rows[0][0].ToString();
+
+            con.Close();
+            
+
+         
+
+        }
+
     }
 }
     

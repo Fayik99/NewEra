@@ -32,8 +32,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btn_search = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
@@ -53,7 +51,6 @@
             this.btn_sub = new System.Windows.Forms.Button();
             this.btn_cls = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
-            this.txt_subtot = new System.Windows.Forms.TextBox();
             this.btn_back = new System.Windows.Forms.Button();
             this.cmb_item = new System.Windows.Forms.ComboBox();
             this.lbl_in = new System.Windows.Forms.Label();
@@ -64,7 +61,10 @@
             this.cmb_order = new System.Windows.Forms.ComboBox();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.button2 = new System.Windows.Forms.Button();
-            this.btn_orders = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.lbl_invoiceNumber = new System.Windows.Forms.Label();
+            this.lbl_Invoicedate = new System.Windows.Forms.Label();
+            this.lbl_grossTotal = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
@@ -100,22 +100,6 @@
             this.label3.Size = new System.Drawing.Size(37, 15);
             this.label3.TabIndex = 2;
             this.label3.Text = "Date";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(296, 82);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(132, 21);
-            this.textBox1.TabIndex = 3;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(296, 122);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(132, 21);
-            this.textBox2.TabIndex = 4;
             // 
             // label4
             // 
@@ -285,6 +269,7 @@
             this.btn_cls.TabIndex = 22;
             this.btn_cls.Text = "Close";
             this.btn_cls.UseVisualStyleBackColor = true;
+            this.btn_cls.Click += new System.EventHandler(this.btn_cls_Click);
             // 
             // label11
             // 
@@ -296,15 +281,6 @@
             this.label11.Size = new System.Drawing.Size(85, 16);
             this.label11.TabIndex = 23;
             this.label11.Text = "GrossTotal";
-            // 
-            // txt_subtot
-            // 
-            this.txt_subtot.Location = new System.Drawing.Point(846, 483);
-            this.txt_subtot.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_subtot.Name = "txt_subtot";
-            this.txt_subtot.Size = new System.Drawing.Size(132, 21);
-            this.txt_subtot.TabIndex = 26;
-            this.txt_subtot.TextChanged += new System.EventHandler(this.txt_subtot_TextChanged);
             // 
             // btn_back
             // 
@@ -373,11 +349,12 @@
             this.cmb_oi.Name = "cmb_oi";
             this.cmb_oi.Size = new System.Drawing.Size(121, 23);
             this.cmb_oi.TabIndex = 35;
+            this.cmb_oi.SelectedIndexChanged += new System.EventHandler(this.cmb_oi_SelectedIndexChanged);
             // 
             // cmb_order
             // 
             this.cmb_order.FormattingEnabled = true;
-            this.cmb_order.Location = new System.Drawing.Point(567, 158);
+            this.cmb_order.Location = new System.Drawing.Point(553, 157);
             this.cmb_order.Name = "cmb_order";
             this.cmb_order.Size = new System.Drawing.Size(121, 23);
             this.cmb_order.TabIndex = 37;
@@ -400,21 +377,51 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // btn_orders
+            // label13
             // 
-            this.btn_orders.Location = new System.Drawing.Point(463, 158);
-            this.btn_orders.Name = "btn_orders";
-            this.btn_orders.Size = new System.Drawing.Size(75, 23);
-            this.btn_orders.TabIndex = 42;
-            this.btn_orders.Text = "Orders";
-            this.btn_orders.UseVisualStyleBackColor = true;
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(474, 160);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(50, 15);
+            this.label13.TabIndex = 41;
+            this.label13.Text = "Orders";
+            // 
+            // lbl_invoiceNumber
+            // 
+            this.lbl_invoiceNumber.AutoSize = true;
+            this.lbl_invoiceNumber.Location = new System.Drawing.Point(296, 86);
+            this.lbl_invoiceNumber.Name = "lbl_invoiceNumber";
+            this.lbl_invoiceNumber.Size = new System.Drawing.Size(55, 15);
+            this.lbl_invoiceNumber.TabIndex = 42;
+            this.lbl_invoiceNumber.Text = "label14";
+            // 
+            // lbl_Invoicedate
+            // 
+            this.lbl_Invoicedate.AutoSize = true;
+            this.lbl_Invoicedate.Location = new System.Drawing.Point(296, 124);
+            this.lbl_Invoicedate.Name = "lbl_Invoicedate";
+            this.lbl_Invoicedate.Size = new System.Drawing.Size(55, 15);
+            this.lbl_Invoicedate.TabIndex = 43;
+            this.lbl_Invoicedate.Text = "label14";
+            // 
+            // lbl_grossTotal
+            // 
+            this.lbl_grossTotal.AutoSize = true;
+            this.lbl_grossTotal.Location = new System.Drawing.Point(818, 488);
+            this.lbl_grossTotal.Name = "lbl_grossTotal";
+            this.lbl_grossTotal.Size = new System.Drawing.Size(55, 15);
+            this.lbl_grossTotal.TabIndex = 44;
+            this.lbl_grossTotal.Text = "label14";
             // 
             // Sales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1159, 590);
-            this.Controls.Add(this.btn_orders);
+            this.Controls.Add(this.lbl_grossTotal);
+            this.Controls.Add(this.lbl_Invoicedate);
+            this.Controls.Add(this.lbl_invoiceNumber);
+            this.Controls.Add(this.label13);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.dataGridView3);
             this.Controls.Add(this.cmb_order);
@@ -425,7 +432,6 @@
             this.Controls.Add(this.lbl_in);
             this.Controls.Add(this.cmb_item);
             this.Controls.Add(this.btn_back);
-            this.Controls.Add(this.txt_subtot);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.btn_cls);
             this.Controls.Add(this.btn_sub);
@@ -440,8 +446,6 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btn_search);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -463,8 +467,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btn_search;
         private System.Windows.Forms.Label label6;
@@ -479,7 +481,6 @@
         private System.Windows.Forms.Button btn_sub;
         private System.Windows.Forms.Button btn_cls;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox txt_subtot;
         private System.Windows.Forms.Button btn_back;
         private System.Windows.Forms.ComboBox cmb_item;
         private System.Windows.Forms.Label lbl_in;
@@ -495,6 +496,9 @@
         private System.Windows.Forms.ComboBox cmb_order;
         private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button btn_orders;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label lbl_invoiceNumber;
+        private System.Windows.Forms.Label lbl_Invoicedate;
+        private System.Windows.Forms.Label lbl_grossTotal;
     }
 }

@@ -48,11 +48,11 @@ namespace WindowsFormsApplication9.Classes
 
         }
 
-        public void quotMenu(Quotations abcd)
+        public void quotMenu(Quotations abcd,int a)
         {
 
 
-            SqlCommand cms = new SqlCommand("insert into QuotationHeaderFile values('" + abcd.quotationCreateDate + "','" + abcd.quotExpDate + "')", con);
+            SqlCommand cms = new SqlCommand("insert into QuotationHeaderFile values('"+a+"','" + abcd.quotationCreateDate + "','" + abcd.quotExpDate + "')", con);
             con.Open();
             cms.ExecuteNonQuery();
             con.Close();

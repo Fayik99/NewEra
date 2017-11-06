@@ -17,12 +17,14 @@ namespace WindowsFormsApplication9
     {
         DataTable dt = new DataTable();
         SqlConnection con;
+        
         public string conString = "";
 
         public RecordSupplyOrder()
         {
-          
             InitializeComponent();
+            lbl_gross.Text = "0";
+
             addvc();
             dataOrg.Visible = false;
             conString = System.Configuration.ConfigurationManager.ConnectionStrings["NewEraDBcontext"].ConnectionString;
@@ -42,8 +44,19 @@ namespace WindowsFormsApplication9
         {
             string a= DateTime.Today.ToString("dd-MM-yyyy");
             lbl_date.Text = "Current Date: " + a;
+            con.Open();
+            string id = LoginForm.LoginInfo.logged.ToString();
+            SqlCommand vn = new SqlCommand("select ProprietorId from Proprietor where ProprietorUserName='"+id+"'",con);
+            SqlDataReader rd = vn.ExecuteReader();
+
+            while(rd.Read())
+            {
+                lbl_logprop.Text = rd.GetInt32(0).ToString();
 
 
+            }
+            
+            con.Close();
 
           SqlCommand  cmd = new SqlCommand("select  supID from Supplier", con);
             con.Open();
@@ -58,7 +71,7 @@ namespace WindowsFormsApplication9
 
             con.Close();
 
-            cmd = new SqlCommand("select top 1 PurchaseOrderId from PurchaseDetailFile order by PurchaseOrderId desc", con);
+            cmd = new SqlCommand("select top 1 PurchaseOrderId from PurchaseOrderDetailFile order by PurchaseOrderId desc", con);
             con.Open();
             
             var rdr = cmd.ExecuteReader();
@@ -91,7 +104,7 @@ namespace WindowsFormsApplication9
             {
                cmb_in .Items.Add(row.Field<string>(0));
             }
-            
+
             con.Close();
 
 
@@ -101,16 +114,17 @@ namespace WindowsFormsApplication9
         {
 
             con.Open();
-            SqlCommand sa = new SqlCommand("select * from Item where itemName='" + cmb_in.SelectedItem + "' and itemQty>='" + Convert.ToInt32(txt_q.Text) + "'", con);
-            SqlDataReader dr = sa.ExecuteReader();
-           
-            if (!dr.Read())
-            {
-                MessageBox.Show("Qty not available");
-                con.Close();
+            SqlCommand sa = new SqlCommand("select * from Item where itemName ='" + cmb_in.SelectedItem  + "'", con);
+            
+           SqlDataReader dr = sa.ExecuteReader();
+            dr.Read();
+            //if (!dr.Read())
+            //{
+            //    MessageBox.Show("Qty not available");
+            //    con.Close();
 
-                return;
-            }
+            //    return;
+            //}
 
             PurchaseOrder purchaseorderlist = new PurchaseOrder()
             {
@@ -126,8 +140,13 @@ namespace WindowsFormsApplication9
 
             };
             con.Close();
+            lbl_gross.Text=(Convert.ToInt32(lbl_gross.Text)+purchaseorderlist.grosstotal).ToString();
             dt.Rows.Add(purchaseorderlist.Item.ItemCode, purchaseorderlist.Item.ItemName, purchaseorderlist.Item.ItemPrice, purchaseorderlist.qty, purchaseorderlist.grosstotal);
             dataGridView1.DataSource = dt;
+
+           
+
+
         }
 
 
@@ -147,23 +166,29 @@ namespace WindowsFormsApplication9
 
 
         }
-        
+
         private void btn_sub_Click(object sender, EventArgs e)
         {
             PurchaseOrder ad = new PurchaseOrder()
             {
                 supplier = new Suppliers()
                 {
-                   supId= Convert.ToInt32(cmb_sid.SelectedItem)
+                    supId = Convert.ToInt32(cmb_sid.SelectedItem)
                 },
             };
-            ad.orderId =Convert.ToInt32( lbl_on.Text);
-            
+            ad.orderId = Convert.ToInt32(lbl_on.Text);
+            ad.grosstotal = Convert.ToInt32(lbl_gross.Text);
             ad.getQua(dataOrg);
-            ad.sAddOrder(dataGridView1,dataOrg,ad);
-            RecordSupplyOrder sb = new RecordSupplyOrder();
+
+            ad.sAddOrder(dataGridView1, dataOrg, ad,Convert.ToInt32(lbl_logprop.Text));
+                RecordSupplyOrder sb = new RecordSupplyOrder();
             sb.Show();
             
+        }
+
+        private void cmb_in_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lbl_code.Text = cmb_in.SelectedItem.ToString();
         }
 
 

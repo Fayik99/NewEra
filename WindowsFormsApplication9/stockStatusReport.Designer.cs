@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(stockStatusReport));
             this.ItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.stockDataSet = new WindowsFormsApplication9.stockDataSet();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.ItemTableAdapter = new WindowsFormsApplication9.stockDataSetTableAdapters.ItemTableAdapter();
             this.btn_back = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.ItemTableAdapter = new WindowsFormsApplication9.stockDataSetTableAdapters.ItemTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.ItemBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stockDataSet)).BeginInit();
             this.SuspendLayout();
@@ -53,18 +53,14 @@
             // 
             // reportViewer1
             // 
-            reportDataSource2.Name = "stockdataset";
-            reportDataSource2.Value = this.ItemBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource2);
+            reportDataSource1.Name = "stockdataset";
+            reportDataSource1.Value = this.ItemBindingSource;
+            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "WindowsFormsApplication9.Report3.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(118, 75);
+            this.reportViewer1.Location = new System.Drawing.Point(120, 66);
             this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(651, 371);
+            this.reportViewer1.Size = new System.Drawing.Size(725, 418);
             this.reportViewer1.TabIndex = 0;
-            // 
-            // ItemTableAdapter
-            // 
-            this.ItemTableAdapter.ClearBeforeFill = true;
             // 
             // btn_back
             // 
@@ -80,7 +76,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(801, 252);
+            this.button1.Location = new System.Drawing.Point(876, 247);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(98, 34);
             this.button1.TabIndex = 2;
@@ -88,11 +84,15 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // ItemTableAdapter
+            // 
+            this.ItemTableAdapter.ClearBeforeFill = true;
+            // 
             // stockStatusReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(941, 489);
+            this.ClientSize = new System.Drawing.Size(1000, 542);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_back);
             this.Controls.Add(this.reportViewer1);

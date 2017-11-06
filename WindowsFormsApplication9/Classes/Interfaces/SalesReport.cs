@@ -50,10 +50,10 @@ namespace WindowsFormsApplication9
 
         private void SalesReport_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'ReportDS.Item' table. You can move, or remove it, as needed.
-            this.ItemTableAdapter.Fill(this.ReportDS.Item);
             // TODO: This line of code loads data into the 'NewEraDBDataSet.invoiceDetail' table. You can move, or remove it, as needed.
-
+            this.invoiceDetailTableAdapter.Fill(this.NewEraDBDataSet.invoiceDetail,dateTimePicker1.Value,dateTimePicker2.Value);
+            // TODO: This line of code loads data into the 'ReportDS.Item' table. You can move, or remove it, as needed.
+           
         }
 
         private void btn_prnt_Click(object sender, EventArgs e)

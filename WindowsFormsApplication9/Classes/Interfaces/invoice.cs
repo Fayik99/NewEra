@@ -40,21 +40,31 @@ namespace WindowsFormsApplication9
         
         private void btn_search_Click(object sender, EventArgs e)
         {
-            con.Open();
-            SqlCommand cmd = new SqlCommand("select * from invoiceDetail where InvNm='"+txt_no.Text+"'", con);
-            cmd.ExecuteNonQuery();
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            dataGridView1.DataSource = dt;
-            txt_sub.Text = "0";
-            cmd = new SqlCommand("select grossTot from invoiceHeader where invNo='"+Convert.ToInt32(txt_no.Text)+"'", con);
-            SqlDataReader rdr = cmd.ExecuteReader();
-            rdr.Read();
-            txt_sub.Text = rdr[0].ToString();
-            rdr.Close();
-           
-            con.Close();
+
+            if (string.IsNullOrEmpty(txt_no.Text))
+            {
+
+                MessageBox.Show("Enter Invoice number");
+
+            }
+            else
+            {
+                con.Open();
+                SqlCommand cmd = new SqlCommand("select * from invoiceDetail where InvNm='" + txt_no.Text + "'", con);
+                cmd.ExecuteNonQuery();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dataGridView1.DataSource = dt;
+                lbl_grossTotal.Text = "0";
+                cmd = new SqlCommand("select grossTot from invoiceHeader where invNo='" + Convert.ToInt32(txt_no.Text) + "'", con);
+                SqlDataReader rdr = cmd.ExecuteReader();
+                rdr.Read();
+                lbl_grossTotal.Text = rdr[0].ToString();
+                rdr.Close();
+
+                con.Close();
+            }
         }
     }
 }

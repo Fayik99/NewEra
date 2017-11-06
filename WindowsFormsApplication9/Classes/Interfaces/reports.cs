@@ -33,8 +33,8 @@ namespace WindowsFormsApplication9
 
         private void btn_item_Click(object sender, EventArgs e)
         {
-            itemSupplyReport supply = new itemSupplyReport();
-            supply.Show();
+            itemSupplyReportNew ty = new itemSupplyReportNew();
+            ty.Show();
             Hide();
         }
 
