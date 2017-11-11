@@ -60,6 +60,7 @@
             this.cmb_Name = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.btn_view = new System.Windows.Forms.Button();
+            this.btn_load = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -252,7 +253,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(590, 270);
+            this.label8.Location = new System.Drawing.Point(582, 270);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(77, 16);
             this.label8.TabIndex = 21;
@@ -261,7 +262,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(570, 321);
+            this.label9.Location = new System.Drawing.Point(582, 318);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(97, 16);
             this.label9.TabIndex = 22;
@@ -309,7 +310,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(590, 149);
+            this.label11.Location = new System.Drawing.Point(582, 149);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(64, 16);
             this.label11.TabIndex = 28;
@@ -360,11 +361,21 @@
             this.btn_view.UseVisualStyleBackColor = true;
             this.btn_view.Click += new System.EventHandler(this.btn_view_Click);
             // 
+            // btn_load
+            // 
+            this.btn_load.Location = new System.Drawing.Point(851, 114);
+            this.btn_load.Name = "btn_load";
+            this.btn_load.Size = new System.Drawing.Size(75, 23);
+            this.btn_load.TabIndex = 34;
+            this.btn_load.Text = "Load";
+            this.btn_load.UseVisualStyleBackColor = true;
+            // 
             // item
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1353, 720);
+            this.Controls.Add(this.btn_load);
             this.Controls.Add(this.btn_view);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.cmb_Name);
@@ -440,5 +451,6 @@
         private System.Windows.Forms.ComboBox cmb_Name;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button btn_view;
+        private System.Windows.Forms.Button btn_load;
     }
 }

@@ -62,9 +62,10 @@ namespace WindowsFormsApplication9.Classes
                 cmd.ExecuteNonQuery();
                 con.Close();
             }
+            int status = 0;
             con.Open();
             DateTime datte = Convert.ToDateTime(DateTime.Now.Date.ToString());
-            SqlCommand cms = new SqlCommand("insert into PurchaseOrderHeaderFile values('" + ad.supplier.supId + "', '" + ad.orderId + "',CONVERT(DATETIME,'" + datte.ToShortDateString() + "',103),'" + ad.grosstotal+"','"+a+"')", con);
+            SqlCommand cms = new SqlCommand("insert into PurchaseOrderHeaderFile values('" + ad.supplier.supId + "', '" + ad.orderId + "',CONVERT(DATETIME,'" + datte.ToShortDateString() + "',103),'" + ad.grosstotal+"','"+a+"','"+Convert.ToInt32(status)+"')", con);
             cms.ExecuteNonQuery();
             con.Close();
             //dataGridView1.Rows.Clear();

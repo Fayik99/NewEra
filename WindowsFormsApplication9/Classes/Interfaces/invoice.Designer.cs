@@ -90,7 +90,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(559, 330);
+            this.label2.Location = new System.Drawing.Point(554, 330);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(83, 16);
             this.label2.TabIndex = 5;
@@ -110,11 +110,10 @@
             // lbl_grossTotal
             // 
             this.lbl_grossTotal.AutoSize = true;
-            this.lbl_grossTotal.Location = new System.Drawing.Point(672, 333);
+            this.lbl_grossTotal.Location = new System.Drawing.Point(647, 333);
             this.lbl_grossTotal.Name = "lbl_grossTotal";
-            this.lbl_grossTotal.Size = new System.Drawing.Size(35, 13);
+            this.lbl_grossTotal.Size = new System.Drawing.Size(0, 13);
             this.lbl_grossTotal.TabIndex = 12;
-            this.lbl_grossTotal.Text = "label3";
             // 
             // invoice
             // 

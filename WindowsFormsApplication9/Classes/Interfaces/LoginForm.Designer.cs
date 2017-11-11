@@ -85,6 +85,7 @@
             this.txt_pwd.Size = new System.Drawing.Size(108, 20);
             this.txt_pwd.TabIndex = 4;
             this.txt_pwd.UseSystemPasswordChar = true;
+            this.txt_pwd.TextChanged += new System.EventHandler(this.txt_pwd_TextChanged);
             // 
             // pictureBox1
             // 

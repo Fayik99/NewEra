@@ -21,7 +21,7 @@ namespace WindowsFormsApplication9
             InitializeComponent();
 
             string conString = System.Configuration.ConfigurationManager.ConnectionStrings["NewEraDBcontext"].ConnectionString;
-             con = new SqlConnection(conString);
+            con = new SqlConnection(conString);
         }
 
         private void btn_back_Click(object sender, EventArgs e)
@@ -98,15 +98,16 @@ namespace WindowsFormsApplication9
 
                 MessageBox.Show("Select an item");
             }
-            else { 
+            else
+            {
 
                 String name = cmb_in.SelectedItem.ToString();
                 Quotations sas = new Quotations();
                 DataTable dt = sas.addQuot(name);
                 dataGridView1.DataSource = dt;
             }
-            
-           
+
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -126,7 +127,7 @@ namespace WindowsFormsApplication9
 
         private void btn_sub_Click(object sender, EventArgs e)
         {
-            if(cmb_in.SelectedIndex<0 || cmb_ci1.SelectedIndex<0)
+            if (cmb_in.SelectedIndex < 0 || cmb_ci1.SelectedIndex < 0)
             {
 
                 MessageBox.Show("field cannot be empty");
@@ -134,44 +135,44 @@ namespace WindowsFormsApplication9
             }
 
             else
-            { 
-            Quotations abcd = new Quotations()
             {
-
-                quotationCreateDate = (lbl_currentDate.Text),
-                quotExpDate = dateTimePicker1.Value.ToString()
-
-
-            };
-            abcd.quotMenu(abcd,Convert.ToInt32(cmb_ci1.SelectedItem.ToString()));      
-        
-            MessageBox.Show("Successful", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            con.Open();
-            SqlCommand cd = new SqlCommand("select itemCode from Item where itemName='"+cmb_in.SelectedItem+"'", con);
-            SqlDataReader dr = cd.ExecuteReader();
-            dr.Read();
-            
-            
-            Quotations we = new Quotations()
-            {
-
-                Item1 = new Item()
+                Quotations abcd = new Quotations()
                 {
 
-                    ItemCode = Convert.ToInt32(dr[0].ToString())
+                    quotationCreateDate = (lbl_currentDate.Text),
+                    quotExpDate = dateTimePicker1.Value.ToString()
 
 
-                },
-         
+                };
+                abcd.quotMenu(abcd, Convert.ToInt32(cmb_ci1.SelectedItem.ToString()));
 
-            };
-           we.quotMenu1(we);
-            dr.Close();
-            con.Close();
-            Quotation sd = new Quotation();
-            sd.Show();
-           }
+                MessageBox.Show("Successful", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                con.Open();
+                SqlCommand cd = new SqlCommand("select itemCode from Item where itemName='" + cmb_in.SelectedItem + "'", con);
+                SqlDataReader dr = cd.ExecuteReader();
+                dr.Read();
+
+
+                Quotations we = new Quotations()
+                {
+
+                    Item1 = new Item()
+                    {
+
+                        ItemCode = Convert.ToInt32(dr[0].ToString())
+
+
+                    },
+
+
+                };
+                we.quotMenu1(we, Convert.ToInt32(lbl_qn.Text.ToString()));
+                dr.Close();
+                con.Close();
+                Quotation sd = new Quotation();
+                sd.Show();
             }
+        }
         private void btn_serch_Click(object sender, EventArgs e)
         {
             try
@@ -197,7 +198,7 @@ namespace WindowsFormsApplication9
             catch (Exception ec)
             {
                 MessageBox.Show(ec.ToString());
-            } 
+            }
 
         }
 
@@ -228,7 +229,7 @@ namespace WindowsFormsApplication9
 
         private void cmb_ci2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
             //SqlCommand nm = new SqlCommand("select * from QuotationHeaderFile where CusId='" + cmb_ci2.SelectedItem+"'",con);
             //SqlDataAdapter da = new SqlDataAdapter(nm);
             //con.Close();
@@ -236,37 +237,52 @@ namespace WindowsFormsApplication9
             //da.Fill(dt);
 
             //txt_can.Text = dt.Rows[0][0].ToString();
-            
+
 
         }
 
         private void cmb_cName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            con.Open();
-            SqlCommand rt = new SqlCommand("select CusId from Customer where CusName='"+cmb_cName.SelectedItem+"'",con);
-            SqlDataReader dr = rt.ExecuteReader();
-            
-            while(dr.Read())
+            try
             {
-                lbl_cusid.Text =dr.GetInt32(0).ToString();
+                con.Open();
+                SqlCommand rt = new SqlCommand("select CusId from Customer where CusName='" + cmb_cName.SelectedItem + "'", con);
+                SqlDataReader dr = rt.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    lbl_cusid.Text = dr.GetInt32(0).ToString();
+                }
+
+                dr.Close();
+
+                rt = new SqlCommand("select * from QuotationHeaderFile where CustomerId='" + lbl_cusid.Text + "'", con);
+                SqlDataAdapter de = new SqlDataAdapter(rt);
+                DataTable du = new DataTable();
+                de.Fill(du);
+
+                txt_can.Text = du.Rows[0][0].ToString();
+
             }
-           
-            dr.Close();
+            catch (Exception)
+            {
 
-             rt = new SqlCommand("select * from QuotationHeaderFile where CustomerId='"+lbl_cusid.Text+"'",con);
-            SqlDataAdapter de = new SqlDataAdapter(rt);
-            DataTable du = new DataTable();
-            de.Fill(du);
+                MessageBox.Show("You have not provided quotation to this customer", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            finally
+            {
+                con.Close();
 
-            txt_can.Text = du.Rows[0][0].ToString();
+            }
 
-            con.Close();
-            
 
-         
+
 
         }
 
+        private void btn_gen_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
-    

@@ -75,6 +75,17 @@ namespace WindowsFormsApplication9.Classes
                 con.Open();
                 fr.ExecuteNonQuery();
                 con.Close();
+
+
+                con.Open();
+                cmd = new SqlCommand("update PurchaseOrderHeaderFile set status=1 where PurchaseorderID='"+a+"'",con);
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+                //con.Open();
+                //cmd = new SqlCommand("delete from PurchaseOrderHeaderFile where PurchaseorderID='" +a+ "'", con);
+                //cmd.ExecuteNonQuery();
+                //con.Close();
             }
             catch (SqlException ex)
             {

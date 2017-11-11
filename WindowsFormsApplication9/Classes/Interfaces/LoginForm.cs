@@ -57,5 +57,10 @@ namespace WindowsFormsApplication9
         {
             
         }
+
+        private void txt_pwd_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

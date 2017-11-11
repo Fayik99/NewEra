@@ -188,7 +188,12 @@ namespace WindowsFormsApplication9
 
         private void cmb_in_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lbl_code.Text = cmb_in.SelectedItem.ToString();
+           
+        }
+
+        private void lbl_code_Click(object sender, EventArgs e)
+        {
+
         }
 
 

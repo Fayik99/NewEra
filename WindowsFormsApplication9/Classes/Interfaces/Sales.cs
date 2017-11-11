@@ -16,6 +16,7 @@ namespace WindowsFormsApplication9
         SqlConnection con;
         SqlCommand cmd;
         int itemcode = 0;
+       
         public Sales()
         {
             InitializeComponent();
@@ -147,6 +148,17 @@ namespace WindowsFormsApplication9
 
                     }
                 }
+                con.Open();
+                SqlCommand vb = new SqlCommand("update CusOrderHeader set status=1 where CusId='"+cmb_oi.SelectedItem+"'",con);
+                vb.ExecuteNonQuery();
+                con.Close();
+                  
+
+
+                //con.Open();
+                //SqlCommand cf = new SqlCommand("delete from CusOrderHeader where CusId='"+cmb_oi.SelectedItem+"'",con);
+                //cf.ExecuteNonQuery();
+                //con.Close();
 
                 {
 
@@ -343,7 +355,7 @@ namespace WindowsFormsApplication9
             cmb_order.Items.Clear();
 
             //            SqlCommand sd = new SqlCommand("select orderId from CusOrderHeader where CusId='"+cmb_oi.SelectedItem+"'",con);
-            cmd = new SqlCommand("select  orderId from CusOrderHeader where CusId='"+cmb_oi.SelectedItem+"'", con);
+            cmd = new SqlCommand("select  orderId from CusOrderHeader where CusId='"+cmb_oi.SelectedItem+"' and status=0 ", con);
             con.Open();
             SqlDataAdapter ad = new SqlDataAdapter(cmd);
             con.Close();

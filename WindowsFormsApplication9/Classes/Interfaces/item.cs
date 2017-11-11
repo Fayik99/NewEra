@@ -179,8 +179,8 @@ namespace WindowsFormsApplication9
             cmb_ic.Items.Clear();
 
             //            SqlCommand sd = new SqlCommand("select orderId from CusOrderHeader where CusId='"+cmb_oi.SelectedItem+"'",con);
-           SqlCommand cmd = new SqlCommand("select  PurchaseorderID from PurchaseOrderHeaderFile where supID='" + cmb_sup1.SelectedItem + "'", con);
-           con.Open();
+            SqlCommand cmd = new SqlCommand("select  PurchaseorderID from PurchaseOrderHeaderFile where supID='" + cmb_sup1.SelectedItem + "' and status=0 ", con);
+            con.Open();
             SqlDataAdapter ad = new SqlDataAdapter(cmd);
             con.Close();
             DataTable dt = new DataTable();

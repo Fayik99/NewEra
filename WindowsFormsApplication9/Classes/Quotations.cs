@@ -57,9 +57,9 @@ namespace WindowsFormsApplication9.Classes
             cms.ExecuteNonQuery();
             con.Close();
         }
-        public void quotMenu1(Quotations we)
+        public void quotMenu1(Quotations we,int b)
         { 
-            SqlCommand cm = new SqlCommand("insert into QuotationDetailFile values('" +we.Item1.ItemCode + "')", con);
+            SqlCommand cm = new SqlCommand("insert into QuotationDetailFile values('"+b+"','" +we.Item1.ItemCode + "')", con);
             con.Open();
             cm.ExecuteNonQuery();
             con.Close();

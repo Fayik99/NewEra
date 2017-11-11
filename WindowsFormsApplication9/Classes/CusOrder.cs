@@ -36,9 +36,9 @@ namespace WindowsFormsApplication9.Classes
             //    SqlCommand cmd = new SqlCommand("insert into Customer values('" + a.cusName + "','" + a.cusTel + "','" + a.cusAdd1 + "','" + a.cusAdd2 + "','" + a.cusAdd3 + "')", con);
             //    con.Open();
             //    cmd.ExecuteNonQuery();
-
+            int status = 0;
             con.Open();
-           SqlCommand cmd =new SqlCommand( "insert into CusOrderHeader values('"+DateTime.Now.Date+"','"+ a.orderExpireDate + "','"+Convert.ToInt32(customerid)+"')",con);
+           SqlCommand cmd =new SqlCommand( "insert into CusOrderHeader values('"+DateTime.Now.Date+"','"+ a.orderExpireDate + "','"+Convert.ToInt32(customerid)+"','"+status+"')",con);
             cmd.ExecuteNonQuery();
             con.Close();
 

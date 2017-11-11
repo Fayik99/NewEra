@@ -504,7 +504,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>="Supplied Qty's " &amp; Sum(Fields!supQty.Value)</Value>
+                <Value>="Supplied Quantity's " &amp; Sum(Fields!supQty.Value)</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -513,7 +513,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox13</rd:DefaultName>
         <Top>3.67453cm</Top>
-        <Left>11.42683cm</Left>
+        <Left>12.77808cm</Left>
         <Height>0.6cm</Height>
         <Width>3.73192cm</Width>
         <ZIndex>2</ZIndex>
