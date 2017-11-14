@@ -66,5 +66,10 @@ namespace WindowsFormsApplication9
                 con.Close();
             }
         }
+
+        private void btn_cls_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

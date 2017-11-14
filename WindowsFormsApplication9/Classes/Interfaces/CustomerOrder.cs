@@ -86,8 +86,8 @@ namespace WindowsFormsApplication9
 
             cmd = new SqlCommand("select CusId  from Customer", con);
 
-             rd = new SqlDataAdapter(cmd);
-             dt = new DataTable();
+            rd = new SqlDataAdapter(cmd);
+            dt = new DataTable();
             rd.Fill(dt);
             foreach (DataRow row in dt.Rows)
             {
@@ -96,45 +96,75 @@ namespace WindowsFormsApplication9
             con.Close();
 
         }
-
+        int flag = 0;
         private void btn_add_Click(object sender, EventArgs e)
         {
             if (cmb_ic.SelectedIndex < 0 || string.IsNullOrEmpty(txt_q.Text))
             {
 
-                MessageBox.Show("Field cannot be empty","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Field cannot be empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             else
             {
-                con.Open();
-                SqlCommand sa = new SqlCommand("select * from Item where itemName='" + cmb_ic.SelectedItem + "' and itemQty>='" + Convert.ToInt32(txt_q.Text) + "'", con);
-                SqlDataReader dr = sa.ExecuteReader();
-
-                if (!dr.Read())
+                
+                if (dataGridView1.Rows.Count != 1)
                 {
-                    MessageBox.Show("Qty not available");
-                    con.Close();
+                    foreach (DataGridViewRow row in dataGridView1.Rows)
+                    {
+                        btn_add.Enabled = true;
+                        if (row.Cells[1].Value != null)
+                        {
+                            var id = row.Cells[1].Value.ToString();
+                            if (id.Equals(cmb_ic.SelectedItem.ToString()))
+                            {
+                                MessageBox.Show("You can edit you Quantity for same item", "Information", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                                btn_add.Enabled = false;
+                                return;
 
-                    return;
+                            }
+                        }
+
+                    }
+
                 }
 
-                CusOrderList customerorderlist = new CusOrderList()
-                {
-                    Item = new Item()
+                flag = 1;
+                    con.Open();
+                    SqlCommand sa = new SqlCommand("select * from Item where itemName='" + cmb_ic.SelectedItem + "' and itemQty>='" + Convert.ToInt32(txt_q.Text) + "'", con);
+                    SqlDataReader dr = sa.ExecuteReader();
+
+                    if (!dr.Read())
                     {
-                        ItemCode = Convert.ToInt16(dr[0].ToString()),
-                        ItemName = dr[1].ToString(),
-                        ItemPrice = Convert.ToInt16(dr[2].ToString())
+                        MessageBox.Show("Qty not available");
+                        con.Close();
 
-                    },
-                    Orderqty = Convert.ToInt16(txt_q.Text),
-                    subtotal = Convert.ToInt16(txt_q.Text) * Convert.ToInt16(dr[2].ToString())
+                        return;
+                    }
 
-                };
-                con.Close();
-                dt.Rows.Add(customerorderlist.Item.ItemCode, customerorderlist.Item.ItemName, customerorderlist.Item.ItemPrice, customerorderlist.Orderqty, customerorderlist.subtotal);
-                dataGridView1.DataSource = dt;
+                    CusOrderList customerorderlist = new CusOrderList()
+                    {
+                        Item = new Item()
+                        {
+                            ItemCode = Convert.ToInt16(dr[0].ToString()),
+                            ItemName = dr[1].ToString(),
+                            ItemPrice = Convert.ToInt16(dr[2].ToString())
+
+                        },
+                        Orderqty = Convert.ToInt16(txt_q.Text),
+                        subtotal = Convert.ToInt16(txt_q.Text) * Convert.ToInt16(dr[2].ToString())
+
+                    };
+                    con.Close();
+                    dt.Rows.Add(customerorderlist.Item.ItemCode, customerorderlist.Item.ItemName, customerorderlist.Item.ItemPrice, customerorderlist.Orderqty, customerorderlist.subtotal);
+                    dataGridView1.DataSource = dt;
+
+
+
+
+
+                
+
 
             }
         }
@@ -165,11 +195,18 @@ namespace WindowsFormsApplication9
 
         private void btn_po_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txt_q.Text) || dataGridView1.Rows.Count == 0 || cmb_ic.SelectedIndex < 0)
+            if (string.IsNullOrEmpty(txt_q.Text) || dataGridView1.Rows.Count == 0 || cmb_ic.SelectedIndex < 0 || cmb_ci.SelectedIndex<0)
             {
-                MessageBox.Show("fields cannot be blank","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("fields cannot be blank", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
+            else if(flag==0)
+            {
+
+                MessageBox.Show("Please add items","Information",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            }
+
             else
             {
                 CusOrder a = new CusOrder()
@@ -205,10 +242,10 @@ namespace WindowsFormsApplication9
             {
 
                 CusOrder b = new CusOrder();
-                
-                  //  orderNumber = Convert.ToInt32(txt_eon.Text)
 
-                
+                //  orderNumber = Convert.ToInt32(txt_eon.Text)
+
+
                 var dt = b.viewOrder();
                 dataGridView1.DataSource = dt;
             }
@@ -238,6 +275,12 @@ namespace WindowsFormsApplication9
 
                 c.cancelOrder(c.cusOrder.orderNumber);
                 MessageBox.Show("Successfully deleted");
+                SqlCommand ds = new SqlCommand("select * from CusOrderDetail",con);
+                con.Open();
+                SqlDataAdapter da = new SqlDataAdapter(ds);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                dataGridView1.DataSource = dt;
             }
         }
 
@@ -248,7 +291,7 @@ namespace WindowsFormsApplication9
 
         private void btn_Reg_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txt_name.Text) || txt_tele.TextLength!=10 || string.IsNullOrEmpty(txt_a1.Text) || string.IsNullOrEmpty(txt_A2.Text) || string.IsNullOrEmpty(txt_A3.Text))
+            if (string.IsNullOrEmpty(txt_name.Text) || txt_tele.TextLength != 10 || string.IsNullOrEmpty(txt_a1.Text) || string.IsNullOrEmpty(txt_A2.Text) || string.IsNullOrEmpty(txt_A3.Text))
             {
                 MessageBox.Show("Field cannot be blank");
 
@@ -264,6 +307,16 @@ namespace WindowsFormsApplication9
                 MessageBox.Show("Registered Successfully");
                 con.Close();
             }
+        }
+
+        private void cmb_ic_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btn_add.Enabled = true;
+        }
+
+        private void btn_clear_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource = "";
         }
     }
 }

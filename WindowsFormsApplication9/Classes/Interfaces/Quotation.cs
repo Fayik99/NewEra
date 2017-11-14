@@ -178,9 +178,9 @@ namespace WindowsFormsApplication9
             try
             {
 
-                if (string.IsNullOrEmpty(txt_can.Text))
+                if (string.IsNullOrEmpty(txt_can.Text) || cmb_cName.SelectedIndex<0)
                 {
-                    MessageBox.Show("insert a correct Quotationnumber");
+                    MessageBox.Show("insert a correct Quotationnumber or select correct customer name");
                 }
                 else
                 {
@@ -204,7 +204,8 @@ namespace WindowsFormsApplication9
 
         private void btn_cancel_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txt_can.Text))
+            if (string.IsNullOrEmpty(txt_can.Text) )
+
             {
 
                 MessageBox.Show("insert a correct Quotationumber");

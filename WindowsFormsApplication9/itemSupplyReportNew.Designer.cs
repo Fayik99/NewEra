@@ -31,19 +31,29 @@
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(itemSupplyReportNew));
+            this.itemSupplyBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.NewEraDBDataSetItemSupply = new WindowsFormsApplication9.NewEraDBDataSetItemSupply();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btn_gen = new System.Windows.Forms.Button();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.NewEraDBDataSetItemSupply = new WindowsFormsApplication9.NewEraDBDataSetItemSupply();
-            this.itemSupplyBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.itemSupplyTableAdapter = new WindowsFormsApplication9.NewEraDBDataSetItemSupplyTableAdapters.itemSupplyTableAdapter();
             this.btn_back = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.NewEraDBDataSetItemSupply)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemSupplyBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NewEraDBDataSetItemSupply)).BeginInit();
             this.SuspendLayout();
+            // 
+            // itemSupplyBindingSource
+            // 
+            this.itemSupplyBindingSource.DataMember = "itemSupply";
+            this.itemSupplyBindingSource.DataSource = this.NewEraDBDataSetItemSupply;
+            // 
+            // NewEraDBDataSetItemSupply
+            // 
+            this.NewEraDBDataSetItemSupply.DataSetName = "NewEraDBDataSetItemSupply";
+            this.NewEraDBDataSetItemSupply.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // dateTimePicker1
             // 
@@ -101,16 +111,6 @@
             this.reportViewer1.Size = new System.Drawing.Size(684, 481);
             this.reportViewer1.TabIndex = 5;
             // 
-            // NewEraDBDataSetItemSupply
-            // 
-            this.NewEraDBDataSetItemSupply.DataSetName = "NewEraDBDataSetItemSupply";
-            this.NewEraDBDataSetItemSupply.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // itemSupplyBindingSource
-            // 
-            this.itemSupplyBindingSource.DataMember = "itemSupply";
-            this.itemSupplyBindingSource.DataSource = this.NewEraDBDataSetItemSupply;
-            // 
             // itemSupplyTableAdapter
             // 
             this.itemSupplyTableAdapter.ClearBeforeFill = true;
@@ -130,7 +130,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1045, 584);
+            this.ClientSize = new System.Drawing.Size(1103, 671);
             this.Controls.Add(this.btn_back);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.btn_gen);
@@ -141,8 +141,8 @@
             this.Name = "itemSupplyReportNew";
             this.Text = "itemSupplyReportNew";
             this.Load += new System.EventHandler(this.itemSupplyReportNew_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.NewEraDBDataSetItemSupply)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemSupplyBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.NewEraDBDataSetItemSupply)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

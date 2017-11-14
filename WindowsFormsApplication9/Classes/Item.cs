@@ -37,8 +37,8 @@ namespace WindowsFormsApplication9.Classes
             cmd.ExecuteNonQuery();
             con.Close();
 
-
-            SqlCommand fr = new SqlCommand("insert into itemSupply values('" + sid + "','" + a.ItemCode + "','" +string.Empty+ "','" + DateTime.Now.ToString("dd/MM/yyyy") + "','" + a.ItemQuantity + "')", con);
+            DateTime datte = Convert.ToDateTime(DateTime.Now.Date.ToString());
+            SqlCommand fr = new SqlCommand("insert into itemSupply values('" + sid + "','" + a.ItemCode + "','" +string.Empty+ "',CONVERT(DATETIME,'" + datte.ToShortDateString() + "',103),'" + a.ItemQuantity + "')", con);
             con.Open();
             fr.ExecuteNonQuery();
             con.Close();

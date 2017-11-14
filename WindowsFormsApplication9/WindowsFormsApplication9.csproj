@@ -69,7 +69,7 @@
     </Compile>
     <Compile Include="Classes\Proprietor.cs" />
     <Compile Include="Classes\Quotations.cs" />
-    <Compile Include="Classes\Receipt.cs" />
+    <Compile Include="Classes\SalesInvoice.cs" />
     <Compile Include="Classes\Invoice.cs" />
     <Compile Include="Classes\Suppliers.cs" />
     <Compile Include="Classes\PurchaseOrder.cs" />

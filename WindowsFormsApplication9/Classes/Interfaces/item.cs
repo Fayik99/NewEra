@@ -147,6 +147,12 @@ namespace WindowsFormsApplication9
 
                 b.updateItem(b,Convert.ToInt32( cmb_order.SelectedItem));
                 MessageBox.Show("Successfully Updated", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //cmb_ic.Items.Clear();
+                //cmb_Name.Items.Clear();
+                //cmb_order.Items.Clear();
+                txt_name1.Clear();
+                txt_price1.Clear();
+                txt_q1.Clear();
                
             }
         }

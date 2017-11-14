@@ -55,8 +55,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.txt_on = new System.Windows.Forms.TextBox();
             this.btn_co = new System.Windows.Forms.Button();
-            this.label14 = new System.Windows.Forms.Label();
-            this.txt_eon = new System.Windows.Forms.TextBox();
             this.btn_vo = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
             this.btn_Reg = new System.Windows.Forms.Button();
@@ -64,6 +62,7 @@
             this.cmb_ci = new System.Windows.Forms.ComboBox();
             this.btn_back = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_clear = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -240,6 +239,7 @@
             this.cmb_ic.Name = "cmb_ic";
             this.cmb_ic.Size = new System.Drawing.Size(160, 23);
             this.cmb_ic.TabIndex = 17;
+            this.cmb_ic.SelectedIndexChanged += new System.EventHandler(this.cmb_ic_SelectedIndexChanged);
             // 
             // label12
             // 
@@ -295,7 +295,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(575, 563);
+            this.label13.Location = new System.Drawing.Point(666, 566);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(96, 15);
@@ -304,7 +304,7 @@
             // 
             // txt_on
             // 
-            this.txt_on.Location = new System.Drawing.Point(772, 560);
+            this.txt_on.Location = new System.Drawing.Point(805, 563);
             this.txt_on.Margin = new System.Windows.Forms.Padding(4);
             this.txt_on.Name = "txt_on";
             this.txt_on.Size = new System.Drawing.Size(132, 21);
@@ -322,29 +322,10 @@
             this.btn_co.UseVisualStyleBackColor = true;
             this.btn_co.Click += new System.EventHandler(this.btn_co_Click);
             // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(571, 509);
-            this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(136, 15);
-            this.label14.TabIndex = 26;
-            this.label14.Text = "Enter Order Number";
-            // 
-            // txt_eon
-            // 
-            this.txt_eon.Location = new System.Drawing.Point(772, 510);
-            this.txt_eon.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_eon.Name = "txt_eon";
-            this.txt_eon.Size = new System.Drawing.Size(132, 21);
-            this.txt_eon.TabIndex = 27;
-            // 
             // btn_vo
             // 
             this.btn_vo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_vo.Location = new System.Drawing.Point(958, 506);
+            this.btn_vo.Location = new System.Drawing.Point(804, 499);
             this.btn_vo.Margin = new System.Windows.Forms.Padding(4);
             this.btn_vo.Name = "btn_vo";
             this.btn_vo.Size = new System.Drawing.Size(100, 26);
@@ -426,19 +407,28 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Customer Register";
             // 
+            // btn_clear
+            // 
+            this.btn_clear.Location = new System.Drawing.Point(1076, 476);
+            this.btn_clear.Name = "btn_clear";
+            this.btn_clear.Size = new System.Drawing.Size(75, 23);
+            this.btn_clear.TabIndex = 35;
+            this.btn_clear.Text = "Clear";
+            this.btn_clear.UseVisualStyleBackColor = true;
+            this.btn_clear.Click += new System.EventHandler(this.btn_clear_Click);
+            // 
             // CustomerOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1244, 695);
+            this.Controls.Add(this.btn_clear);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.cmb_ci);
             this.Controls.Add(this.l);
             this.Controls.Add(this.btn_back);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.btn_vo);
-            this.Controls.Add(this.txt_eon);
-            this.Controls.Add(this.label14);
             this.Controls.Add(this.btn_co);
             this.Controls.Add(this.txt_on);
             this.Controls.Add(this.label13);
@@ -496,8 +486,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txt_on;
         private System.Windows.Forms.Button btn_co;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox txt_eon;
         private System.Windows.Forms.Button btn_vo;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button btn_back;
@@ -505,5 +493,6 @@
         private System.Windows.Forms.Label l;
         private System.Windows.Forms.ComboBox cmb_ci;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btn_clear;
     }
 }

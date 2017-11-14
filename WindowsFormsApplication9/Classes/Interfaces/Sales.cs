@@ -67,14 +67,20 @@ namespace WindowsFormsApplication9
 
         }
         int place = 0;
+        int flag = 0;
         private void btn_add_Click(object sender, EventArgs e)
         {
             try
             {
-               
+                if (cmb_item.SelectedIndex < 0 || string.IsNullOrEmpty(txt_q.Text) || cmb_oi.SelectedIndex<0 || cmb_order.SelectedIndex<0)
+                {
 
-               
-                
+                    MessageBox.Show("Fields cannot be blank", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                else
+                {
+                    flag = 1;
                     con.Open();
                     SqlCommand sa = new SqlCommand("select * from Item where itemName='" + cmb_item.SelectedItem + "' and itemQty>='" + Convert.ToInt32(txt_q.Text) + "'", con);
                     SqlDataReader dr = sa.ExecuteReader();
@@ -99,7 +105,9 @@ namespace WindowsFormsApplication9
                     place++;
                     label5.Text = "0";
                     txt_q.Text = "";
-                
+                    cmb_item.Items.Clear();
+                   
+                }
             }
             catch
             {
@@ -109,11 +117,16 @@ namespace WindowsFormsApplication9
 
         private void btn_sub_Click(object sender, EventArgs e)
         {
-            if (cmb_item.SelectedIndex < 0 || string.IsNullOrEmpty(txt_sell.Text))
+            if (cmb_Code.SelectedIndex<0  || string.IsNullOrEmpty(txt_sell.Text)|| cmb_order.SelectedIndex<0 || cmb_oi.SelectedIndex<0)
             {
 
                 MessageBox.Show("Fields cannot be empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+            }
+            else if(flag==0)
+            {
+
+                MessageBox.Show("Please add Items","information",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
 
             else
@@ -208,7 +221,7 @@ namespace WindowsFormsApplication9
         {
             label5.Text = "0";
             lbl_in.Text = cmb_item.SelectedItem.ToString();
-            cmd = new SqlCommand("select itemCode from Item where itemName='"+lbl_in.Text+"'",con);
+            cmd = new SqlCommand("select itemCode from Item where itemName='" + lbl_in.Text + "'", con);
             con.Open();
             SqlDataReader rdr = cmd.ExecuteReader();
             rdr.Read();
@@ -239,21 +252,21 @@ namespace WindowsFormsApplication9
             rdr.Close();
 
 
-            cmd = new SqlCommand("select  itemName,itemCode from Item", con);
-            SqlDataAdapter ad = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            ad.Fill(dt);
-            foreach (DataRow row in dt.Rows)
-            {
-                cmb_item.Items.Add(row.Field<string>(0));
-            }
+            //cmd = new SqlCommand("select  itemName,itemCode from Item", con);
+            //SqlDataAdapter ad = new SqlDataAdapter(cmd);
+            //DataTable dt = new DataTable();
+            //ad.Fill(dt);
+            //foreach (DataRow row in dt.Rows)
+            //{
+            //    cmb_item.Items.Add(row.Field<string>(0));
+            //}
 
             con.Close();
 
             cmd = new SqlCommand("select  CusId from  Customer", con);
             con.Open();
-             ad = new SqlDataAdapter(cmd);
-            dt = new DataTable();
+            SqlDataAdapter ad = new SqlDataAdapter(cmd);
+           DataTable dt = new DataTable();
             ad.Fill(dt);
             foreach (DataRow row in dt.Rows)
             {
@@ -261,6 +274,20 @@ namespace WindowsFormsApplication9
 
 
             }
+            con.Close();
+
+            cmd = new SqlCommand("select  itemCode from  Item", con);
+            con.Open();
+            ad = new SqlDataAdapter(cmd);
+            dt = new DataTable();
+            ad.Fill(dt);
+            foreach (DataRow row in dt.Rows)
+            {
+                cmb_Code.Items.Add(row.Field<int>(0));
+
+
+            }
+
             con.Close();
 
            
@@ -373,6 +400,37 @@ namespace WindowsFormsApplication9
         private void btn_cls_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SqlCommand cmd = new SqlCommand("select itemName from Item where itemCode='"+cmb_Code.SelectedItem+"'",con);
+            con.Open();
+            SqlDataAdapter ad = new SqlDataAdapter(cmd);
+            con.Close();
+            DataTable dt = new DataTable();
+            ad.Fill(dt);
+            foreach (DataRow row in dt.Rows)
+            {
+                cmb_item.Items.Add(row.Field<string>(0));
+
+
+            }
+        }
+
+        private void lbl_in_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmb_order_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
     }

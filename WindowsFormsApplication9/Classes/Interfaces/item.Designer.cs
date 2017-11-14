@@ -60,7 +60,6 @@
             this.cmb_Name = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
             this.btn_view = new System.Windows.Forms.Button();
-            this.btn_load = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -361,21 +360,11 @@
             this.btn_view.UseVisualStyleBackColor = true;
             this.btn_view.Click += new System.EventHandler(this.btn_view_Click);
             // 
-            // btn_load
-            // 
-            this.btn_load.Location = new System.Drawing.Point(851, 114);
-            this.btn_load.Name = "btn_load";
-            this.btn_load.Size = new System.Drawing.Size(75, 23);
-            this.btn_load.TabIndex = 34;
-            this.btn_load.Text = "Load";
-            this.btn_load.UseVisualStyleBackColor = true;
-            // 
             // item
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1353, 720);
-            this.Controls.Add(this.btn_load);
             this.Controls.Add(this.btn_view);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.cmb_Name);
@@ -451,6 +440,5 @@
         private System.Windows.Forms.ComboBox cmb_Name;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button btn_view;
-        private System.Windows.Forms.Button btn_load;
     }
 }

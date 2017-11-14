@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication9.Classes
 {
-    class Receipt 
+  public  class SalesInvoice 
     {
 
         public item item { get; set; }

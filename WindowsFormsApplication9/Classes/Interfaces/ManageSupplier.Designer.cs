@@ -38,7 +38,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btn_add = new System.Windows.Forms.Button();
             this.txt_name1 = new System.Windows.Forms.TextBox();
-            this.txt_mob1 = new System.Windows.Forms.TextBox();
             this.txt_add11 = new System.Windows.Forms.TextBox();
             this.txt_add21 = new System.Windows.Forms.TextBox();
             this.txt_add31 = new System.Windows.Forms.TextBox();
@@ -52,7 +51,6 @@
             this.label15 = new System.Windows.Forms.Label();
             this.btn_up = new System.Windows.Forms.Button();
             this.txt_name2 = new System.Windows.Forms.TextBox();
-            this.txt_mob2 = new System.Windows.Forms.TextBox();
             this.txt_add12 = new System.Windows.Forms.TextBox();
             this.txt_add22 = new System.Windows.Forms.TextBox();
             this.txt_add32 = new System.Windows.Forms.TextBox();
@@ -63,6 +61,8 @@
             this.btn_del = new System.Windows.Forms.Button();
             this.btn_back = new System.Windows.Forms.Button();
             this.updats = new System.Windows.Forms.Label();
+            this.txt_mob1 = new System.Windows.Forms.MaskedTextBox();
+            this.txt_mob2 = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -161,14 +161,6 @@
             this.txt_name1.Name = "txt_name1";
             this.txt_name1.Size = new System.Drawing.Size(132, 21);
             this.txt_name1.TabIndex = 8;
-            // 
-            // txt_mob1
-            // 
-            this.txt_mob1.Location = new System.Drawing.Point(132, 249);
-            this.txt_mob1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txt_mob1.Name = "txt_mob1";
-            this.txt_mob1.Size = new System.Drawing.Size(132, 21);
-            this.txt_mob1.TabIndex = 9;
             // 
             // txt_add11
             // 
@@ -302,14 +294,6 @@
             this.txt_name2.Size = new System.Drawing.Size(132, 21);
             this.txt_name2.TabIndex = 22;
             // 
-            // txt_mob2
-            // 
-            this.txt_mob2.Location = new System.Drawing.Point(423, 249);
-            this.txt_mob2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.txt_mob2.Name = "txt_mob2";
-            this.txt_mob2.Size = new System.Drawing.Size(132, 21);
-            this.txt_mob2.TabIndex = 23;
-            // 
             // txt_add12
             // 
             this.txt_add12.Location = new System.Drawing.Point(423, 306);
@@ -407,11 +391,29 @@
             this.updats.Size = new System.Drawing.Size(0, 15);
             this.updats.TabIndex = 33;
             // 
+            // txt_mob1
+            // 
+            this.txt_mob1.Location = new System.Drawing.Point(132, 249);
+            this.txt_mob1.Mask = "(999) 000-0000";
+            this.txt_mob1.Name = "txt_mob1";
+            this.txt_mob1.Size = new System.Drawing.Size(132, 21);
+            this.txt_mob1.TabIndex = 34;
+            // 
+            // txt_mob2
+            // 
+            this.txt_mob2.Location = new System.Drawing.Point(422, 241);
+            this.txt_mob2.Mask = "(999) 000-0000";
+            this.txt_mob2.Name = "txt_mob2";
+            this.txt_mob2.Size = new System.Drawing.Size(133, 21);
+            this.txt_mob2.TabIndex = 35;
+            // 
             // ManageSupplier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1362, 741);
+            this.Controls.Add(this.txt_mob2);
+            this.Controls.Add(this.txt_mob1);
             this.Controls.Add(this.updats);
             this.Controls.Add(this.btn_back);
             this.Controls.Add(this.btn_del);
@@ -422,7 +424,6 @@
             this.Controls.Add(this.txt_add32);
             this.Controls.Add(this.txt_add22);
             this.Controls.Add(this.txt_add12);
-            this.Controls.Add(this.txt_mob2);
             this.Controls.Add(this.txt_name2);
             this.Controls.Add(this.btn_up);
             this.Controls.Add(this.label15);
@@ -436,7 +437,6 @@
             this.Controls.Add(this.txt_add31);
             this.Controls.Add(this.txt_add21);
             this.Controls.Add(this.txt_add11);
-            this.Controls.Add(this.txt_mob1);
             this.Controls.Add(this.txt_name1);
             this.Controls.Add(this.btn_add);
             this.Controls.Add(this.label7);
@@ -468,7 +468,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btn_add;
         private System.Windows.Forms.TextBox txt_name1;
-        private System.Windows.Forms.TextBox txt_mob1;
         private System.Windows.Forms.TextBox txt_add11;
         private System.Windows.Forms.TextBox txt_add21;
         private System.Windows.Forms.TextBox txt_add31;
@@ -482,7 +481,6 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Button btn_up;
         private System.Windows.Forms.TextBox txt_name2;
-        private System.Windows.Forms.TextBox txt_mob2;
         private System.Windows.Forms.TextBox txt_add12;
         private System.Windows.Forms.TextBox txt_add22;
         private System.Windows.Forms.TextBox txt_add32;
@@ -493,5 +491,7 @@
         private System.Windows.Forms.Button btn_del;
         private System.Windows.Forms.Button btn_back;
         private System.Windows.Forms.Label updats;
+        private System.Windows.Forms.MaskedTextBox txt_mob1;
+        private System.Windows.Forms.MaskedTextBox txt_mob2;
     }
 }

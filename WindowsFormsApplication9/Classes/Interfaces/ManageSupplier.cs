@@ -12,18 +12,21 @@ using WindowsFormsApplication9.Classes;
 
 namespace WindowsFormsApplication9
 {
+   
     public partial class ManageSupplier : Form
     {
+        SqlConnection con;
         public int index = 0; 
         public ManageSupplier()
         {
             InitializeComponent();
+            string conString = System.Configuration.ConfigurationManager.ConnectionStrings["NewEraDBcontext"].ConnectionString;
+             con = new SqlConnection(conString);
         }
 
         private void Form15_Load(object sender, EventArgs e)
         {
-            string conString = System.Configuration.ConfigurationManager.ConnectionStrings["NewEraDBcontext"].ConnectionString;
-            SqlConnection con = new SqlConnection(conString);
+           
 
             SqlCommand cmd = new SqlCommand("select top 1 supID from Supplier order by supID desc", con);
             con.Open();
@@ -61,13 +64,32 @@ namespace WindowsFormsApplication9
 
         private void btn_add_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txt_name1.Text) || string.IsNullOrEmpty(txt_mob1.Text) || string.IsNullOrEmpty(txt_add11.Text) || string.IsNullOrEmpty(txt_add21.Text) || string.IsNullOrEmpty(txt_add31.Text))
+            if (string.IsNullOrEmpty(txt_name1.Text) ||  string.IsNullOrEmpty(txt_mob1.Text) || string.IsNullOrEmpty(txt_add11.Text) || string.IsNullOrEmpty(txt_add21.Text) || string.IsNullOrEmpty(txt_add31.Text))
             {
                 MessageBox.Show("One or more fields are empty, please fill", "Add Error");
                 return;
             }
+
+            string id = txt_name1.Text;
+            con.Open();
+            SqlCommand cmd = new SqlCommand("select * from Supplier where supName='" + id + "'", con);
+            SqlDataReader rdr = cmd.ExecuteReader();
+            if (rdr.Read())
+            {
+                if (id.Equals(rdr[1].ToString()))
+                {
+
+                    MessageBox.Show("Entered name is already exists", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    con.Close();
+                }
+                else { }
+            }
+
+
+
             else
             {
+                rdr.Close();
                 Suppliers suppliers = new Suppliers()
                 {
 
