@@ -78,7 +78,7 @@ namespace WindowsFormsApplication9.Classes
 
 
                 con.Open();
-                cmd = new SqlCommand("update PurchaseOrderHeaderFile set status=1 where PurchaseorderID='"+a+"'",con);
+                cmd = new SqlCommand("update PurchaseOrderDetailFile set status=1 where PurchaseorderID='" + a + "' and itemCode='" + b.ItemCode + "'", con);
                 cmd.ExecuteNonQuery();
                 con.Close();
 

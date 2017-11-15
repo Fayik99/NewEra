@@ -119,6 +119,40 @@ namespace WindowsFormsApplication9
 
             }
             else {
+
+
+
+                if (dataGridView1.Rows.Count != 1)
+                {
+                    foreach (DataGridViewRow row in dataGridView1.Rows)
+                    {
+                        btn_add.Enabled = true;
+                        if (row.Cells[1].Value != null)
+                        {
+                            var id = row.Cells[1].Value.ToString();
+                            if (id.Equals(cmb_in.SelectedItem.ToString()))
+                            {
+                                MessageBox.Show("You can edit you Quantity for same item", "Information", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                                btn_add.Enabled = false;
+                                return;
+
+                            }
+                        }
+
+                    }
+
+                }
+
+
+
+
+
+
+
+
+
+
+
                 result = 1;
                 con.Open();
                 SqlCommand sa = new SqlCommand("select * from Item where itemName ='" + cmb_in.SelectedItem + "'", con);
@@ -213,7 +247,7 @@ namespace WindowsFormsApplication9
 
         private void cmb_in_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+            btn_add.Enabled = true;
         }
 
         private void lbl_code_Click(object sender, EventArgs e)

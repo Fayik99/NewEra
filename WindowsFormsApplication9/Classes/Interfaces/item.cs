@@ -147,13 +147,43 @@ namespace WindowsFormsApplication9
 
                 b.updateItem(b,Convert.ToInt32( cmb_order.SelectedItem));
                 MessageBox.Show("Successfully Updated", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                //cmb_ic.Items.Clear();
+                cmb_ic.Items.Clear();
+                cmb_ic.ResetText();
+                cmb_sup1.Items.Clear();
+                cmb_sup1.ResetText();
                 //cmb_Name.Items.Clear();
-                //cmb_order.Items.Clear();
+                cmb_order.Items.Clear();
+                cmb_order.ResetText();
                 txt_name1.Clear();
                 txt_price1.Clear();
                 txt_q1.Clear();
-               
+
+                SqlCommand cmd = new SqlCommand("select  supID from Supplier", con);
+                SqlDataAdapter ad = new SqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                ad.Fill(dt);
+                foreach (DataRow row in dt.Rows)
+                {
+                   
+                    cmb_sup1.Items.Add(row.Field<int>(0));
+                }
+
+
+
+
+                cmd = new SqlCommand("select  PurchaseorderID from PurchaseOrderHeaderFile where supID='" + cmb_sup1.SelectedItem + "'", con);
+                con.Open();
+                 ad = new SqlDataAdapter(cmd);
+                con.Close();
+                dt = new DataTable();
+                ad.Fill(dt);
+                foreach (DataRow row in dt.Rows)
+                {
+                    cmb_order.Items.Add(row.Field<int>(0));
+
+
+                }
+
             }
         }
 
@@ -185,7 +215,7 @@ namespace WindowsFormsApplication9
             cmb_ic.Items.Clear();
 
             //            SqlCommand sd = new SqlCommand("select orderId from CusOrderHeader where CusId='"+cmb_oi.SelectedItem+"'",con);
-            SqlCommand cmd = new SqlCommand("select  PurchaseorderID from PurchaseOrderHeaderFile where supID='" + cmb_sup1.SelectedItem + "' and status=0 ", con);
+            SqlCommand cmd = new SqlCommand("select  PurchaseorderID from PurchaseOrderHeaderFile where supID='" + cmb_sup1.SelectedItem + "'", con);
             con.Open();
             SqlDataAdapter ad = new SqlDataAdapter(cmd);
             con.Close();
@@ -203,7 +233,7 @@ namespace WindowsFormsApplication9
         {
             
 
-            SqlCommand cmd = new SqlCommand("select * from PurchaseOrderDetailFile where PurchaseorderId='"+cmb_order.SelectedItem+"'",con);
+            SqlCommand cmd = new SqlCommand("select * from PurchaseOrderDetailFile where PurchaseorderId='"+cmb_order.SelectedItem+"' and status=0 ",con);
             con.Open();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             con.Close();
@@ -215,7 +245,7 @@ namespace WindowsFormsApplication9
             
 
             //            SqlCommand sd = new SqlCommand("select orderId from CusOrderHeader where CusId='"+cmb_oi.SelectedItem+"'",con);
-            cmd = new SqlCommand("select  itemCode from PurchaseOrderDetailFile where PurchaseorderId='" + cmb_order.SelectedItem + "'", con);
+            cmd = new SqlCommand("select  itemCode from PurchaseOrderDetailFile where PurchaseorderId='" + cmb_order.SelectedItem + "' and status=0", con);
             con.Open();
             SqlDataAdapter ad = new SqlDataAdapter(cmd);
             con.Close();

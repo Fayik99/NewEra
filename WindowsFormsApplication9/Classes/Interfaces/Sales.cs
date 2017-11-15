@@ -162,7 +162,7 @@ namespace WindowsFormsApplication9
                     }
                 }
                 con.Open();
-                SqlCommand vb = new SqlCommand("update CusOrderHeader set status=1 where CusId='"+cmb_oi.SelectedItem+"'",con);
+                SqlCommand vb = new SqlCommand("update CusOrderHeader set status=1 where CusId='"+cmb_oi.SelectedItem+"' and orderId='"+cmb_order.SelectedItem+"'",con);
                 vb.ExecuteNonQuery();
                 con.Close();
                   
