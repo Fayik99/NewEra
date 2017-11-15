@@ -283,13 +283,11 @@ namespace WindowsFormsApplication9 {
             
             private global::System.Data.DataColumn columnsellPrice;
             
-            private global::System.Data.DataColumn columnQty;
-            
-            private global::System.Data.DataColumn columnsubTotal;
-            
             private global::System.Data.DataColumn columnitemCode;
             
-            private global::System.Data.DataColumn columnInvNm;
+            private global::System.Data.DataColumn columntotqty;
+            
+            private global::System.Data.DataColumn columntotsubtotal;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -342,22 +340,6 @@ namespace WindowsFormsApplication9 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn QtyColumn {
-                get {
-                    return this.columnQty;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn subTotalColumn {
-                get {
-                    return this.columnsubTotal;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn itemCodeColumn {
                 get {
                     return this.columnitemCode;
@@ -366,9 +348,17 @@ namespace WindowsFormsApplication9 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn InvNmColumn {
+            public global::System.Data.DataColumn totqtyColumn {
                 get {
-                    return this.columnInvNm;
+                    return this.columntotqty;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn totsubtotalColumn {
+                get {
+                    return this.columntotsubtotal;
                 }
             }
             
@@ -409,15 +399,14 @@ namespace WindowsFormsApplication9 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public invoiceDetailRow AddinvoiceDetailRow(string itemName, int sellPrice, int Qty, int subTotal, int itemCode, int InvNm) {
+            public invoiceDetailRow AddinvoiceDetailRow(string itemName, int sellPrice, int itemCode, string totqty, string totsubtotal) {
                 invoiceDetailRow rowinvoiceDetailRow = ((invoiceDetailRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         itemName,
                         sellPrice,
-                        Qty,
-                        subTotal,
                         itemCode,
-                        InvNm};
+                        totqty,
+                        totsubtotal};
                 rowinvoiceDetailRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowinvoiceDetailRow);
                 return rowinvoiceDetailRow;
@@ -442,10 +431,9 @@ namespace WindowsFormsApplication9 {
             internal void InitVars() {
                 this.columnitemName = base.Columns["itemName"];
                 this.columnsellPrice = base.Columns["sellPrice"];
-                this.columnQty = base.Columns["Qty"];
-                this.columnsubTotal = base.Columns["subTotal"];
                 this.columnitemCode = base.Columns["itemCode"];
-                this.columnInvNm = base.Columns["InvNm"];
+                this.columntotqty = base.Columns["totqty"];
+                this.columntotsubtotal = base.Columns["totsubtotal"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -455,20 +443,19 @@ namespace WindowsFormsApplication9 {
                 base.Columns.Add(this.columnitemName);
                 this.columnsellPrice = new global::System.Data.DataColumn("sellPrice", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnsellPrice);
-                this.columnQty = new global::System.Data.DataColumn("Qty", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnQty);
-                this.columnsubTotal = new global::System.Data.DataColumn("subTotal", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnsubTotal);
                 this.columnitemCode = new global::System.Data.DataColumn("itemCode", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnitemCode);
-                this.columnInvNm = new global::System.Data.DataColumn("InvNm", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnInvNm);
+                this.columntotqty = new global::System.Data.DataColumn("totqty", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntotqty);
+                this.columntotsubtotal = new global::System.Data.DataColumn("totsubtotal", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntotsubtotal);
                 this.columnitemName.AllowDBNull = false;
                 this.columnitemName.MaxLength = 50;
                 this.columnsellPrice.AllowDBNull = false;
-                this.columnQty.AllowDBNull = false;
-                this.columnsubTotal.AllowDBNull = false;
-                this.columnInvNm.AllowDBNull = false;
+                this.columntotqty.ReadOnly = true;
+                this.columntotqty.MaxLength = 2147483647;
+                this.columntotsubtotal.ReadOnly = true;
+                this.columntotsubtotal.MaxLength = 2147483647;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -633,28 +620,6 @@ namespace WindowsFormsApplication9 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Qty {
-                get {
-                    return ((int)(this[this.tableinvoiceDetail.QtyColumn]));
-                }
-                set {
-                    this[this.tableinvoiceDetail.QtyColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int subTotal {
-                get {
-                    return ((int)(this[this.tableinvoiceDetail.subTotalColumn]));
-                }
-                set {
-                    this[this.tableinvoiceDetail.subTotalColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int itemCode {
                 get {
                     try {
@@ -671,12 +636,33 @@ namespace WindowsFormsApplication9 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int InvNm {
+            public string totqty {
                 get {
-                    return ((int)(this[this.tableinvoiceDetail.InvNmColumn]));
+                    try {
+                        return ((string)(this[this.tableinvoiceDetail.totqtyColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'totqty\' in table \'invoiceDetail\' is DBNull.", e);
+                    }
                 }
                 set {
-                    this[this.tableinvoiceDetail.InvNmColumn] = value;
+                    this[this.tableinvoiceDetail.totqtyColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string totsubtotal {
+                get {
+                    try {
+                        return ((string)(this[this.tableinvoiceDetail.totsubtotalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'totsubtotal\' in table \'invoiceDetail\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableinvoiceDetail.totsubtotalColumn] = value;
                 }
             }
             
@@ -690,6 +676,30 @@ namespace WindowsFormsApplication9 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetitemCodeNull() {
                 this[this.tableinvoiceDetail.itemCodeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IstotqtyNull() {
+                return this.IsNull(this.tableinvoiceDetail.totqtyColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SettotqtyNull() {
+                this[this.tableinvoiceDetail.totqtyColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IstotsubtotalNull() {
+                return this.IsNull(this.tableinvoiceDetail.totsubtotalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SettotsubtotalNull() {
+                this[this.tableinvoiceDetail.totsubtotalColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -854,10 +864,9 @@ namespace WindowsFormsApplication9.NewEraDBDataSetTableAdapters {
             tableMapping.DataSetTable = "invoiceDetail";
             tableMapping.ColumnMappings.Add("itemName", "itemName");
             tableMapping.ColumnMappings.Add("sellPrice", "sellPrice");
-            tableMapping.ColumnMappings.Add("Qty", "Qty");
-            tableMapping.ColumnMappings.Add("subTotal", "subTotal");
             tableMapping.ColumnMappings.Add("itemCode", "itemCode");
-            tableMapping.ColumnMappings.Add("InvNm", "InvNm");
+            tableMapping.ColumnMappings.Add("totqty", "totqty");
+            tableMapping.ColumnMappings.Add("totsubtotal", "totsubtotal");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -874,9 +883,38 @@ namespace WindowsFormsApplication9.NewEraDBDataSetTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT itemName, sellPrice, Qty, subTotal, itemCode,InvNm from [NewEraDB].[dbo].[" +
-                "invoiceHeader] ih inner join[NewEraDB].[dbo].[invoiceDetail] id on ih.invNo = id" +
-                ".InvNm  where ih.[date] >=@from and ih.[date] <=@to";
+            this._commandCollection[0].CommandText = @"SELECT 
+id.itemCode,
+id.itemName,
+id.sellPrice,
+stuff((
+select
+count(id2.Qty)
+from
+invoiceDetail id2
+where id2.itemCode=id.itemCode and id2.itemName=id.itemName
+group by id2.itemCode
+
+for XML PATH(''))
+,1,2,sum(Qty)) as totqty,
+
+stuff((
+select
+count(id2.subTotal)
+from
+invoiceDetail id2
+where id2.itemCode=id.itemCode and id2.itemName=id.itemName
+--group by id2.itemCode
+
+for XML PATH(''))
+,1,2,sum(subTotal)) as totsubtotal
+
+-- sellPrice, Qty,
+ --subTotal 
+ from [NewEraDB].[dbo].[invoiceHeader] ih 
+ inner join[NewEraDB].[dbo].[invoiceDetail] id on ih.invNo = id.InvNm  
+ where ih.[date] >=@from  and ih.[date] <=@to
+ group  by id.itemCode,id.itemName,id.sellPrice";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@from", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@to", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -886,20 +924,10 @@ namespace WindowsFormsApplication9.NewEraDBDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(NewEraDBDataSet.invoiceDetailDataTable dataTable, global::System.Nullable<global::System.DateTime> from, global::System.Nullable<global::System.DateTime> to) {
+        public virtual int Fill(NewEraDBDataSet.invoiceDetailDataTable dataTable, System.DateTime from, System.DateTime to) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((from.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(from.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            if ((to.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(to.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(from));
+            this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(to));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -911,20 +939,10 @@ namespace WindowsFormsApplication9.NewEraDBDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual NewEraDBDataSet.invoiceDetailDataTable GetData(global::System.Nullable<global::System.DateTime> from, global::System.Nullable<global::System.DateTime> to) {
+        public virtual NewEraDBDataSet.invoiceDetailDataTable GetData(System.DateTime from, System.DateTime to) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((from.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(from.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
-            }
-            if ((to.HasValue == true)) {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(to.Value));
-            }
-            else {
-                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
-            }
+            this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(from));
+            this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(to));
             NewEraDBDataSet.invoiceDetailDataTable dataTable = new NewEraDBDataSet.invoiceDetailDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;

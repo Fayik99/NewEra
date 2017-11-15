@@ -16,7 +16,7 @@ namespace WindowsFormsApplication9
         SqlConnection con;
         SqlCommand cmd;
         int itemcode = 0;
-       
+
         public Sales()
         {
             InitializeComponent();
@@ -31,7 +31,7 @@ namespace WindowsFormsApplication9
         internal void fill()
         {
             con.Open();
-             cmd = new SqlCommand("select * from invoiceHeader", con);
+            cmd = new SqlCommand("select * from invoiceHeader", con);
             SqlDataAdapter ad = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             ad.Fill(dt);
@@ -72,7 +72,7 @@ namespace WindowsFormsApplication9
         {
             try
             {
-                if (cmb_item.SelectedIndex < 0 || string.IsNullOrEmpty(txt_q.Text) || cmb_oi.SelectedIndex<0 || cmb_order.SelectedIndex<0)
+                if (cmb_item.SelectedIndex < 0 || string.IsNullOrEmpty(txt_q.Text))
                 {
 
                     MessageBox.Show("Fields cannot be blank", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -106,7 +106,7 @@ namespace WindowsFormsApplication9
                     label5.Text = "0";
                     txt_q.Text = "";
                     cmb_item.Items.Clear();
-                   
+
                 }
             }
             catch
@@ -117,78 +117,35 @@ namespace WindowsFormsApplication9
 
         private void btn_sub_Click(object sender, EventArgs e)
         {
-            if (cmb_Code.SelectedIndex<0  || string.IsNullOrEmpty(txt_sell.Text)|| cmb_order.SelectedIndex<0 || cmb_oi.SelectedIndex<0)
+            if (cmb_oi.SelectedItem != null)
             {
-
-                MessageBox.Show("Fields cannot be empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-            }
-            else if(flag==0)
-            {
-
-                MessageBox.Show("Please add Items","information",MessageBoxButtons.OK,MessageBoxIcon.Information);
-            }
-
-            else
-            {
-                DateTime datte = Convert.ToDateTime(DateTime.Now.Date.ToString());
-
-                cmd = new SqlCommand("insert into invoiceHeader values('" + Convert.ToInt32(lbl_invoiceNumber.Text) + "','" + cmb_order.SelectedItem + "','" + cmb_oi.SelectedItem + "',CONVERT(DATETIME,'" + datte.ToShortDateString() + "',103),'" + Convert.ToInt32(lbl_grossTotal.Text) + "')", con);
-                con.Open();
-                cmd.ExecuteNonQuery();
-                con.Close();
-                foreach (DataGridViewRow row in dataGridView1.Rows)
+                if (cmb_Code.SelectedIndex < 0 || string.IsNullOrEmpty(txt_sell.Text) || cmb_order.SelectedIndex < 0 || cmb_oi.SelectedIndex < 0)
                 {
-                    try
-                    {
 
-                        con.Open();
-                        cmd = new SqlCommand("insert into invoiceDetail values('" + Convert.ToInt32(lbl_invoiceNumber.Text) + "','" + row.Cells["ItmName"].Value.ToString() + "','" + Convert.ToInt32(row.Cells["SellPrice"].Value.ToString()) + "','" + Convert.ToInt32(row.Cells["Quantity"].Value.ToString()) + "' ,'" + Convert.ToInt16(row.Cells["Column1"].Value.ToString()) + "','" + Convert.ToInt32(row.Cells["itm"].Value.ToString()) + "' )", con);
-                        cmd.ExecuteNonQuery();
-                        con.Close();
+                    MessageBox.Show("Fields cannot be empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                    }
-                    catch (Exception)
-
-                    {
-                        // MessageBox.Show(ex.ToString());
-                        //MessageBox.Show("Sale Recorded Successfully");
-                        con.Close();
-                        //Sales re = new Sales();
-                        //re.Show();
-
-
-
-                    }
                 }
-                con.Open();
-                SqlCommand vb = new SqlCommand("update CusOrderHeader set status=1 where CusId='"+cmb_oi.SelectedItem+"' and orderId='"+cmb_order.SelectedItem+"'",con);
-                vb.ExecuteNonQuery();
-                con.Close();
-                  
-
-
-                //con.Open();
-                //SqlCommand cf = new SqlCommand("delete from CusOrderHeader where CusId='"+cmb_oi.SelectedItem+"'",con);
-                //cf.ExecuteNonQuery();
-                //con.Close();
-
+                else if (flag == 0)
                 {
 
-                    foreach (DataGridViewRow drow in dataGridView1.Rows)
+                    MessageBox.Show("Please add Items", "information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+                else
+                {
+                    DateTime datte = Convert.ToDateTime(DateTime.Now.Date.ToString());
+
+                    cmd = new SqlCommand("insert into invoiceHeader values('" + Convert.ToInt32(lbl_invoiceNumber.Text) + "','" + cmb_order.SelectedItem + "','" + cmb_oi.SelectedItem + "',CONVERT(DATETIME,'" + datte.ToShortDateString() + "',103),'" + Convert.ToInt32(lbl_grossTotal.Text) + "')", con);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                    foreach (DataGridViewRow row in dataGridView1.Rows)
                     {
                         try
                         {
+
                             con.Open();
-                            cmd = new SqlCommand("select itemQty from Item where itemCode='" + Convert.ToInt32(drow.Cells["itm"].Value.ToString()) + "'", con);
-
-
-                            SqlDataReader rdr = cmd.ExecuteReader();
-                            rdr.Read();
-                            int temp = Convert.ToInt32(rdr[0].ToString());
-                            rdr.Close();
-                            int temp1 = temp - Convert.ToInt32(drow.Cells["Quantity"].Value.ToString());
-                            cmd = new SqlCommand("update Item set itemQty='" + temp1.ToString() + "' where itemCode='" + Convert.ToInt32(drow.Cells["itm"].Value.ToString()) + "'", con);
+                            cmd = new SqlCommand("insert into invoiceDetail values('" + Convert.ToInt32(lbl_invoiceNumber.Text) + "','" + row.Cells["ItmName"].Value.ToString() + "','" + Convert.ToInt32(row.Cells["SellPrice"].Value.ToString()) + "','" + Convert.ToInt32(row.Cells["Quantity"].Value.ToString()) + "' ,'" + Convert.ToInt16(row.Cells["Column1"].Value.ToString()) + "','" + Convert.ToInt32(row.Cells["itm"].Value.ToString()) + "' )", con);
                             cmd.ExecuteNonQuery();
                             con.Close();
 
@@ -196,25 +153,170 @@ namespace WindowsFormsApplication9
                         catch (Exception)
 
                         {
-                            //  MessageBox.Show(exs.ToString());
-
-                            MessageBox.Show("Sale Recorded Successfully", "Sales information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            // MessageBox.Show(ex.ToString());
+                            //MessageBox.Show("Sale Recorded Successfully");
                             con.Close();
-                            Sales re = new Sales();
-                            re.Show();
-                            Dispose();
-                            //return;
+                            //Sales re = new Sales();
+                            //re.Show();
+
+
 
                         }
                     }
+                    con.Open();
+                    SqlCommand vb = new SqlCommand("update CusOrderHeader set status=1 where CusId='" + cmb_oi.SelectedItem + "' and orderId='" + cmb_order.SelectedItem + "'", con);
+                    vb.ExecuteNonQuery();
+                    con.Close();
+
+
+
+                    //con.Open();
+                    //SqlCommand cf = new SqlCommand("delete from CusOrderHeader where CusId='"+cmb_oi.SelectedItem+"'",con);
+                    //cf.ExecuteNonQuery();
+                    //con.Close();
+
+                    {
+
+                        foreach (DataGridViewRow drow in dataGridView1.Rows)
+                        {
+                            try
+                            {
+                                con.Open();
+                                cmd = new SqlCommand("select itemQty from Item where itemCode='" + Convert.ToInt32(drow.Cells["itm"].Value.ToString()) + "'", con);
+
+
+                                SqlDataReader rdr = cmd.ExecuteReader();
+                                rdr.Read();
+                                int temp = Convert.ToInt32(rdr[0].ToString());
+                                rdr.Close();
+                                int temp1 = temp - Convert.ToInt32(drow.Cells["Quantity"].Value.ToString());
+                                cmd = new SqlCommand("update Item set itemQty='" + temp1.ToString() + "' where itemCode='" + Convert.ToInt32(drow.Cells["itm"].Value.ToString()) + "'", con);
+                                cmd.ExecuteNonQuery();
+                                con.Close();
+
+                            }
+                            catch (Exception)
+
+                            {
+                                //  MessageBox.Show(exs.ToString());
+
+                                MessageBox.Show("Sale Recorded Successfully", "Sales information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                con.Close();
+                                Sales re = new Sales();
+                                re.Show();
+                                Dispose();
+                                //return;
+
+                            }
+                        }
+                    }
+
+
+
+
+                    //fill();
+                }
+            }
+
+            else
+            {
+                if (cmb_Code.SelectedIndex < 0 || string.IsNullOrEmpty(txt_sell.Text) )
+                {
+
+                    MessageBox.Show("Fields cannot be empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                }
+                else if (flag == 0)
+                {
+
+                    MessageBox.Show("Please add Items", "information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
+                else
+                {
+                    DateTime datte = Convert.ToDateTime(DateTime.Now.Date.ToString());
+
+                    cmd = new SqlCommand("insert into invoiceHeader values('" + Convert.ToInt32(lbl_invoiceNumber.Text) + "', 0 , 0 ,CONVERT(DATETIME,'" + datte.ToShortDateString() + "',103),'" + Convert.ToInt32(lbl_grossTotal.Text) + "')", con);
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                    foreach (DataGridViewRow row in dataGridView1.Rows)
+                    {
+                        try
+                        {
+
+                            con.Open();
+                            cmd = new SqlCommand("insert into invoiceDetail values('" + Convert.ToInt32(lbl_invoiceNumber.Text) + "','" + row.Cells["ItmName"].Value.ToString() + "','" + Convert.ToInt32(row.Cells["SellPrice"].Value.ToString()) + "','" + Convert.ToInt32(row.Cells["Quantity"].Value.ToString()) + "' ,'" + Convert.ToInt16(row.Cells["Column1"].Value.ToString()) + "','" + Convert.ToInt32(row.Cells["itm"].Value.ToString()) + "' )", con);
+                            cmd.ExecuteNonQuery();
+                            con.Close();
+
+                        }
+                        catch (Exception)
+
+                        {
+                            // MessageBox.Show(ex.ToString());
+                            //MessageBox.Show("Sale Recorded Successfully");
+                            con.Close();
+                            //Sales re = new Sales();
+                            //re.Show();
 
 
 
-                //fill();
+                        }
+                    }
+                    //con.Open();
+                    //SqlCommand vb = new SqlCommand("update CusOrderHeader set status=1 where CusId=0 and orderId=0", con);
+                    //vb.ExecuteNonQuery();
+                    //con.Close();
+
+
+
+                    //con.Open();
+                    //SqlCommand cf = new SqlCommand("delete from CusOrderHeader where CusId='"+cmb_oi.SelectedItem+"'",con);
+                    //cf.ExecuteNonQuery();
+                    //con.Close();
+
+                    {
+
+                        foreach (DataGridViewRow drow in dataGridView1.Rows)
+                        {
+                            try
+                            {
+                                con.Open();
+                                cmd = new SqlCommand("select itemQty from Item where itemCode='" + Convert.ToInt32(drow.Cells["itm"].Value.ToString()) + "'", con);
+
+
+                                SqlDataReader rdr = cmd.ExecuteReader();
+                                rdr.Read();
+                                int temp = Convert.ToInt32(rdr[0].ToString());
+                                rdr.Close();
+                                int temp1 = temp - Convert.ToInt32(drow.Cells["Quantity"].Value.ToString());
+                                cmd = new SqlCommand("update Item set itemQty='" + temp1.ToString() + "' where itemCode='" + Convert.ToInt32(drow.Cells["itm"].Value.ToString()) + "'", con);
+                                cmd.ExecuteNonQuery();
+                                con.Close();
+
+                            }
+                            catch (Exception)
+
+                            {
+                                //  MessageBox.Show(exs.ToString());
+
+                                MessageBox.Show("Sale Recorded Successfully", "Sales information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                con.Close();
+                                Sales re = new Sales();
+                                re.Show();
+                                Dispose();
+                                //return;
+
+                            }
+                        }
+                    }
+
+
+
+                }
+
             }
-            
         }
 
         private void itmcmb_SelectedIndexChanged(object sender, EventArgs e)
@@ -242,7 +344,7 @@ namespace WindowsFormsApplication9
 
         private void Sales_Load(object sender, EventArgs e)
         {
-            
+
             SqlCommand cmd = new SqlCommand("select  itemName from Item ", con);
             con.Open();
             SqlDataReader rdr = cmd.ExecuteReader();
@@ -266,7 +368,7 @@ namespace WindowsFormsApplication9
             cmd = new SqlCommand("select  CusId from  Customer", con);
             con.Open();
             SqlDataAdapter ad = new SqlDataAdapter(cmd);
-           DataTable dt = new DataTable();
+            DataTable dt = new DataTable();
             ad.Fill(dt);
             foreach (DataRow row in dt.Rows)
             {
@@ -290,16 +392,16 @@ namespace WindowsFormsApplication9
 
             con.Close();
 
-           
 
-       
+
+
 
 
         }
-       
 
 
-       
+
+
 
         private void label5_Click(object sender, EventArgs e)
         {
@@ -321,8 +423,8 @@ namespace WindowsFormsApplication9
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
-           
+
+
         }
 
         private void btn_click_Click(object sender, EventArgs e)
@@ -340,14 +442,14 @@ namespace WindowsFormsApplication9
             //    ad.Fill(dt);
 
             //    con.Close();
-               
 
-            }
+
+        }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
             int no = Convert.ToInt32(cmb_oi.SelectedItem.ToString());
-            SqlCommand cd = new SqlCommand("select orderId from CusOrderHeader where CusId='"+no+"'",con);
+            SqlCommand cd = new SqlCommand("select orderId from CusOrderHeader where CusId='" + no + "'", con);
             con.Open();
             SqlDataAdapter de = new SqlDataAdapter(cd);
             DataTable ds = new DataTable();
@@ -382,11 +484,11 @@ namespace WindowsFormsApplication9
             cmb_order.Items.Clear();
 
             //            SqlCommand sd = new SqlCommand("select orderId from CusOrderHeader where CusId='"+cmb_oi.SelectedItem+"'",con);
-            cmd = new SqlCommand("select  orderId from CusOrderHeader where CusId='"+cmb_oi.SelectedItem+"' and status=0 ", con);
+            cmd = new SqlCommand("select  orderId from CusOrderHeader where CusId='" + cmb_oi.SelectedItem + "' and status=0 ", con);
             con.Open();
             SqlDataAdapter ad = new SqlDataAdapter(cmd);
             con.Close();
-           DataTable dt = new DataTable();
+            DataTable dt = new DataTable();
             ad.Fill(dt);
             foreach (DataRow row in dt.Rows)
             {
@@ -409,7 +511,7 @@ namespace WindowsFormsApplication9
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            SqlCommand cmd = new SqlCommand("select itemName from Item where itemCode='"+cmb_Code.SelectedItem+"'",con);
+            SqlCommand cmd = new SqlCommand("select itemName from Item where itemCode='" + cmb_Code.SelectedItem + "'", con);
             con.Open();
             SqlDataAdapter ad = new SqlDataAdapter(cmd);
             con.Close();
@@ -433,5 +535,5 @@ namespace WindowsFormsApplication9
 
         }
     }
-    }
+}
 

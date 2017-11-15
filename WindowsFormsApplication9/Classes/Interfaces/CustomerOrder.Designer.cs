@@ -325,7 +325,7 @@
             // btn_vo
             // 
             this.btn_vo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_vo.Location = new System.Drawing.Point(804, 499);
+            this.btn_vo.Location = new System.Drawing.Point(805, 499);
             this.btn_vo.Margin = new System.Windows.Forms.Padding(4);
             this.btn_vo.Name = "btn_vo";
             this.btn_vo.Size = new System.Drawing.Size(100, 26);

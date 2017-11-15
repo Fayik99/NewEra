@@ -99,6 +99,8 @@ namespace WindowsFormsApplication9
         int flag = 0;
         private void btn_add_Click(object sender, EventArgs e)
         {
+            
+                
             if (cmb_ic.SelectedIndex < 0 || string.IsNullOrEmpty(txt_q.Text))
             {
 
@@ -158,6 +160,7 @@ namespace WindowsFormsApplication9
                     con.Close();
                     dt.Rows.Add(customerorderlist.Item.ItemCode, customerorderlist.Item.ItemName, customerorderlist.Item.ItemPrice, customerorderlist.Orderqty, customerorderlist.subtotal);
                     dataGridView1.DataSource = dt;
+                dataGridView1.Refresh();
 
 
 
@@ -238,7 +241,8 @@ namespace WindowsFormsApplication9
 
 
             //}
-            //else
+            //else   
+            
             {
 
                 CusOrder b = new CusOrder();
@@ -246,8 +250,9 @@ namespace WindowsFormsApplication9
                 //  orderNumber = Convert.ToInt32(txt_eon.Text)
 
 
-                var dt = b.viewOrder();
-                dataGridView1.DataSource = dt;
+                var dat = b.viewOrder();
+                dataGridView1.DataSource = dat;
+                txt_q.Clear();
             }
         }
         private void btn_co_Click(object sender, EventArgs e)
@@ -316,7 +321,16 @@ namespace WindowsFormsApplication9
 
         private void btn_clear_Click(object sender, EventArgs e)
         {
-            dataGridView1.DataSource = "";
+           
+            
+                dataGridView1.DataSource = "";
+            if (dt.Rows.Count > 0)
+                dt.Clear();
+            // dt.Reset();
+            // addtodg();
+
+
+
         }
     }
 }

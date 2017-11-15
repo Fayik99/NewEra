@@ -63,12 +63,12 @@ namespace WindowsFormsApplication9.Classes
 
         public DataTable viewOrder()
         {
-            SqlCommand cmd = new SqlCommand("select * from CusOrderDetail ", con);
+            SqlCommand cma= new SqlCommand("select * from CusOrderDetail ", con);
             con.Open();
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            return dt;
+            SqlDataAdapter sda = new SqlDataAdapter(cma);
+            DataTable dat = new DataTable();
+            sda.Fill(dat);
+            return dat;
         }
     }
 }
