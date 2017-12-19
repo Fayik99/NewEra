@@ -59,7 +59,7 @@
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "WindowsFormsApplication9.Report3.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(120, 66);
             this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(725, 418);
+            this.reportViewer1.Size = new System.Drawing.Size(831, 543);
             this.reportViewer1.TabIndex = 0;
             // 
             // btn_back
@@ -76,7 +76,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(876, 247);
+            this.button1.Location = new System.Drawing.Point(982, 309);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(98, 34);
             this.button1.TabIndex = 2;
@@ -92,7 +92,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1000, 542);
+            this.ClientSize = new System.Drawing.Size(1109, 696);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btn_back);
             this.Controls.Add(this.reportViewer1);

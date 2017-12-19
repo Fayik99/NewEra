@@ -64,7 +64,7 @@ namespace WindowsFormsApplication9
 
         private void btn_add_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txt_name1.Text) ||  string.IsNullOrEmpty(txt_mob1.Text) || string.IsNullOrEmpty(txt_add11.Text) || string.IsNullOrEmpty(txt_add21.Text) || string.IsNullOrEmpty(txt_add31.Text))
+            if (string.IsNullOrEmpty(txt_name1.Text) || !txt_mob1.MaskFull || string.IsNullOrEmpty(txt_add11.Text) || string.IsNullOrEmpty(txt_add21.Text) || string.IsNullOrEmpty(txt_add31.Text))
             {
                 MessageBox.Show("One or more fields are empty, please fill", "Add Error");
                 return;
@@ -107,6 +107,7 @@ namespace WindowsFormsApplication9
                 refresh.Show();
                 MessageBox.Show("Successful", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            con.Close();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -129,7 +130,7 @@ namespace WindowsFormsApplication9
 
         private void btn_up_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txt_name2.Text) || string.IsNullOrEmpty(txt_mob2.Text) || string.IsNullOrEmpty(txt_add12.Text) || string.IsNullOrEmpty(txt_add22.Text) || string.IsNullOrEmpty(txt_add32.Text))
+            if (string.IsNullOrEmpty(txt_name2.Text) || !txt_mob2.MaskFull || string.IsNullOrEmpty(txt_add12.Text) || string.IsNullOrEmpty(txt_add22.Text) || string.IsNullOrEmpty(txt_add32.Text))
             {
                 MessageBox.Show("One or more fields are empty, please fill", "Add Error");
                 return;

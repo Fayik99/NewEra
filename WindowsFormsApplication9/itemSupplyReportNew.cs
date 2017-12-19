@@ -19,6 +19,8 @@ namespace WindowsFormsApplication9
 
         private void itemSupplyReportNew_Load(object sender, EventArgs e)
         {
+            
+
         }
 
         private void btn_gen_Click(object sender, EventArgs e)

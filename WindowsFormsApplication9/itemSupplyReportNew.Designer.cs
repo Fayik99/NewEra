@@ -92,7 +92,7 @@
             // btn_gen
             // 
             this.btn_gen.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_gen.Location = new System.Drawing.Point(885, 301);
+            this.btn_gen.Location = new System.Drawing.Point(996, 375);
             this.btn_gen.Name = "btn_gen";
             this.btn_gen.Size = new System.Drawing.Size(94, 35);
             this.btn_gen.TabIndex = 4;
@@ -106,9 +106,9 @@
             reportDataSource1.Value = this.itemSupplyBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "WindowsFormsApplication9.Report7.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(174, 142);
+            this.reportViewer1.Location = new System.Drawing.Point(119, 142);
             this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(684, 481);
+            this.reportViewer1.Size = new System.Drawing.Size(850, 517);
             this.reportViewer1.TabIndex = 5;
             // 
             // itemSupplyTableAdapter
@@ -130,7 +130,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1103, 671);
+            this.ClientSize = new System.Drawing.Size(1143, 736);
             this.Controls.Add(this.btn_back);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.btn_gen);

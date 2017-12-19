@@ -17,6 +17,7 @@ namespace WindowsFormsApplication9
     {
         DataTable dt = new DataTable();
         SqlConnection con;
+        int quan = 0;
 
         public string conString = "";
 
@@ -110,12 +111,13 @@ namespace WindowsFormsApplication9
 
         }
         int result = 0;
+
         private void btn_add_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txt_q.Text) || cmb_in.SelectedIndex < 0 || cmb_sid.SelectedIndex<0)
+            if (!txt_q.Text.Any(char.IsDigit) || cmb_in.SelectedIndex < 0 )
             {
 
-                MessageBox.Show("field cannot be blank", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("field cannot be blank or invalid format", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
             else {
@@ -127,9 +129,9 @@ namespace WindowsFormsApplication9
                     foreach (DataGridViewRow row in dataGridView1.Rows)
                     {
                         btn_add.Enabled = true;
-                        if (row.Cells[1].Value != null)
+                        if (row.Cells[2].Value != null)
                         {
-                            var id = row.Cells[1].Value.ToString();
+                            var id = row.Cells[2].Value.ToString();
                             if (id.Equals(cmb_in.SelectedItem.ToString()))
                             {
                                 MessageBox.Show("You can edit you Quantity for same item", "Information", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
@@ -142,12 +144,6 @@ namespace WindowsFormsApplication9
                     }
 
                 }
-
-
-
-
-
-
 
 
 
@@ -210,10 +206,10 @@ namespace WindowsFormsApplication9
 
         private void btn_sub_Click(object sender, EventArgs e)
         {
-            if (cmb_sid.SelectedIndex < 0 || cmb_in.SelectedIndex < 0 || string.IsNullOrEmpty(txt_q.Text)|| dataGridView1.Rows.Count==0 )
+            if (cmb_sid.SelectedIndex < 0 || cmb_in.SelectedIndex < 0 || !txt_q.Text.Any(char.IsDigit)|| dataGridView1.Rows.Count==0 )
             {
 
-                MessageBox.Show("Fields cannot be blank", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Fields cannot be blank or invalid format", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
 
             }
@@ -238,7 +234,7 @@ namespace WindowsFormsApplication9
 
                 ad.sAddOrder(dataGridView1, dataOrg, ad, Convert.ToInt32(lbl_logprop.Text));
                 RecordSupplyOrder sb = new RecordSupplyOrder();
-                this.Hide();
+                Hide();
                 sb.Show();
                 
 
@@ -253,6 +249,43 @@ namespace WindowsFormsApplication9
         private void lbl_code_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataOrg_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridView1.Rows.Count != 1)
+            {
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+
+                    if (row.Cells[2].Value != null)
+                    {
+                        var id = row.Cells[2].Value.ToString();
+
+                        if (id.Equals(cmb_in.SelectedItem.ToString()))
+                        {
+
+                            quan = (Convert.ToInt32(row.Cells[4].Value) * Convert.ToInt32(row.Cells[3].Value));
+                            row.Cells[5].Value = this.quan;
+                            lbl_gross.Text = 0.ToString();
+                            foreach (DataGridViewRow dr in dataGridView1.Rows)
+                            {
+
+                                lbl_gross.Text = (Convert.ToInt32(lbl_gross.Text) + Convert.ToInt32(dr.Cells[5].Value)).ToString();
+
+                            }
+                        }
+
+                    }
+                }
+
+
+            }
         }
 
 

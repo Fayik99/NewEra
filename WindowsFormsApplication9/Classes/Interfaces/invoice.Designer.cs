@@ -79,9 +79,10 @@
             // 
             // btn_cls
             // 
+            this.btn_cls.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_cls.Location = new System.Drawing.Point(336, 365);
             this.btn_cls.Name = "btn_cls";
-            this.btn_cls.Size = new System.Drawing.Size(75, 23);
+            this.btn_cls.Size = new System.Drawing.Size(81, 33);
             this.btn_cls.TabIndex = 4;
             this.btn_cls.Text = "Close";
             this.btn_cls.UseVisualStyleBackColor = true;

@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SalesReport));
+            this.invoiceDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.NewEraDBDataSet = new WindowsFormsApplication9.NewEraDBDataSet();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -43,14 +45,22 @@
             this.ReportDS = new WindowsFormsApplication9.ReportDS();
             this.ItemTableAdapter = new WindowsFormsApplication9.ReportDSTableAdapters.ItemTableAdapter();
             this.btn_back = new System.Windows.Forms.Button();
-            this.invoiceDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.NewEraDBDataSet = new WindowsFormsApplication9.NewEraDBDataSet();
             this.invoiceDetailTableAdapter = new WindowsFormsApplication9.NewEraDBDataSetTableAdapters.invoiceDetailTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.ItemBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ReportDS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoiceDetailBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.NewEraDBDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReportDS)).BeginInit();
             this.SuspendLayout();
+            // 
+            // invoiceDetailBindingSource
+            // 
+            this.invoiceDetailBindingSource.DataMember = "invoiceDetail";
+            this.invoiceDetailBindingSource.DataSource = this.NewEraDBDataSet;
+            // 
+            // NewEraDBDataSet
+            // 
+            this.NewEraDBDataSet.DataSetName = "NewEraDBDataSet";
+            this.NewEraDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label1
             // 
@@ -99,7 +109,7 @@
             // btn_gen
             // 
             this.btn_gen.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_gen.Location = new System.Drawing.Point(1007, 363);
+            this.btn_gen.Location = new System.Drawing.Point(1056, 392);
             this.btn_gen.Name = "btn_gen";
             this.btn_gen.Size = new System.Drawing.Size(92, 30);
             this.btn_gen.TabIndex = 5;
@@ -119,7 +129,7 @@
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "WindowsFormsApplication9.Classes.Report2.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(164, 183);
             this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.Size = new System.Drawing.Size(821, 478);
+            this.reportViewer1.Size = new System.Drawing.Size(875, 530);
             this.reportViewer1.TabIndex = 12;
             this.reportViewer1.Load += new System.EventHandler(this.reportViewer1_Load);
             // 
@@ -148,16 +158,6 @@
             this.btn_back.UseVisualStyleBackColor = true;
             this.btn_back.Click += new System.EventHandler(this.btn_back_Click);
             // 
-            // invoiceDetailBindingSource
-            // 
-            this.invoiceDetailBindingSource.DataMember = "invoiceDetail";
-            this.invoiceDetailBindingSource.DataSource = this.NewEraDBDataSet;
-            // 
-            // NewEraDBDataSet
-            // 
-            this.NewEraDBDataSet.DataSetName = "NewEraDBDataSet";
-            this.NewEraDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // invoiceDetailTableAdapter
             // 
             this.invoiceDetailTableAdapter.ClearBeforeFill = true;
@@ -166,7 +166,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1128, 713);
+            this.ClientSize = new System.Drawing.Size(1196, 741);
             this.Controls.Add(this.reportViewer1);
             this.Controls.Add(this.btn_back);
             this.Controls.Add(this.btn_gen);
@@ -178,10 +178,10 @@
             this.Name = "SalesReport";
             this.Text = "Sales Report";
             this.Load += new System.EventHandler(this.SalesReport_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.ItemBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ReportDS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.invoiceDetailBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.NewEraDBDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ItemBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ReportDS)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

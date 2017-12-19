@@ -94,9 +94,11 @@ namespace WindowsFormsApplication9
 
         private void btn_add_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txt_name.Text) || string.IsNullOrEmpty(txt_price.Text) || string.IsNullOrEmpty(txt_q.Text) || cmb_sup.SelectedIndex <0)
+           
+
+            if (string.IsNullOrEmpty(txt_name.Text) || !txt_price.Text.Any(char.IsDigit) || !txt_q.Text.Any(char.IsDigit) || cmb_sup.SelectedIndex < 0)
             {
-                MessageBox.Show("Field cannot be blank");
+                MessageBox.Show("Field cannot be blank or invalid formats","information",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 return;
             }
             else

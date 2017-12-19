@@ -343,7 +343,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(960, 113);
+            this.label12.Location = new System.Drawing.Point(960, 108);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(82, 16);
             this.label12.TabIndex = 32;
@@ -364,6 +364,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1353, 720);
             this.Controls.Add(this.btn_view);
             this.Controls.Add(this.label12);

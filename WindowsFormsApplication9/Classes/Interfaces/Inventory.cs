@@ -27,7 +27,7 @@ namespace WindowsFormsApplication9
 
         private void btn_search_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txt_ic.Text) == false)
+            if (  txt_ic.Text.Any(char.IsDigit))
             {
                 Item ab = new Item()
                 {

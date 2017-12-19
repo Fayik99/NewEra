@@ -35,7 +35,7 @@ namespace WindowsFormsApplication9.Classes
 
         }
 
-        public void sAddOrder(DataGridView dataGridView1, DataGridView dataOrg,PurchaseOrder ad,int a)
+        public void sAddOrder(DataGridView dataGridView1, DataGridView dataOrg,PurchaseOrder ad,int ab)
         {
             //int qty;
             //int ic;
@@ -50,12 +50,12 @@ namespace WindowsFormsApplication9.Classes
             //con.Close();
             getQua(dataOrg);
 
-            for (int i = 0; i < dataGridView1.RowCount - 1; i++)
+            for (int i=0; i < dataGridView1.RowCount -1; i++)
             {
                 
-                int qty1 = Convert.ToInt32(dataGridView1.Rows[i].Cells[3].Value);
-                int itemCode = Convert.ToInt32(dataGridView1.Rows[i].Cells[0].Value);
-                int subTot = Convert.ToInt32(dataGridView1.Rows[i].Cells[4].Value);
+                int qty1 = Convert.ToInt32(dataGridView1.Rows[i].Cells[4].Value);
+                int itemCode = Convert.ToInt32(dataGridView1.Rows[i].Cells[1].Value);
+                int subTot = Convert.ToInt32(dataGridView1.Rows[i].Cells[5].Value);
                 int status = 0;
                 con.Open();
                 SqlCommand cmd = new SqlCommand("insert into PurchaseOrderDetailFile values('" +  ad.orderId+ "','"+itemCode+"','" + qty1 + "','"+ subTot + "','"+Convert.ToInt32(status)+"')", con);
@@ -65,7 +65,7 @@ namespace WindowsFormsApplication9.Classes
             
             con.Open();
             DateTime datte = Convert.ToDateTime(DateTime.Now.Date.ToString());
-            SqlCommand cms = new SqlCommand("insert into PurchaseOrderHeaderFile values('" + ad.supplier.supId + "', '" + ad.orderId + "',CONVERT(DATETIME,'" + datte.ToShortDateString() + "',103),'" + ad.grosstotal+"','"+a+"'", con);
+            SqlCommand cms = new SqlCommand("insert into PurchaseOrderHeaderFile values('" + ad.supplier.supId + "', '" + ad.orderId + "',CONVERT(DATETIME,'" + datte.ToShortDateString() + "',103),'" +ad.grosstotal+"','"+ab+"')", con);
             cms.ExecuteNonQuery();
             con.Close();
             //dataGridView1.Rows.Clear();

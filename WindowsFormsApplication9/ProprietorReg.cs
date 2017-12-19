@@ -93,6 +93,7 @@ namespace WindowsFormsApplication9
 
                 MessageBox.Show("Registered Successfully", "proprietor register", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ProprietorReg tr = new ProprietorReg();
+                Hide();
                 tr.Show();
             }
 

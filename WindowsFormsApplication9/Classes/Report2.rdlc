@@ -420,7 +420,7 @@
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
         <Top>0.9525cm</Top>
-        <Left>0.68792cm</Left>
+        <Left>3.28084cm</Left>
         <Height>2.23188cm</Height>
         <Width>16.51cm</Width>
         <Style>
@@ -436,7 +436,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>="Gross sales" &amp; SUM(cint(Fields!totsubtotal.Value))</Value>
+                <Value>="Gross sales " &amp; SUM(cint(Fields!totsubtotal.Value))</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -444,8 +444,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox22</rd:DefaultName>
-        <Top>3.8064cm</Top>
-        <Left>13.89592cm</Left>
+        <Top>6.18765cm</Top>
+        <Left>16.48884cm</Left>
         <Height>0.6cm</Height>
         <Width>4.19334cm</Width>
         <ZIndex>1</ZIndex>
@@ -475,21 +475,11 @@
         </Style>
       </Image>
     </ReportItems>
-    <Height>3.46875in</Height>
+    <Height>5.27083in</Height>
     <Style />
   </Body>
-  <Width>8.4685in</Width>
+  <Width>9.11433in</Width>
   <Page>
-    <PageHeader>
-      <Height>2.54cm</Height>
-      <PrintOnFirstPage>true</PrintOnFirstPage>
-      <PrintOnLastPage>true</PrintOnLastPage>
-      <Style>
-        <Border>
-          <Style>None</Style>
-        </Border>
-      </Style>
-    </PageHeader>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>
     <LeftMargin>2cm</LeftMargin>

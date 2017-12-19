@@ -40,14 +40,15 @@
             this.txt_q = new System.Windows.Forms.TextBox();
             this.btn_add = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btn_sub = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.btn_back = new System.Windows.Forms.Button();
-            this.dataOrg = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.lbl_gross = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lbl_logprop = new System.Windows.Forms.Label();
+            this.dataOrg = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataOrg)).BeginInit();
             this.SuspendLayout();
@@ -124,7 +125,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(518, 241);
+            this.label7.Location = new System.Drawing.Point(544, 244);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(57, 15);
             this.label7.TabIndex = 8;
@@ -151,15 +152,23 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1});
             this.dataGridView1.Location = new System.Drawing.Point(228, 307);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(545, 117);
+            this.dataGridView1.Size = new System.Drawing.Size(601, 105);
             this.dataGridView1.TabIndex = 11;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "update";
+            this.Column1.Name = "Column1";
             // 
             // btn_sub
             // 
             this.btn_sub.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_sub.Location = new System.Drawing.Point(800, 354);
+            this.btn_sub.Location = new System.Drawing.Point(857, 352);
             this.btn_sub.Name = "btn_sub";
             this.btn_sub.Size = new System.Drawing.Size(79, 30);
             this.btn_sub.TabIndex = 12;
@@ -187,14 +196,6 @@
             this.btn_back.TabIndex = 14;
             this.btn_back.UseVisualStyleBackColor = true;
             this.btn_back.Click += new System.EventHandler(this.btn_back_Click);
-            // 
-            // dataOrg
-            // 
-            this.dataOrg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataOrg.Location = new System.Drawing.Point(228, 307);
-            this.dataOrg.Name = "dataOrg";
-            this.dataOrg.Size = new System.Drawing.Size(545, 117);
-            this.dataOrg.TabIndex = 15;
             // 
             // label3
             // 
@@ -234,6 +235,15 @@
             this.lbl_logprop.Size = new System.Drawing.Size(51, 16);
             this.lbl_logprop.TabIndex = 20;
             this.lbl_logprop.Text = "label4";
+            // 
+            // dataOrg
+            // 
+            this.dataOrg.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataOrg.Location = new System.Drawing.Point(213, 307);
+            this.dataOrg.Name = "dataOrg";
+            this.dataOrg.Size = new System.Drawing.Size(616, 117);
+            this.dataOrg.TabIndex = 15;
+            this.dataOrg.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataOrg_CellContentClick);
             // 
             // RecordSupplyOrder
             // 
@@ -285,10 +295,11 @@
         private System.Windows.Forms.Button btn_sub;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btn_back;
-        private System.Windows.Forms.DataGridView dataOrg;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lbl_gross;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lbl_logprop;
+        private System.Windows.Forms.DataGridView dataOrg;
+        private System.Windows.Forms.DataGridViewButtonColumn Column1;
     }
 }

@@ -182,6 +182,9 @@
     <Compile Include="ItemView.Designer.cs">
       <DependentUpon>ItemView.cs</DependentUpon>
     </Compile>
+    <Compile Include="NewEraDBDataSet.cs">
+      <DependentUpon>NewEraDBDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="NewEraDBDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

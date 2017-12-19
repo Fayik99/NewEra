@@ -15,6 +15,7 @@ namespace WindowsFormsApplication9
     public partial class Quotation : Form
     {
         SqlConnection con;
+        DataTable dt = new DataTable();
 
         public Quotation()
         {
@@ -22,6 +23,7 @@ namespace WindowsFormsApplication9
 
             string conString = System.Configuration.ConfigurationManager.ConnectionStrings["NewEraDBcontext"].ConnectionString;
             con = new SqlConnection(conString);
+            addvv();
         }
 
         private void btn_back_Click(object sender, EventArgs e)
@@ -101,11 +103,86 @@ namespace WindowsFormsApplication9
             else
             {
 
+                if (dataGridView1.Rows.Count != 1)
+                {
+                    foreach (DataGridViewRow row in dataGridView1.Rows)
+                    {
+                        btn_add.Enabled = true;
+                        if (row.Cells[1].Value != null)
+                        {
+                            var id = row.Cells[1].Value.ToString();
+                            if (id.Equals(cmb_in.SelectedItem.ToString()))
+                            {
+                                MessageBox.Show("You can't select same item", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                btn_add.Enabled = false;
+                                return;
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+
+
+
+
+
+
+
+
+
+
+                con.Open();
                 String name = cmb_in.SelectedItem.ToString();
-                Quotations sas = new Quotations();
-                DataTable dt = sas.addQuot(name);
+                //Quotations sas = new Quotations();
+                //var dr = sas.addQuot(name);
+                SqlCommand cmd = new SqlCommand("select itemCode,itemname,itemPrice from Item where ItemName='" + name + "'", con);
+                //SqlDataAdapter ad = new SqlDataAdapter(cmd);
+                SqlDataReader dr = cmd.ExecuteReader();
+
+
+
+
+                dr.Read();
+
+                Quotations s = new Quotations()
+                {
+                    Item1 = new Item()
+                    {
+                        ItemCode = Convert.ToInt16(dr[0].ToString()),
+                        ItemName = dr[1].ToString(),
+                        ItemPrice = Convert.ToInt16(dr[2].ToString())
+
+                    }
+
+                };
+                dr.Close();
+                con.Close();
+
+                dt.Rows.Add(s.Item1.ItemCode, s.Item1.ItemName, s.Item1.ItemPrice);
                 dataGridView1.DataSource = dt;
             }
+
+
+        }
+
+
+
+        public void addvv()
+
+        {
+
+
+            dt.Columns.Add("item Code", typeof(int));
+            dt.Columns.Add("Name", typeof(string));
+            dt.Columns.Add("Price", typeof(int));
+
+
+            dataGridView1.DataSource = dt;
+
 
 
         }
@@ -144,14 +221,11 @@ namespace WindowsFormsApplication9
 
 
                 };
-                abcd.quotMenu(abcd, Convert.ToInt32(cmb_ci1.SelectedItem.ToString()));
 
-                MessageBox.Show("Successful", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 con.Open();
                 SqlCommand cd = new SqlCommand("select itemCode from Item where itemName='" + cmb_in.SelectedItem + "'", con);
                 SqlDataReader dr = cd.ExecuteReader();
                 dr.Read();
-
 
                 Quotations we = new Quotations()
                 {
@@ -166,10 +240,65 @@ namespace WindowsFormsApplication9
 
 
                 };
-                we.quotMenu1(we, Convert.ToInt32(lbl_qn.Text.ToString()));
+
+
                 dr.Close();
                 con.Close();
+
+
+
+                con.Open();
+                SqlCommand cms = new SqlCommand("insert into QuotationHeaderFile values('" + Convert.ToInt32(cmb_ci1.SelectedItem.ToString()) + "','" + abcd.quotationCreateDate + "','" + abcd.quotExpDate + "')", con);
+
+                cms.ExecuteNonQuery();
+                con.Close();
+
+                //foreach (DataGridViewRow row in dataGridView1.Rows)
+                //{
+
+                for (int i = 0; i < dataGridView1.RowCount - 1; i++)
+                {
+
+                    int itemCode = Convert.ToInt32(dataGridView1.Rows[i].Cells[0].Value);
+
+
+                    con.Open();
+                    SqlCommand cm = new SqlCommand("insert into QuotationDetailFile values('" + Convert.ToInt32(lbl_qn.Text.ToString()) + "','" + itemCode + "')", con);
+
+                    cm.ExecuteNonQuery();
+                    con.Close();
+
+
+                }
+
+
+                //  abcd.quotMenu(abcd, Convert.ToInt32(cmb_ci1.SelectedItem.ToString()));
+
+                MessageBox.Show("Successful", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                con.Open();
+                //cd = new SqlCommand("select itemCode from Item where itemName='" + cmb_in.SelectedItem + "'", con);
+
+                //dr.Read();
+
+
+                //Quotations we = new Quotations()
+                //{
+
+                //    Item1 = new Item()
+                //    {
+
+                //        ItemCode = Convert.ToInt32(dr[0].ToString())
+
+
+                //    },
+
+
+                //};
+                // we.quotMenu1(we, Convert.ToInt32(lbl_qn.Text.ToString()));
+
+                con.Close();
                 Quotation sd = new Quotation();
+                Hide();
                 sd.Show();
             }
         }
@@ -178,7 +307,7 @@ namespace WindowsFormsApplication9
             try
             {
 
-                if (string.IsNullOrEmpty(txt_can.Text) || cmb_cName.SelectedIndex<0)
+                if (string.IsNullOrEmpty(txt_can.Text) || cmb_cName.SelectedIndex < 0)
                 {
                     MessageBox.Show("insert a correct Quotationnumber or select correct customer name");
                 }
@@ -204,7 +333,7 @@ namespace WindowsFormsApplication9
 
         private void btn_cancel_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txt_can.Text) )
+            if (string.IsNullOrEmpty(txt_can.Text))
 
             {
 
@@ -275,15 +404,16 @@ namespace WindowsFormsApplication9
                 con.Close();
 
             }
-
-
-
-
         }
 
         private void btn_gen_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void cmb_in_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btn_add.Enabled = true;
         }
     }
 }

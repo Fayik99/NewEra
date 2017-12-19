@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Sales));
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -42,11 +41,6 @@
             this.txt_sell = new System.Windows.Forms.TextBox();
             this.txt_q = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.itm = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItmName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SellPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_sub = new System.Windows.Forms.Button();
             this.btn_cls = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
@@ -67,21 +61,20 @@
             this.lbl_in = new System.Windows.Forms.Label();
             this.cmb_Code = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.itm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItmName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SellPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(186, 26);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 20);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Invoice";
             // 
             // label2
             // 
@@ -116,10 +109,10 @@
             // 
             // btn_search
             // 
-            this.btn_search.Location = new System.Drawing.Point(881, 602);
+            this.btn_search.Location = new System.Drawing.Point(881, 596);
             this.btn_search.Margin = new System.Windows.Forms.Padding(4);
             this.btn_search.Name = "btn_search";
-            this.btn_search.Size = new System.Drawing.Size(100, 26);
+            this.btn_search.Size = new System.Drawing.Size(100, 32);
             this.btn_search.TabIndex = 8;
             this.btn_search.Text = "Search";
             this.btn_search.UseVisualStyleBackColor = true;
@@ -205,42 +198,19 @@
             this.ItmName,
             this.SellPrice,
             this.Quantity,
-            this.Column1});
-            this.dataGridView1.Location = new System.Drawing.Point(576, 333);
+            this.Column1,
+            this.Column2});
+            this.dataGridView1.Location = new System.Drawing.Point(567, 333);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(543, 112);
+            this.dataGridView1.Size = new System.Drawing.Size(637, 112);
             this.dataGridView1.TabIndex = 20;
-            // 
-            // itm
-            // 
-            this.itm.HeaderText = "item Code";
-            this.itm.Name = "itm";
-            // 
-            // ItmName
-            // 
-            this.ItmName.HeaderText = "Item Name";
-            this.ItmName.Name = "ItmName";
-            // 
-            // SellPrice
-            // 
-            this.SellPrice.HeaderText = "Sell Price";
-            this.SellPrice.Name = "SellPrice";
-            // 
-            // Quantity
-            // 
-            this.Quantity.HeaderText = "Quantity";
-            this.Quantity.Name = "Quantity";
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "subtotal";
-            this.Column1.Name = "Column1";
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // btn_sub
             // 
             this.btn_sub.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_sub.Location = new System.Drawing.Point(724, 525);
+            this.btn_sub.Location = new System.Drawing.Point(730, 528);
             this.btn_sub.Margin = new System.Windows.Forms.Padding(4);
             this.btn_sub.Name = "btn_sub";
             this.btn_sub.Size = new System.Drawing.Size(100, 27);
@@ -252,10 +222,10 @@
             // btn_cls
             // 
             this.btn_cls.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cls.Location = new System.Drawing.Point(855, 525);
+            this.btn_cls.Location = new System.Drawing.Point(855, 528);
             this.btn_cls.Margin = new System.Windows.Forms.Padding(4);
             this.btn_cls.Name = "btn_cls";
-            this.btn_cls.Size = new System.Drawing.Size(109, 30);
+            this.btn_cls.Size = new System.Drawing.Size(109, 27);
             this.btn_cls.TabIndex = 22;
             this.btn_cls.Text = "Close";
             this.btn_cls.UseVisualStyleBackColor = true;
@@ -265,7 +235,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(725, 488);
+            this.label11.Location = new System.Drawing.Point(747, 479);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(85, 16);
@@ -389,7 +359,7 @@
             // lbl_grossTotal
             // 
             this.lbl_grossTotal.AutoSize = true;
-            this.lbl_grossTotal.Location = new System.Drawing.Point(818, 488);
+            this.lbl_grossTotal.Location = new System.Drawing.Point(852, 480);
             this.lbl_grossTotal.Name = "lbl_grossTotal";
             this.lbl_grossTotal.Size = new System.Drawing.Size(55, 15);
             this.lbl_grossTotal.TabIndex = 44;
@@ -438,11 +408,64 @@
             this.label14.Text = "Item Code\r\n";
             this.label14.Click += new System.EventHandler(this.label14_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(-23, -46);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
+            this.pictureBox1.TabIndex = 47;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox2.Location = new System.Drawing.Point(137, 525);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(261, 110);
+            this.pictureBox2.TabIndex = 48;
+            this.pictureBox2.TabStop = false;
+            // 
+            // itm
+            // 
+            this.itm.HeaderText = "item Code";
+            this.itm.Name = "itm";
+            // 
+            // ItmName
+            // 
+            this.ItmName.HeaderText = "Item Name";
+            this.ItmName.Name = "ItmName";
+            // 
+            // SellPrice
+            // 
+            this.SellPrice.HeaderText = "Sell Price";
+            this.SellPrice.Name = "SellPrice";
+            // 
+            // Quantity
+            // 
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.Name = "Quantity";
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "subtotal";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "update";
+            this.Column2.Name = "Column2";
+            this.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // Sales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1217, 682);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1235, 682);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.cmb_Code);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.lbl_grossTotal);
@@ -475,7 +498,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Sales";
@@ -484,14 +506,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -511,11 +533,6 @@
         private System.Windows.Forms.ComboBox cmb_item;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn itm;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ItmName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SellPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox cmb_oi;
         private System.Windows.Forms.ComboBox cmb_order;
@@ -529,5 +546,13 @@
         private System.Windows.Forms.Label lbl_in;
         private System.Windows.Forms.ComboBox cmb_Code;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn itm;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ItmName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SellPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewButtonColumn Column2;
     }
 }

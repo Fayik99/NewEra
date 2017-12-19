@@ -114,13 +114,14 @@
             this.cmb_in.Name = "cmb_in";
             this.cmb_in.Size = new System.Drawing.Size(121, 21);
             this.cmb_in.TabIndex = 5;
+            this.cmb_in.SelectedIndexChanged += new System.EventHandler(this.cmb_in_SelectedIndexChanged);
             // 
             // btn_add
             // 
             this.btn_add.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_add.Location = new System.Drawing.Point(612, 253);
+            this.btn_add.Location = new System.Drawing.Point(612, 257);
             this.btn_add.Name = "btn_add";
-            this.btn_add.Size = new System.Drawing.Size(75, 24);
+            this.btn_add.Size = new System.Drawing.Size(75, 28);
             this.btn_add.TabIndex = 6;
             this.btn_add.Text = "Add";
             this.btn_add.UseVisualStyleBackColor = true;
@@ -136,7 +137,7 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(115, 323);
+            this.dataGridView1.Location = new System.Drawing.Point(115, 316);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(441, 120);
             this.dataGridView1.TabIndex = 8;
@@ -197,7 +198,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(112, 108);
+            this.label4.Location = new System.Drawing.Point(119, 109);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(81, 15);
             this.label4.TabIndex = 14;
@@ -294,6 +295,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1194, 670);
             this.Controls.Add(this.lbl_cus);
             this.Controls.Add(this.lbl_cusid);

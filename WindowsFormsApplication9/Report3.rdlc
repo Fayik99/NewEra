@@ -6,21 +6,21 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>3.71047cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>3.71047cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>3.71047cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.5cm</Width>
+              <Width>3.71047cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
             <TablixRow>
-              <Height>0.6cm</Height>
+              <Height>0.95719cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -177,7 +177,7 @@
               </TablixCells>
             </TablixRow>
             <TablixRow>
-              <Height>0.6cm</Height>
+              <Height>0.95719cm</Height>
               <TablixCells>
                 <TablixCell>
                   <CellContents>
@@ -301,7 +301,7 @@
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Right</TextAlign>
+                            <TextAlign>Center</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -343,9 +343,9 @@
         </TablixRowHierarchy>
         <DataSetName>stockdataset</DataSetName>
         <Top>0.47625cm</Top>
-        <Left>3.86833cm</Left>
-        <Height>1.2cm</Height>
-        <Width>10cm</Width>
+        <Left>2.94229cm</Left>
+        <Height>1.91438cm</Height>
+        <Width>14.84188cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -356,8 +356,8 @@
         <Source>Embedded</Source>
         <Value>logo</Value>
         <Sizing>FitProportional</Sizing>
-        <Top>3.93912cm</Top>
-        <Left>1.16417cm</Left>
+        <Top>4.04454cm</Top>
+        <Left>2.94229cm</Left>
         <Height>1.5cm</Height>
         <Width>3.48437cm</Width>
         <ZIndex>1</ZIndex>
@@ -382,10 +382,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox1</rd:DefaultName>
-        <Top>3.93912cm</Top>
-        <Left>8.86833cm</Left>
+        <Top>4.04454cm</Top>
+        <Left>10.36323cm</Left>
         <Height>0.6cm</Height>
-        <Width>2.5cm</Width>
+        <Width>3.34667cm</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -398,21 +398,11 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>2.90625in</Height>
+    <Height>4.86458in</Height>
     <Style />
   </Body>
-  <Width>7.21875in</Width>
+  <Width>9.1875in</Width>
   <Page>
-    <PageHeader>
-      <Height>2.54cm</Height>
-      <PrintOnFirstPage>true</PrintOnFirstPage>
-      <PrintOnLastPage>true</PrintOnLastPage>
-      <Style>
-        <Border>
-          <Style>None</Style>
-        </Border>
-      </Style>
-    </PageHeader>
     <PageHeight>29.7cm</PageHeight>
     <PageWidth>21cm</PageWidth>
     <LeftMargin>2cm</LeftMargin>
