@@ -94,11 +94,27 @@ namespace WindowsFormsApplication9
 
         private void btn_add_Click(object sender, EventArgs e)
         {
-           
+            
 
-            if (string.IsNullOrEmpty(txt_name.Text) || !txt_price.Text.Any(char.IsDigit) || !txt_q.Text.Any(char.IsDigit) || cmb_sup.SelectedIndex < 0)
+            if (string.IsNullOrEmpty(txt_name.Text) || string.IsNullOrEmpty(txt_price.Text)||string.IsNullOrEmpty(txt_q.Text) || cmb_sup.SelectedIndex < 0)
             {
                 MessageBox.Show("Field cannot be blank or invalid formats","information",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                return;
+
+                
+            }
+
+           else if (!txt_price.Text.Any(char.IsDigit) || !txt_q.Text.Any(char.IsDigit))
+            {
+                MessageBox.Show("Quantity and price should be numerical", "information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+
+
+            }
+
+            if (Convert.ToDouble(txt_price.Text) <= 0 || Convert.ToDouble(txt_q.Text) <= 0)
+            {
+                MessageBox.Show("Price or Quantity cannot be a negative value", "information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             else
@@ -283,6 +299,20 @@ namespace WindowsFormsApplication9
             mn.Show();
             
          
+
+        }
+
+        private void txt_name_TextChanged(object sender, EventArgs e)
+        {
+            //if (txt_name.Text.Any(char.IsDigit))
+            //{
+            //    MessageBox.Show("you can't enter numbers here", "information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            //}
+        }
+
+        private void txt_price_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

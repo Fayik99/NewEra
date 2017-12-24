@@ -189,6 +189,7 @@
             this.txt_name.Name = "txt_name";
             this.txt_name.Size = new System.Drawing.Size(132, 21);
             this.txt_name.TabIndex = 11;
+            this.txt_name.TextChanged += new System.EventHandler(this.txt_name_TextChanged);
             // 
             // txt_a1
             // 
@@ -251,6 +252,7 @@
             this.txt_q.Name = "txt_q";
             this.txt_q.Size = new System.Drawing.Size(132, 21);
             this.txt_q.TabIndex = 19;
+            this.txt_q.TextChanged += new System.EventHandler(this.txt_q_TextChanged);
             // 
             // btn_add
             // 

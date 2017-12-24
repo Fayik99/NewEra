@@ -180,5 +180,23 @@ namespace WindowsFormsApplication9
                 MessageBox.Show("Successfully deleted", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void txt_name1_TextChanged(object sender, EventArgs e)
+        {
+            if(txt_name1.Text.Any(char.IsDigit))
+            {
+                MessageBox.Show("you can't enter numbers here","information",MessageBoxButtons.OK,MessageBoxIcon.Information);
+
+            }
+        }
+
+        private void txt_name2_TextChanged(object sender, EventArgs e)
+        {
+            if (txt_name2.Text.Any(char.IsDigit))
+            {
+                MessageBox.Show("you can't enter numbers here", "information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+        }
     }
 }

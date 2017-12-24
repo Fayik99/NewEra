@@ -50,7 +50,8 @@ namespace WindowsFormsApplication9
 
         private void SalesReport_Load(object sender, EventArgs e)
         {
-        
+            
+
         }
 
         private void btn_prnt_Click(object sender, EventArgs e)

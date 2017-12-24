@@ -107,6 +107,15 @@ namespace WindowsFormsApplication9
             {
 
                 MessageBox.Show("Field cannot be empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (Convert.ToDouble(txt_q.Text) <= 0)
+            {
+
+
+                MessageBox.Show("Quantity cannot be a negative value", "information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+
             }
 
             else
@@ -283,7 +292,7 @@ namespace WindowsFormsApplication9
         }
         private void btn_co_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txt_on.Text))
+            if (string.IsNullOrEmpty(txt_on.Text) || !txt_on.Text.Any(char.IsDigit))
             {
                 MessageBox.Show("Enter Order number");
 
@@ -325,9 +334,9 @@ namespace WindowsFormsApplication9
          
 
 
-            if (string.IsNullOrEmpty(txt_name.Text) || string.IsNullOrEmpty(txt_a1.Text) || string.IsNullOrEmpty(txt_A2.Text) || string.IsNullOrEmpty(txt_A3.Text) || !txt_tele.MaskFull)
+            if (txt_name.Text.Any(char.IsDigit) || string.IsNullOrEmpty(txt_a1.Text) || string.IsNullOrEmpty(txt_A2.Text) || string.IsNullOrEmpty(txt_A3.Text) || !txt_tele.MaskFull)
             {
-                MessageBox.Show("Field cannot be blank","Error",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show("Field cannot be blank or invalid format","Error",MessageBoxButtons.OK,MessageBoxIcon.Information);
                 return;
 
             }
@@ -366,6 +375,16 @@ namespace WindowsFormsApplication9
                 con.Close();
                 MessageBox.Show("Registered Successfully","information",MessageBoxButtons.OK,MessageBoxIcon.Information);
 
+                CustomerOrder cd = new CustomerOrder();
+                Hide();
+                cd.Show();
+
+                txt_name.Clear();
+                txt_tele.Clear();
+                txt_a1.Clear();
+                txt_A2.Clear();
+                txt_A3.Clear();
+
                 cmb_ci.Items.Clear();
 
                  cmd = new SqlCommand("select CusId  from Customer", con);
@@ -403,6 +422,24 @@ namespace WindowsFormsApplication9
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void txt_name_TextChanged(object sender, EventArgs e)
+        {
+            if (txt_name.Text.Any(char.IsDigit))
+            {
+                MessageBox.Show("you can't enter numbers here", "information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+        }
+
+        private void txt_q_TextChanged(object sender, EventArgs e)
+        {
+            //if (!txt_q.Text.Any(char.IsDigit))
+            //{
+
+            //    MessageBox.Show("Enter only numbers", "information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
 
         //private void btn_load_Click(object sender, EventArgs e)

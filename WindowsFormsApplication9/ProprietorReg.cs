@@ -98,6 +98,15 @@ namespace WindowsFormsApplication9
             }
 
         }
+
+        private void txt_name_TextChanged(object sender, EventArgs e)
+        {
+            if (txt_name.Text.Any(char.IsDigit))
+            {
+                MessageBox.Show("you can't enter numbers here", "information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
         }
+    }
     }
 

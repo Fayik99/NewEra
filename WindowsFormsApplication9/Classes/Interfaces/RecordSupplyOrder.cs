@@ -118,8 +118,16 @@ namespace WindowsFormsApplication9
             {
 
                 MessageBox.Show("field cannot be blank or invalid format", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if(Convert.ToDouble(txt_q.Text) <= 0)
+            {
+                MessageBox.Show("Quantity cannot be a negative value","Error",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                return;
 
             }
+
             else {
 
 
@@ -134,7 +142,7 @@ namespace WindowsFormsApplication9
                             var id = row.Cells[2].Value.ToString();
                             if (id.Equals(cmb_in.SelectedItem.ToString()))
                             {
-                                MessageBox.Show("You can edit you Quantity for same item", "Information", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                                MessageBox.Show("You can edit you Quantity for same item", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 btn_add.Enabled = false;
                                 return;
 
@@ -209,7 +217,7 @@ namespace WindowsFormsApplication9
             if (cmb_sid.SelectedIndex < 0 || cmb_in.SelectedIndex < 0 || !txt_q.Text.Any(char.IsDigit)|| dataGridView1.Rows.Count==0 )
             {
 
-                MessageBox.Show("Fields cannot be blank or invalid format", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Fields cannot be blank ", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
 
             }
@@ -217,7 +225,7 @@ namespace WindowsFormsApplication9
             else if(result==0)
             {
 
-                MessageBox.Show("please add items");
+                MessageBox.Show("please add items","information",MessageBoxButtons.OK,MessageBoxIcon.Information);
             }
             else
             {
@@ -286,6 +294,15 @@ namespace WindowsFormsApplication9
 
 
             }
+        }
+
+        private void txt_q_TextChanged(object sender, EventArgs e)
+        {
+            //if (!txt_q.Text.Any(char.IsDigit))
+            //{
+
+            //    MessageBox.Show("Enter only numbers", "information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
         }
 
 

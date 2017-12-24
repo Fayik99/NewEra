@@ -27,26 +27,40 @@ namespace WindowsFormsApplication9
 
         private void btn_search_Click(object sender, EventArgs e)
         {
-            if (  txt_ic.Text.Any(char.IsDigit))
-            {
-                Item ab = new Item()
+           
+                if (!string.IsNullOrEmpty(txt_ic.Text))
                 {
+                    Item ab = new Item()
+                    {
 
-                    ItemCode = Convert.ToInt32(txt_ic.Text)
+                        ItemCode = Convert.ToInt32(txt_ic.Text)
 
 
 
-                };
-                var dt = ab.checkInventory(ab);
-                dataGridView1.DataSource = dt;
-            }
+                    };
+                    var dt = ab.checkInventory(ab);
+                    dataGridView1.DataSource = dt;
+                }
+                
+                
+            
             else
-                MessageBox.Show("field cannot be blank", "Error", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("field cannot be blank", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
         }
 
         private void Inventory_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void txt_ic_TextChanged(object sender, EventArgs e)
+        {
+            if (!txt_ic.Text.Any(char.IsDigit))
+            {
+
+                MessageBox.Show("Enter only numbers","information",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            }
         }
     }
 }

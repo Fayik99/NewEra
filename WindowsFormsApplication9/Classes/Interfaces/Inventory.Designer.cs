@@ -64,6 +64,7 @@
             this.txt_ic.Name = "txt_ic";
             this.txt_ic.Size = new System.Drawing.Size(124, 20);
             this.txt_ic.TabIndex = 2;
+            this.txt_ic.TextChanged += new System.EventHandler(this.txt_ic_TextChanged);
             // 
             // btn_search
             // 

@@ -161,6 +161,7 @@
             this.txt_name.Name = "txt_name";
             this.txt_name.Size = new System.Drawing.Size(148, 22);
             this.txt_name.TabIndex = 10;
+            this.txt_name.TextChanged += new System.EventHandler(this.txt_name_TextChanged);
             // 
             // txt_price
             // 
@@ -169,6 +170,7 @@
             this.txt_price.Name = "txt_price";
             this.txt_price.Size = new System.Drawing.Size(148, 22);
             this.txt_price.TabIndex = 11;
+            this.txt_price.TextChanged += new System.EventHandler(this.txt_price_TextChanged);
             // 
             // txt_q
             // 

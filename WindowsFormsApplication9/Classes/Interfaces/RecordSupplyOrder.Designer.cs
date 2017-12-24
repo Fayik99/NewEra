@@ -133,17 +133,18 @@
             // 
             // txt_q
             // 
-            this.txt_q.Location = new System.Drawing.Point(630, 243);
+            this.txt_q.Location = new System.Drawing.Point(623, 243);
             this.txt_q.Name = "txt_q";
-            this.txt_q.Size = new System.Drawing.Size(66, 20);
+            this.txt_q.Size = new System.Drawing.Size(98, 20);
             this.txt_q.TabIndex = 9;
+            this.txt_q.TextChanged += new System.EventHandler(this.txt_q_TextChanged);
             // 
             // btn_add
             // 
             this.btn_add.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_add.Location = new System.Drawing.Point(760, 234);
+            this.btn_add.Location = new System.Drawing.Point(760, 237);
             this.btn_add.Name = "btn_add";
-            this.btn_add.Size = new System.Drawing.Size(84, 29);
+            this.btn_add.Size = new System.Drawing.Size(95, 29);
             this.btn_add.TabIndex = 10;
             this.btn_add.Text = "Add";
             this.btn_add.UseVisualStyleBackColor = true;

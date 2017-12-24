@@ -81,15 +81,15 @@ namespace WindowsFormsApplication9
 
             }
 
-            cmd = new SqlCommand("select  CusName from Customer", con);
-            ad = new SqlDataAdapter(cmd);
-            dt = new DataTable();
-            ad.Fill(dt);
-            foreach (DataRow row in dt.Rows)
-            {
-                cmb_cName.Items.Add(row.Field<string>(0));
+            //cmd = new SqlCommand("select  CusName from Customer", con);
+            //ad = new SqlDataAdapter(cmd);
+            //dt = new DataTable();
+            //ad.Fill(dt);
+            //foreach (DataRow row in dt.Rows)
+            //{
+            //    cmb_cName.Items.Add(row.Field<string>(0));
 
-            }
+            //}
         }
 
         private void btn_add_Click(object sender, EventArgs e)
@@ -307,9 +307,9 @@ namespace WindowsFormsApplication9
             try
             {
 
-                if (string.IsNullOrEmpty(txt_can.Text) || cmb_cName.SelectedIndex < 0)
+                if (string.IsNullOrEmpty(txt_can.Text))
                 {
-                    MessageBox.Show("insert a correct Quotationnumber or select correct customer name");
+                    MessageBox.Show("insert a correct Quotationnumber");
                 }
                 else
                 {
@@ -333,11 +333,18 @@ namespace WindowsFormsApplication9
 
         private void btn_cancel_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txt_can.Text))
+            if (!txt_can.Text.Any(char.IsDigit))
 
             {
 
-                MessageBox.Show("insert a correct Quotationumber");
+                MessageBox.Show("insert a Quotationumber","information",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                return;
+            }
+            if (Convert.ToDouble(txt_can.Text) <= 0)
+            {
+                MessageBox.Show("number cannot be a negative value","Error",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                return;
+
             }
             else
             {
@@ -349,6 +356,7 @@ namespace WindowsFormsApplication9
                 };
                 wrt.cancelQuot(wrt);
                 MessageBox.Show("deleted ", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txt_can.Clear();
             }
         }
 
@@ -373,37 +381,37 @@ namespace WindowsFormsApplication9
 
         private void cmb_cName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            try
-            {
-                con.Open();
-                SqlCommand rt = new SqlCommand("select CusId from Customer where CusName='" + cmb_cName.SelectedItem + "'", con);
-                SqlDataReader dr = rt.ExecuteReader();
+            //try
+            //{
+            //    con.Open();
+            //    SqlCommand rt = new SqlCommand("select CusId from Customer where CusName='" + cmb_cName.SelectedItem + "'", con);
+            //    SqlDataReader dr = rt.ExecuteReader();
 
-                while (dr.Read())
-                {
-                    lbl_cusid.Text = dr.GetInt32(0).ToString();
-                }
+            //    while (dr.Read())
+            //    {
+            //        lbl_cusid.Text = dr.GetInt32(0).ToString();
+            //    }
 
-                dr.Close();
+            //    dr.Close();
 
-                rt = new SqlCommand("select * from QuotationHeaderFile where CustomerId='" + lbl_cusid.Text + "'", con);
-                SqlDataAdapter de = new SqlDataAdapter(rt);
-                DataTable du = new DataTable();
-                de.Fill(du);
+            //    rt = new SqlCommand("select * from QuotationHeaderFile where CustomerId='" + lbl_cusid.Text + "'", con);
+            //    SqlDataAdapter de = new SqlDataAdapter(rt);
+            //    DataTable du = new DataTable();
+            //    de.Fill(du);
 
-                txt_can.Text = du.Rows[0][0].ToString();
+                //txt_can.Text = du.Rows[0][0].ToString();
 
-            }
-            catch (Exception)
-            {
+            //}
+            //catch (Exception)
+            //{
 
-                MessageBox.Show("You have not provided quotation to this customer", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            finally
-            {
-                con.Close();
+            //    MessageBox.Show("You have not provided quotation to this customer", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
+            //finally
+            //{
+            //    con.Close();
 
-            }
+            //}
         }
 
         private void btn_gen_Click(object sender, EventArgs e)
@@ -414,6 +422,11 @@ namespace WindowsFormsApplication9
         private void cmb_in_SelectedIndexChanged(object sender, EventArgs e)
         {
             btn_add.Enabled = true;
+        }
+
+        private void txt_can_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

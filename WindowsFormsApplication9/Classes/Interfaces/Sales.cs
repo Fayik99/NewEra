@@ -16,9 +16,9 @@ namespace WindowsFormsApplication9
         SqlConnection con;
         SqlCommand cmd;
         int itemcode = 0;
-        int quan=0;
-        
-        
+        int quan = 0;
+
+
 
         public Sales()
         {
@@ -75,11 +75,19 @@ namespace WindowsFormsApplication9
         {
             try
             {
-                if (cmb_item.SelectedIndex < 0 || !txt_q.Text.Any(char.IsDigit))
+                if (cmb_Code.SelectedIndex < 0 || !txt_q.Text.Any(char.IsDigit))
                 {
 
                     MessageBox.Show("Fields cannot be blank invalid format", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    
+                    return;
+
+                }
+
+                if(Convert.ToDouble(txt_q.Text) <= 0)
+                {
+                    MessageBox.Show("Quantity cannot be a negative value","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    return;
+
                 }
 
                 else
@@ -107,11 +115,11 @@ namespace WindowsFormsApplication9
                             if (row.Cells[1].Value != null)
                             {
                                 var id = row.Cells[1].Value.ToString();
-                                if (id.Equals(cmb_item.SelectedItem.ToString()))
+                                if (id.Equals(label1.Text.ToString()))
                                 {
                                     MessageBox.Show("You can edit you Quantity for same item", "Information", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
                                     btn_add.Enabled = false;
-                                    cmb_item.Items.Clear();
+                                    //cmb_item.Items.Clear();
                                     return;
 
                                 }
@@ -131,7 +139,7 @@ namespace WindowsFormsApplication9
 
                     flag = 1;
                     con.Open();
-                    SqlCommand sa = new SqlCommand("select * from Item where itemName='" + cmb_item.SelectedItem + "' and itemQty>='" + Convert.ToInt32(txt_q.Text) + "'", con);
+                    SqlCommand sa = new SqlCommand("select * from Item where itemName='" + label1.Text + "' and itemQty>='" + Convert.ToInt32(txt_q.Text) + "'", con);
                     SqlDataReader dr = sa.ExecuteReader();
 
 
@@ -147,17 +155,19 @@ namespace WindowsFormsApplication9
                     lbl_grossTotal.Text = (Convert.ToInt32(label5.Text) + Convert.ToInt32(lbl_grossTotal.Text)).ToString();
                     dataGridView1.Rows.Add();
                     dataGridView1.Rows[place].Cells[3].Value = txt_q.Text;
-                    dataGridView1.Rows[place].Cells[2].Value = txt_sell.Text;
+                    dataGridView1.Rows[place].Cells[2].Value = lbl_sell.Text;
                     dataGridView1.Rows[place].Cells[1].Value = lbl_in.Text;
                     dataGridView1.Rows[place].Cells[4].Value = label5.Text;
                     dataGridView1.Rows[place].Cells[0].Value = itemcode;
                     place++;
                     label5.Text = "0";
                     txt_q.Clear();
-                    cmb_item.Items.Clear();
+                    lbl_sell.Text = "";
+                    label1.Text = "";
+                    //cmb_item.Items.Clear();
                     //txt_sell.Text = "";
 
-                 
+
 
                 }
             }
@@ -171,7 +181,7 @@ namespace WindowsFormsApplication9
         {
             if (cmb_oi.SelectedItem != null)
             {
-                if ( cmb_order.SelectedIndex < 0 || cmb_oi.SelectedIndex < 0)
+                if (cmb_order.SelectedIndex < 0 || cmb_oi.SelectedIndex < 0)
                 {
 
                     MessageBox.Show("Fields cannot be empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -197,7 +207,7 @@ namespace WindowsFormsApplication9
                         {
 
                             con.Open();
-                            cmd = new SqlCommand("insert into invoiceDetail values('" + Convert.ToInt32(lbl_invoiceNumber.Text) + "','" + row.Cells["ItmName"].Value.ToString() + "','" + Convert.ToInt32(row.Cells["SellPrice"].Value.ToString()) + "','" + Convert.ToInt32(row.Cells["Quantity"].Value.ToString()) + "' ,'" + Convert.ToInt16(row.Cells["Column1"].Value.ToString()) + "','" + Convert.ToInt32(row.Cells["itm"].Value.ToString()) + "' )", con);
+                            cmd = new SqlCommand("insert into invoiceDetail values('" + Convert.ToInt32(lbl_invoiceNumber.Text) + "','" + Convert.ToInt32(row.Cells["Quantity"].Value.ToString()) + "' ,'" + Convert.ToInt16(row.Cells["Column1"].Value.ToString()) + "','" + Convert.ToInt32(row.Cells["itm"].Value.ToString()) + "' )", con);
                             cmd.ExecuteNonQuery();
                             con.Close();
 
@@ -272,7 +282,7 @@ namespace WindowsFormsApplication9
 
             else
             {
-                if (cmb_Code.SelectedIndex < 0 || string.IsNullOrEmpty(txt_sell.Text))
+                if (cmb_Code.SelectedIndex < 0 || string.IsNullOrEmpty(lbl_sell.Text))
                 {
 
                     MessageBox.Show("Fields cannot be empty", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -298,7 +308,7 @@ namespace WindowsFormsApplication9
                         {
 
                             con.Open();
-                            cmd = new SqlCommand("insert into invoiceDetail values('" + Convert.ToInt32(lbl_invoiceNumber.Text) + "','" + row.Cells["ItmName"].Value.ToString() + "','" + Convert.ToInt32(row.Cells["SellPrice"].Value.ToString()) + "','" + Convert.ToInt32(row.Cells["Quantity"].Value.ToString()) + "' ,'" + Convert.ToInt16(row.Cells["Column1"].Value.ToString()) + "','" + Convert.ToInt32(row.Cells["itm"].Value.ToString()) + "' )", con);
+                            cmd = new SqlCommand("insert into invoiceDetail values('" + Convert.ToInt32(lbl_invoiceNumber.Text) + "','" + Convert.ToInt32(row.Cells["Quantity"].Value.ToString()) + "' ,'" + Convert.ToInt16(row.Cells["Column1"].Value.ToString()) + "','" + Convert.ToInt32(row.Cells["itm"].Value.ToString()) + "' )", con);
                             cmd.ExecuteNonQuery();
                             con.Close();
 
@@ -373,30 +383,31 @@ namespace WindowsFormsApplication9
 
         private void itmcmb_SelectedIndexChanged(object sender, EventArgs e)
         {
-            btn_add.Enabled = true;
-            
+            //    btn_add.Enabled = true;
 
-            txt_q.Clear();
-            label5.Text = "0";
-            lbl_in.Text = cmb_item.SelectedItem.ToString();
-            cmd = new SqlCommand("select itemCode from Item where itemName='" + lbl_in.Text + "'", con);
-            con.Open();
-            SqlDataReader rdr = cmd.ExecuteReader();
-            rdr.Read();
-            itemcode = Convert.ToInt32(rdr[0].ToString());
-            rdr.Close();
-            con.Close();
-            if (lbl_in.Text != "")
-            {
-                SqlCommand cmd = new SqlCommand("select * from Item where itemName='" + lbl_in.Text + "'", con);
-                SqlDataAdapter ad = new SqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                ad.Fill(dt);
-                dataGridView2.DataSource = dt;
-                con.Close();
-                txt_sell.Text = dataGridView2.Rows[0].Cells[2].Value.ToString();
-            }
+
+            //    txt_q.Clear();
+            //    label5.Text = "0";
+            //    lbl_in.Text = cmb_item.SelectedItem.ToString();
+            //    cmd = new SqlCommand("select itemCode from Item where itemName='" + lbl_in.Text + "'", con);
+            //    con.Open();
+            //    SqlDataReader rdr = cmd.ExecuteReader();
+            //    rdr.Read();
+            //    itemcode = Convert.ToInt32(rdr[0].ToString());
+            //    rdr.Close();
+            //    con.Close();
+            //    if (lbl_in.Text != "")
+            //    {
+            //        SqlCommand cmd = new SqlCommand("select * from Item where itemName='" + lbl_in.Text + "'", con);
+            //        SqlDataAdapter ad = new SqlDataAdapter(cmd);
+            //        DataTable dt = new DataTable();
+            //        ad.Fill(dt);
+            //        dataGridView2.DataSource = dt;
+            //        con.Close();
+            //        //txt_sell.Text = dataGridView2.Rows[0].Cells[2].Value.ToString();
+            //        //lbl_sell.Text = dataGridView2.Rows[0].Cells[2].Value.ToString();
         }
+        
 
         private void Sales_Load(object sender, EventArgs e)
         {
@@ -466,16 +477,17 @@ namespace WindowsFormsApplication9
 
         private void txt_q_TextChanged(object sender, EventArgs e)
         {
-            try {
+            try
+            {
                 if (!string.IsNullOrEmpty(txt_q.Text))
                 {
-                    label5.Text = (Convert.ToInt16(txt_q.Text) * Convert.ToInt32(txt_sell.Text)).ToString();
+                    label5.Text = (Convert.ToInt16(txt_q.Text) * Convert.ToInt32(lbl_sell.Text)).ToString();
 
                 }
             }
-            catch(Exception )
+            catch (Exception)
             {
-                MessageBox.Show("input only in numbers","warning",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                MessageBox.Show("input correctly or input only in numbers", "warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -540,6 +552,28 @@ namespace WindowsFormsApplication9
                 dataGridView3.DataSource = dt;
                 con.Close();
 
+                cmb_Code.Items.Clear();
+
+                cmd = new SqlCommand("select  itemCode from CusOrderDetail where ordernumber='" + cmb_order.SelectedItem + "'", con);
+                con.Open();
+                SqlDataAdapter ad = new SqlDataAdapter(cmd);
+                dt = new DataTable();
+                ad.Fill(dt);
+                foreach (DataRow row in dt.Rows)
+                {
+                    cmb_Code.Items.Add(row.Field<int>(0));
+
+
+                }
+
+                con.Close();
+
+
+
+
+
+
+
             }
         }
 
@@ -585,6 +619,9 @@ namespace WindowsFormsApplication9
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            btn_add.Enabled = true;
+
+
             SqlCommand cmd = new SqlCommand("select itemName from Item where itemCode='" + cmb_Code.SelectedItem + "'", con);
             con.Open();
             SqlDataAdapter ad = new SqlDataAdapter(cmd);
@@ -593,9 +630,34 @@ namespace WindowsFormsApplication9
             ad.Fill(dt);
             foreach (DataRow row in dt.Rows)
             {
-                cmb_item.Items.Add(row.Field<string>(0));
+                //cmb_item.Items.Add(row.Field<string>(0));
+
+                label1.Text = row.Field<string>(0);
+            }
+
+            
 
 
+            txt_q.Clear();
+            label5.Text = "0";
+            lbl_in.Text = label1.Text;//cmb_item.SelectedItem.ToString();
+            cmd = new SqlCommand("select itemCode from Item where itemName='" + lbl_in.Text + "'", con);
+            con.Open();
+            SqlDataReader rdr = cmd.ExecuteReader();
+            rdr.Read();
+            itemcode = Convert.ToInt32(rdr[0].ToString());
+            rdr.Close();
+            con.Close();
+            if (lbl_in.Text != "")
+            {
+                 cmd = new SqlCommand("select * from Item where itemName='" + lbl_in.Text + "'", con);
+                 ad = new SqlDataAdapter(cmd);
+                 dt = new DataTable();
+                ad.Fill(dt);
+                dataGridView2.DataSource = dt;
+                con.Close();
+                //txt_sell.Text = dataGridView2.Rows[0].Cells[2].Value.ToString();
+                lbl_sell.Text = dataGridView2.Rows[0].Cells[2].Value.ToString();
             }
         }
 
@@ -611,10 +673,10 @@ namespace WindowsFormsApplication9
 
         private void btn_up_Click(object sender, EventArgs e)
         {
-            
-       
+
+
         }
-        
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -635,7 +697,7 @@ namespace WindowsFormsApplication9
                             row.Cells[4].Value = this.quan;
 
                             lbl_grossTotal.Text = 0.ToString();
-                            foreach(DataGridViewRow da in dataGridView1.Rows)
+                            foreach (DataGridViewRow da in dataGridView1.Rows)
                             {
 
                                 lbl_grossTotal.Text = (Convert.ToInt32(lbl_grossTotal.Text) + Convert.ToInt32(da.Cells[4].Value)).ToString();
@@ -653,6 +715,39 @@ namespace WindowsFormsApplication9
 
 
 
+        }
+
+        private void txt_sell_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            //btn_add.Enabled = true;
+
+
+            //txt_q.Clear();
+            //label5.Text = "0";
+            //lbl_in.Text = label1.Text;//cmb_item.SelectedItem.ToString();
+            //cmd = new SqlCommand("select itemCode from Item where itemName='" + lbl_in.Text + "'", con);
+            //con.Open();
+            //SqlDataReader rdr = cmd.ExecuteReader();
+            //rdr.Read();
+            //itemcode = Convert.ToInt32(rdr[0].ToString());
+            //rdr.Close();
+            //con.Close();
+            //if (lbl_in.Text != "")
+            //{
+            //    SqlCommand cmd = new SqlCommand("select * from Item where itemName='" + lbl_in.Text + "'", con);
+            //    SqlDataAdapter ad = new SqlDataAdapter(cmd);
+            //    DataTable dt = new DataTable();
+            //    ad.Fill(dt);
+            //    dataGridView2.DataSource = dt;
+            //    con.Close();
+            //    //txt_sell.Text = dataGridView2.Rows[0].Cells[2].Value.ToString();
+            //    lbl_sell.Text = dataGridView2.Rows[0].Cells[2].Value.ToString();
+            //}
         }
     }
 }

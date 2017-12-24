@@ -41,10 +41,20 @@ namespace WindowsFormsApplication9
         private void btn_search_Click(object sender, EventArgs e)
         {
 
-            if (string.IsNullOrEmpty(txt_no.Text))
+            if (string.IsNullOrEmpty(txt_no.Text) || !txt_no.Text.Any(char.IsDigit))
             {
 
-                MessageBox.Show("Enter Invoice number");
+                MessageBox.Show("Enter Invoice number","information",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                return;
+
+            }
+
+            if(Convert.ToDouble(txt_no.Text) <= 0)
+            {
+
+
+                MessageBox.Show("cannot be a negative value", "information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
 
             }
             else

@@ -38,14 +38,18 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.btn_add = new System.Windows.Forms.Button();
-            this.txt_sell = new System.Windows.Forms.TextBox();
             this.txt_q = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.itm = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ItmName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SellPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btn_sub = new System.Windows.Forms.Button();
             this.btn_cls = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
             this.btn_back = new System.Windows.Forms.Button();
-            this.cmb_item = new System.Windows.Forms.ComboBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -57,18 +61,13 @@
             this.lbl_invoiceNumber = new System.Windows.Forms.Label();
             this.lbl_Invoicedate = new System.Windows.Forms.Label();
             this.lbl_grossTotal = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.lbl_in = new System.Windows.Forms.Label();
             this.cmb_Code = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.itm = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ItmName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SellPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.lbl_sell = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
@@ -133,7 +132,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(573, 204);
+            this.label8.Location = new System.Drawing.Point(862, 122);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(69, 15);
@@ -144,7 +143,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(765, 204);
+            this.label9.Location = new System.Drawing.Point(960, 122);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(59, 15);
@@ -155,7 +154,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(907, 204);
+            this.label10.Location = new System.Drawing.Point(1053, 122);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(79, 15);
@@ -164,7 +163,7 @@
             // 
             // btn_add
             // 
-            this.btn_add.Location = new System.Drawing.Point(1024, 227);
+            this.btn_add.Location = new System.Drawing.Point(1043, 265);
             this.btn_add.Margin = new System.Windows.Forms.Padding(4);
             this.btn_add.Name = "btn_add";
             this.btn_add.Size = new System.Drawing.Size(100, 26);
@@ -173,20 +172,12 @@
             this.btn_add.UseVisualStyleBackColor = true;
             this.btn_add.Click += new System.EventHandler(this.btn_add_Click);
             // 
-            // txt_sell
-            // 
-            this.txt_sell.Location = new System.Drawing.Point(567, 236);
-            this.txt_sell.Margin = new System.Windows.Forms.Padding(4);
-            this.txt_sell.Name = "txt_sell";
-            this.txt_sell.Size = new System.Drawing.Size(132, 21);
-            this.txt_sell.TabIndex = 17;
-            // 
             // txt_q
             // 
-            this.txt_q.Location = new System.Drawing.Point(730, 236);
+            this.txt_q.Location = new System.Drawing.Point(947, 157);
             this.txt_q.Margin = new System.Windows.Forms.Padding(4);
             this.txt_q.Name = "txt_q";
-            this.txt_q.Size = new System.Drawing.Size(132, 21);
+            this.txt_q.Size = new System.Drawing.Size(91, 21);
             this.txt_q.TabIndex = 18;
             this.txt_q.TextChanged += new System.EventHandler(this.txt_q_TextChanged);
             // 
@@ -200,12 +191,44 @@
             this.Quantity,
             this.Column1,
             this.Column2});
-            this.dataGridView1.Location = new System.Drawing.Point(567, 333);
+            this.dataGridView1.Location = new System.Drawing.Point(558, 333);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(637, 112);
             this.dataGridView1.TabIndex = 20;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // itm
+            // 
+            this.itm.HeaderText = "item Code";
+            this.itm.Name = "itm";
+            // 
+            // ItmName
+            // 
+            this.ItmName.HeaderText = "Item Name";
+            this.ItmName.Name = "ItmName";
+            // 
+            // SellPrice
+            // 
+            this.SellPrice.HeaderText = "Sell Price";
+            this.SellPrice.Name = "SellPrice";
+            // 
+            // Quantity
+            // 
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.Name = "Quantity";
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "subtotal";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "update";
+            this.Column2.Name = "Column2";
+            this.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // btn_sub
             // 
@@ -222,10 +245,10 @@
             // btn_cls
             // 
             this.btn_cls.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cls.Location = new System.Drawing.Point(855, 528);
+            this.btn_cls.Location = new System.Drawing.Point(855, 525);
             this.btn_cls.Margin = new System.Windows.Forms.Padding(4);
             this.btn_cls.Name = "btn_cls";
-            this.btn_cls.Size = new System.Drawing.Size(109, 27);
+            this.btn_cls.Size = new System.Drawing.Size(109, 30);
             this.btn_cls.TabIndex = 22;
             this.btn_cls.Text = "Close";
             this.btn_cls.UseVisualStyleBackColor = true;
@@ -254,15 +277,6 @@
             this.btn_back.UseVisualStyleBackColor = true;
             this.btn_back.Click += new System.EventHandler(this.btn_back_Click);
             // 
-            // cmb_item
-            // 
-            this.cmb_item.FormattingEnabled = true;
-            this.cmb_item.Location = new System.Drawing.Point(728, 154);
-            this.cmb_item.Name = "cmb_item";
-            this.cmb_item.Size = new System.Drawing.Size(121, 23);
-            this.cmb_item.TabIndex = 30;
-            this.cmb_item.SelectedIndexChanged += new System.EventHandler(this.itmcmb_SelectedIndexChanged);
-            // 
             // dataGridView2
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -276,11 +290,11 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(927, 242);
+            this.label5.Location = new System.Drawing.Point(1053, 160);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 15);
+            this.label5.Size = new System.Drawing.Size(81, 15);
             this.label5.TabIndex = 33;
-            this.label5.Text = "lbl_tv";
+            this.label5.Text = "lbl_totvalue";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label12
@@ -365,26 +379,16 @@
             this.lbl_grossTotal.TabIndex = 44;
             this.lbl_grossTotal.Text = "label14";
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(906, 122);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(80, 15);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "Description";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
-            // 
             // lbl_in
             // 
             this.lbl_in.AutoSize = true;
-            this.lbl_in.Location = new System.Drawing.Point(917, 162);
+            this.lbl_in.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.lbl_in.Location = new System.Drawing.Point(1074, 160);
             this.lbl_in.Name = "lbl_in";
             this.lbl_in.Size = new System.Drawing.Size(47, 15);
             this.lbl_in.TabIndex = 31;
             this.lbl_in.Text = "label5";
+            this.lbl_in.Visible = false;
             this.lbl_in.Click += new System.EventHandler(this.lbl_in_Click);
             // 
             // cmb_Code
@@ -426,37 +430,24 @@
             this.pictureBox2.TabIndex = 48;
             this.pictureBox2.TabStop = false;
             // 
-            // itm
+            // lbl_sell
             // 
-            this.itm.HeaderText = "item Code";
-            this.itm.Name = "itm";
+            this.lbl_sell.AutoSize = true;
+            this.lbl_sell.Location = new System.Drawing.Point(862, 160);
+            this.lbl_sell.Name = "lbl_sell";
+            this.lbl_sell.Size = new System.Drawing.Size(47, 15);
+            this.lbl_sell.TabIndex = 49;
+            this.lbl_sell.Text = "label1";
             // 
-            // ItmName
+            // label1
             // 
-            this.ItmName.HeaderText = "Item Name";
-            this.ItmName.Name = "ItmName";
-            // 
-            // SellPrice
-            // 
-            this.SellPrice.HeaderText = "Sell Price";
-            this.SellPrice.Name = "SellPrice";
-            // 
-            // Quantity
-            // 
-            this.Quantity.HeaderText = "Quantity";
-            this.Quantity.Name = "Quantity";
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "subtotal";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "update";
-            this.Column2.Name = "Column2";
-            this.Column2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(761, 160);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(47, 15);
+            this.label1.TabIndex = 50;
+            this.label1.Text = "label1";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // Sales
             // 
@@ -464,6 +455,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1235, 682);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbl_sell);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.cmb_Code);
@@ -480,19 +473,16 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.lbl_in);
-            this.Controls.Add(this.cmb_item);
             this.Controls.Add(this.btn_back);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.btn_cls);
             this.Controls.Add(this.btn_sub);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.txt_q);
-            this.Controls.Add(this.txt_sell);
             this.Controls.Add(this.btn_add);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.btn_search);
             this.Controls.Add(this.label4);
@@ -523,14 +513,12 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btn_add;
-        private System.Windows.Forms.TextBox txt_sell;
         private System.Windows.Forms.TextBox txt_q;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btn_sub;
         private System.Windows.Forms.Button btn_cls;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button btn_back;
-        private System.Windows.Forms.ComboBox cmb_item;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label12;
@@ -542,7 +530,6 @@
         private System.Windows.Forms.Label lbl_invoiceNumber;
         private System.Windows.Forms.Label lbl_Invoicedate;
         private System.Windows.Forms.Label lbl_grossTotal;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lbl_in;
         private System.Windows.Forms.ComboBox cmb_Code;
         private System.Windows.Forms.Label label14;
@@ -554,5 +541,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewButtonColumn Column2;
+        private System.Windows.Forms.Label lbl_sell;
+        private System.Windows.Forms.Label label1;
     }
 }

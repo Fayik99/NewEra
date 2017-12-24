@@ -161,6 +161,7 @@
             this.txt_name1.Name = "txt_name1";
             this.txt_name1.Size = new System.Drawing.Size(132, 21);
             this.txt_name1.TabIndex = 8;
+            this.txt_name1.TextChanged += new System.EventHandler(this.txt_name1_TextChanged);
             // 
             // txt_add11
             // 
@@ -293,6 +294,7 @@
             this.txt_name2.Name = "txt_name2";
             this.txt_name2.Size = new System.Drawing.Size(132, 21);
             this.txt_name2.TabIndex = 22;
+            this.txt_name2.TextChanged += new System.EventHandler(this.txt_name2_TextChanged);
             // 
             // txt_add12
             // 
